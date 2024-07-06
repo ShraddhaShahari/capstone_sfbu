@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property</title>
+    <!-- custom js file link  -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="js/script.js" defer></script>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- additional CSS for form background -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('images/bg2.avif') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        #add-property-form-container {
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            max-width: 800px;
+            margin: 50px,auto;
+        }
+
+        #add-property-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background-color: var(--white);
+        }
+
+        .form-group {
+            flex: 1 1 calc(50% - 1rem);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            flex: 1 1 100%;
+        }
+
+        .form-group .input {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.4rem;
+        }
+
+        .form-group select.input {
+            padding: 1rem;
+        }
+
+        .btn {
+           
+            padding: 1rem;
+            background-color: #DA2C32;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #add-property-form-container h3 {
+        text-align: center;
+        width: 100%;
+        color: black; /* Set heading color to black */
+    }
+
+ input[type=number] {
+            appearance: none;
+        
+        }
+
+    </style>
+
+
+</head>
+<body id="home">
+    
+<!-- header section starts  -->
+
+<header class="header">
+    <nav class="navbar nav-1">
+        <section class="flex">
+            <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+        </section>
+    </nav>
+
+    <nav class="navbar nav-2">
+        <section class="flex">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div class="menu">
+                <ul>
+                    <li><a href="listings.html">Buy<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="listings.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="addproperty.html">Sell<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="addproperty.html">Add Property</a></li>
+                            <li><a href="listings.html">View Property</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.html#faq">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-menu">
+                <ul>
+                    <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="chatbot.html">Chatbot</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="home.html">House Price Prediction</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+</header>
+
+<div class="home">
+    <section class="center">
+    <div id="add-property-form-container">
+            <form action="addproperty.html" method="post" id="add-property-form" enctype="multipart/form-data">
+                <h3>Add Property</h3>
+            <div class="form-group">
+                <select name="bedrooms" class="input" required>
+                    <option value="" disabled selected>Bedrooms</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    
+                </select>
+                <input type="text" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
+                <input type="text" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
+            </div>
+            <div class="form-group">
+                <select name="floors" class="input" required>
+                    <option value="" disabled selected>Floors</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <select name="view" class="input" required>
+                <option value="" disabled selected>View</option>
+
+                    <option value="0">View 0</option>
+                    <option value="1">View 1</option>
+                    <option value="2">View 2</option>
+                    <option value="3">View 3</option>
+                    <option value="4">View 4</option>
+                </select>
+                <select name="condition" class="input" required>
+                <option value="" disabled selected>Condition</option>
+
+                    <option value="1">Condition 1</option>
+                    <option value="2">Condition 2</option>
+                    <option value="3">Condition 3</option>
+                    <option value="4">Condition 4</option>
+                    <option value="5">Condition 5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="sqft_above" placeholder="Above Ground (sqft)" required class="input">
+                <input type="text" name="sqft_basement" placeholder="Basement (sqft)" required class="input">
+                <input type="date" name="yr_built" placeholder="Year Built" required class="input">
+            </div>
+            <div class="form-group">
+                <input type="date" name="yr_renovated" placeholder="Year Renovated" class="input">
+                <input type="text" name="street" placeholder="Street" required maxlength="100" class="input">
+                <input type="text" name="city" placeholder="City" required maxlength="50" class="input">
+            </div>
+            <div class="form-group">
+                <input type="number" name="price" placeholder="Price" required class="input" min="200000" max="50000000">
+            </div>
+
+                <div class="form-group"> 
+                    <input type="text" name="images" placeholder="e.g., img1.jpg,img2.jpg,img3.jpg" class="input">
+                    <p>Image URLs (comma separated)</p>
+                </div>
+                <div class="form-group">
+                    <p>Upload Image</p>
+                    <input type="file" name="image_upload" accept="image/*" class="input">
+                </div>
+                <div class="btn-container">
+                    <button type="button" class="btn btn-primary" onclick=addProperty()>Add Property</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- home section ends -->
+
+<!-- footer section starts  -->
+
+<footer class="footer">
+    <section class="flex">
+        <div class="box">
+            <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+         <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+            <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
+        </div>
+        <div class="box">
+            <a href="home.html"><span>Home</span></a>
+            <a href="about.html"><span>About Us</span></a>
+            <a href="contact.html"><span>Contact Us</span></a>
+            <a href="listings.html"><span>All Listings</span></a>
+        </div>
+        <div class="box">
+            <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
+            <a href="#"><span>instagram</span><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
+</footer>
+
+<!-- footer section ends -->
+
+<div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <div class="slider">
+            <img id="modal-img" src="">
+        </div>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
+</div>
+
+<script>
+</script>
+
+
+</body>
+</html>

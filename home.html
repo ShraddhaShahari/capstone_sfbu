@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('images/bg2.avif') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* House Price Prediction Form styles */
+        #price-calculator-form-container {
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            max-width: 800px;
+            margin: 50px auto; /* Center align horizontally */
+        }
+
+        #price-calculator-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background-color: var(--white); /* White background */
+            color: var(--black); /* Text color */
+            padding: 2rem;
+            width: 100%; /* Ensure full width */
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 10px; /* Rounded corners */
+            border: 1px solid #ddd; /* Light grey border */
+            box-shadow: none; /* No shadow */
+        }
+
+        #price-calculator-form h3 {
+            color: var(--black);
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .form-group {
+            flex: 1 1 calc(50% - 1rem);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            flex: 1 1 100%;
+        }
+
+        .form-group .input {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.4rem;
+        }
+
+        .form-group select.input {
+            padding: 1rem;
+        }
+
+        .btn {
+            padding: 1rem;
+            background-color: #DA2C32;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.6rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        input[type=number] {
+            appearance: auto;
+        }
+    </style>
+</head>
+<body id="home">
+    
+<!-- header section starts  -->
+
+<header class="header">
+    <nav class="navbar nav-1">
+        <section class="flex">
+            <a href="login.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+        </section>
+    </nav>
+
+    <nav class="navbar nav-2">
+        <section class="flex">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div class="menu">
+                <ul>
+                    <li><a href="listings.html">Buy<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="listings.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="addproperty.html">Sell<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="addproperty.html">Add Property</a></li>
+                            <li><a href="listings.html">View Property</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">help<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.html#faq">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-menu">
+                <ul>
+                    <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="chatbot.html">Chatbot</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="home.html">House Price Prediction</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<div class="home">
+        <section class="center">
+            <div id="price-calculator-form-container">
+                <form action="search.html" method="post" id="price-calculator-form">
+                    <h3>House Price Prediction</h3>
+                    <div class="form-group">
+                        <select name="bedrooms" class="input" required>
+                            <option value="" disabled selected>Bedrooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                           
+                        </select>
+                        <input type="text" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
+                        <input type="text" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
+                    </div>
+                    <div class="form-group">
+                        <select name="floors" class="input" required>
+                            <option value="" disabled selected>Floors</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <select name="view" class="input" required>
+ <option value="" disabled selected>Views</option>
+
+                            <option value="0">View 0</option>
+                            <option value="1">View 1</option>
+                            <option value="2">View 2</option>
+                            <option value="3">View 3</option>
+                            <option value="4">View 4</option>
+                        </select>
+                        <select name="condition" class="input" required>
+<option value="" disabled selected>Condition</option>
+                            <option value="1">Condition 1</option>
+                            <option value="2">Condition 2</option>
+                            <option value="3">Condition 3</option>
+                            <option value="4">Condition 4</option>
+                            <option value="5">Condition 5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="sqft_above" placeholder="Above Ground (sqft)" required class="input">
+                        <input type="text" name="sqft_basement" placeholder="Basement (sqft)" required class="input">
+                        <input type="date" name="yr_built" placeholder="Year Built" required class="input">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" name="yr_renovated" placeholder="Year Renovated" class="input">
+                        <input type="text" name="street" placeholder="Street" required maxlength="100" class="input">
+                        <input type="text" name="city" placeholder="City" required maxlength="50" class="input">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="calculatePrice()">Calculate Price</button>
+                    <p id="calculated-price">Calculated Price: $0</p>
+                </form>
+            </div>
+ </section>
+    </div>
+<!-- home section ends -->
+
+<!-- services section starts  -->
+
+<section class="services">
+    <h1 class="heading transparent-btn">Our Services</h1>
+    <div class="box-container">
+        <div class="box rounded-corner transparent-bg">
+          
+            <a href="listings.html">
+                <img src="images/spot-agent-lg-1.webp" alt="">
+                <h3>Buy a House</h3>
+                <p>Our experienced real estate agents provide a clear breakdown of costs, helping you avoid any surprise expenses.</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="addproperty.html">
+                <img src="images/sell-lg-1.webp" alt="">
+                <h3>Sell Your House</h3>
+                <p>Get the best value for your property with our expert selling strategies and market insights. </p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="home.html">
+                <img src="images/price.jpg" alt="">
+                <h3>Predict Price</h3>
+                <p>Our experienced real estate agents provide a clear breakdown of costs, helping you avoid any surprise expenses.</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="map1.html">
+                <img src="images/googlemap.png" alt="">
+                <h3>Map</h3>
+                <p>Our experienced real estate agents provide a clear breakdown of costs, helping you avoid any surprise expenses.</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="contact.html">
+                <img src="images/contact.jpg" alt="">
+                <h3>Contact Us</h3>
+                <p>Our experienced real estate agents provide a clear breakdown of costs, helping you avoid any surprise expenses.</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="chatbot.html">
+                <img src="images/chat.jpg" alt="">
+                <h3>24/7 Chat Support</h3>
+                <p>Our chatbot is available round the clock to assist you with any real estate queries you may have.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- services section ends -->
+
+<!-- Home Page Listings Section -->
+<section class="home-listings">
+  <div class="heading-container">
+    <h1 class="heading transparent-btn">Latest Listings</h1>
+  </div>    <div class="box-container">
+
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+          <p>Hartej</p>
+          <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+    <div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+<div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+<div class="box">
+      <div class="admin">
+        <h3>J</h3>
+        <div>
+                    <span>05/26/2024</span>
+        </div>
+      </div>
+      <div class="thumb slider">
+        <img src="images/homeimage1.jpg" alt="">
+        <img src="images/homeimage2.jpg" alt="">
+        <img src="images/homeimage3.jpg" alt="">
+      </div>
+      <h3 class="name">Modern houses</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span>Sanjose, CA, USA</span></p>
+      <div class="flex">
+        <p><i class="fas fa-bed"></i><span>3</span></p>
+        <p><i class="fas fa-maximize"></i><span>4500 mtsq</span></p>
+      </div>
+      <a href="view_property.html" class="btn">view property</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- listings section ends -->
+
+<!-- footer section starts  -->
+
+<footer class="footer">
+    <section class="flex">
+        <div class="box">
+            <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+         <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+            <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
+        </div>
+        <div class="box">
+            <a href="home.html"><span>Home</span></a>
+            <a href="about.html"><span>About Us</span></a>
+            <a href="contact.html"><span>Contact Us</span></a>
+            <a href="listings.html"><span>All Listings</span></a>
+        </div>
+        <div class="box">
+            <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
+            <a href="#"><span>instagram</span><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
+</footer>
+
+<!-- footer section ends -->
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+<!-- JavaScript for Price Calculation -->
+<script>
+function calculatePrice() {
+    var sqft_living = document.getElementsByName('sqft_living')[0].value;
+    var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
+    var price_per_sqft = document.getElementsByName('price_per_sqft')[0].value;
+
+    if (sqft_living && price_per_sqft) {
+        var price = sqft_living * price_per_sqft;
+        document.getElementById('calculated-price').innerText = 'Calculated Price: $' + price.toLocaleString();
+    } else {
+        document.getElementById('calculated-price').innerText = 'Please fill in all required fields';
+    }
+}
+</script>
+
+<div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <div class="slider">
+            <img id="modal-img" src="">
+        </div>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
+</div>
+
+</body>
+</html>

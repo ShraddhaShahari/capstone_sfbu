@@ -1,0 +1,1617 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap');
+
+:root {
+    --main-color: #DA2C32;
+    --light-color: #666;
+    --light-bg: #eee;
+    --white: #fff;
+    --black: #303030;
+    --border: .1rem solid var(--light-color);
+    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+}
+
+/* General Reset and Global Styles */
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+.rounded-corner {
+    border-radius: 10px;
+}
+*::selection {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+*::-webkit-scrollbar {
+    height: .5rem;
+    width: 1rem;
+}
+
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--white);
+    border-radius: 5rem;
+}
+
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 10rem;
+}
+
+body {
+    background-color: var(--light-bg);
+}
+
+section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.heading {
+    text-align: center;
+    padding-bottom: 2.5rem;
+    font-size: 3rem;
+    color: var(--black);
+    text-transform: capitalize;
+}
+
+/* Button Styles */
+.btn,
+.inline-btn {
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    background-color: var(--main-color);
+    color: var(--white);
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+}
+
+.btn:hover,
+.inline-btn:hover {
+    background-color: var(--black);
+}
+
+.btn {
+    display: block;
+    width: 100%;
+}
+
+.inline-btn {
+    display: inline-block;
+}
+
+/* Header Section */
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: none;
+}
+.header a:hover {
+    text-decoration: underline;
+ }
+
+.header .navbar.nav-1 .flex {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.header .navbar.nav-2 .flex {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.header .navbar.nav-1 {
+    background-color: var(--black);
+}
+
+.header .navbar.nav-2 {
+    background-color: var(--white);
+}
+
+.header .navbar .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .navbar .flex .logo {
+    font-size: 2.2rem;
+    color: var(--white);
+}
+
+.header .navbar .flex .logo i {
+    color: var(--main-color);
+    margin-right: 1rem;
+}
+
+.header .navbar .flex ul {
+    list-style: none;
+}
+
+.header .navbar .flex ul li {
+    float: left;
+    position: relative;
+}
+
+.header .navbar .flex ul li a {
+    display: inline-block;
+    padding: 1.2rem 2rem;
+    font-size: 1.8rem;
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.header .navbar .flex ul li a:hover {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.header .navbar .flex ul li a i {
+    margin-left: 1rem;
+}
+
+.header .navbar .flex ul li ul {
+    position: absolute;
+    width: 17rem;
+    left: 0;
+}
+
+.header .navbar .flex ul li ul li {
+    width: 100%;
+}
+
+.header .navbar .flex ul li ul li a {
+    display: none;
+}
+
+.header .navbar .flex ul li:hover ul li a {
+    display: block;
+}
+
+#menu-btn {
+    font-size: 2.5rem;
+    color: var(--black);
+    display: none;
+}
+
+/* Home Section */
+.home {
+    background: url('images/bg2.avif') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    box-shadow: none;
+}
+
+.home .center {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .center form {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 2rem;
+    box-shadow: var(None);
+    width: 50rem;
+}
+
+.home .center form h3 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 2.5rem;
+}
+
+.home .center form .flex {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.home .center form .box {
+    flex: 1 1 20rem;
+}
+
+.home .center form .box .input {
+    width: 100%;
+    border: var(--border);
+    padding: 1.4rem;
+    color: var(--white);
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.home .center form .box p {
+    color: var(--light-color);
+    font-size: 1.7rem;
+    padding-top: 1rem;
+}
+
+.home .center form .box p span {
+    color: var(--main-color);
+}
+
+/* New class for transparent button */
+.transparent-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.5); /* Slightly transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.7); /* Slightly transparent border */
+    color: var(--black); /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Center align text in parent sections */
+.services, .listings {
+    text-align: center;
+}
+
+/* Price calculator specific styles */
+#price-calculator-form {
+    background-color: var(--white); /* White background */
+    color: var(--black); /* Text color */
+    padding: 2rem;
+    width: 100%; /* Ensure full width */
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Light grey border */
+    box-shadow: none; /* No shadow */
+}
+
+#price-calculator-form h3 {
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+
+/* Form Groups in a Single Row */
+#price-calculator-form .form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: nowrap; /* Ensures that items stay on a single line */
+}
+
+#price-calculator-form .input {
+    flex: 1 1 calc(33.33% - 1rem); /* Three columns layout */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem;
+}
+
+#price-calculator-form .input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#price-calculator-form .btn-primary {
+    background-color: var(--main-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+    margin-top: 1rem;
+    width: 100%; /* Full width button */
+}
+
+#price-calculator-form .btn-primary:hover {
+    background-color: #c00;
+}
+
+/* Input types for date */
+#price-calculator-form .input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+/* Services Section */
+.services .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.services .box-container .box {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px; /* Added for rounded corners */
+}
+
+.services .box-container .box img {
+    margin: 1rem 0;
+    height: 8rem;
+}
+
+.services .box-container .box h3 {
+    font-size: 2rem;
+    padding: 1rem 0;
+    color: var(--black);
+    text-transform: capitalize;
+}
+
+.services .box-container .box p {
+    line-height: 2;
+    font-size: 1.6rem;
+    color: var(--light-color);
+    padding-top: .5rem;
+}
+
+/* Home Page Listings Section */
+.home .listings .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    gap: 1rem;
+    justify-content: center; /* Center the content */
+}
+
+/* Listings Section */
+.listings {
+    padding: 1rem 0;
+}
+
+/* Centering the transparent box for Latest Listings heading */
+.home-listings .heading-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0; /* Adjust margin as needed */
+}
+
+.home-listings .heading-container .heading {
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    padding: 1rem 2rem; /* Adjust padding as needed */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center;
+    box-shadow: var(--box-shadow); /* Apply box shadow if desired */
+}
+
+/* Ensure box-container layout remains as intended */
+.home-listings .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+}
+
+.home-listings {
+    padding: 1rem 0;
+}
+
+.home-listings .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+}
+
+.home-listings .box {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    position: relative;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center align text in the box */
+}
+
+.home-listings .box .admin {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: center; /* Center align admin content */
+}
+
+.home-listings .box .admin h3 {
+    background: #d90a0a;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.home-listings .box .admin div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align text */
+}
+
+.home-listings .box .thumb {
+    position: relative;
+    height: 150px; /* Ensure consistent height */
+    overflow: hidden;
+    margin: 1.5rem 0;
+}
+
+.home-listings .box .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the box */
+    transition: 0.3s;
+}
+
+.home-listings .box .thumb img:hover {
+    transform: scale(1.1);
+}
+
+.home-listings .box .name {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 1rem 0;
+    text-align: center; /* Center align text */
+}
+
+.home-listings .box .location {
+    font-size: 1.4rem;
+    color: var(--light-color);
+    margin-bottom: 1rem;
+    text-align: center; /* Center align text */
+}
+
+.home-listings .box .location i {
+    margin-right: 1rem;
+    color: var(--main-color);
+}
+
+.home-listings .box .flex {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center; /* Center align flex items */
+}
+
+.home-listings .box .flex p {
+    font-size: 1.4rem;
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.home-listings .box .btn {
+    display: block;
+    text-align: center;
+    background: #d90a0a; /* Red background */
+    color: #fff; /* White text */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    width: 100%; /* Full width of the box */
+}
+
+
+/* Slider Styles */
+.slider img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.slider img:first-child {
+    display: block;
+}
+
+  
+/* View Property Page */
+.view-property .details {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+.view-property .details .thumb {
+    background-color: var(--black);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.view-property .details .thumb .big-image img {
+    height: 40rem;
+    width: 100%;
+    object-fit: contain;
+}
+
+.view-property .details .thumb .small-images {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.view-property .details .thumb .small-images img {
+    height: 7rem;
+    width: 10rem;
+    object-fit: cover;
+    cursor: pointer;
+    transition: .2s linear;
+}
+
+.view-property .details .thumb .small-images img:hover {
+    transform: scale(1.1);
+}
+
+.view-property .details .name {
+    font-size: 2rem;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    margin-bottom: .5rem;
+}
+
+.view-property .details .location {
+    padding-top: 1rem;
+    font-size: 1.6rem;
+    color: var(--light-color);
+}
+
+.view-property .details .location i {
+    margin-right: 1rem;
+    color: var(--main-color);
+}
+
+.view-property .details .info {
+    display: flex;
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.view-property .details .info p {
+    font-size: 1.7rem;
+}
+
+.view-property .details .info p span,
+.view-property .details .info p a {
+    color: var(--light-color);
+}
+
+.view-property .details .info p a:hover {
+    text-decoration: underline;
+}
+
+.view-property .details .info p i {
+    margin-right: 1.5rem;
+    color: var(--main-color);
+}
+
+.view-property .details .title {
+    font-size: 2rem;
+    color: var(--black);
+    padding-bottom: 1.5rem;
+    border-bottom: var(--border);
+}
+
+.view-property .details .flex {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.view-property .details .flex .box {
+    flex: 1 1 40rem;
+}
+
+.view-property .details .flex .box p {
+    padding: .5rem 0;
+    font-size: 1.6rem;
+    color: var(--light-color);
+}
+
+.view-property .details .flex .box i {
+    color: var(--main-color);
+    margin-right: 1.5rem;
+}
+
+.view-property .details .description {
+    padding: .5rem 0;
+    margin-top: .5rem;
+    font-size: 1.6rem;
+    color: var(--light-color);
+    line-height: 1.5;
+}
+
+/* About Section */
+.about .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.about .row .image {
+    flex: 1 1 40rem;
+}
+
+.about .row .image img {
+    width: 100%;
+}
+
+.about .row .content {
+    flex: 1 1 40rem;
+    text-align: center;
+}
+
+.about .row .content h3 {
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-bottom: .5rem;
+    text-transform: capitalize;
+}
+
+.about .row .content p {
+    line-height: 2;
+    padding: 1rem 0;
+    font-size: 1.7rem;
+    color: var(--light-color);
+}
+
+/* Steps Section */
+.steps .heading {
+   color: black;
+}
+
+.steps .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 30rem);
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.steps .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    flex: 1 1 calc(30% - 2rem);
+}
+
+.steps .box-container .box img {
+    height: 7rem;
+    margin: .5rem 0;
+}
+
+.steps .box-container .box h3 {
+    padding: 1rem 0;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--black);
+}
+
+.steps .box-container .box p {
+    line-height: 2;
+    font-size: 1.6rem;
+    color: var(--light-color);
+}
+.steps .box-container .box .btn {
+   display: block;
+   text-align: center;
+   background: var(--main-color);
+   color: #fff;
+   padding: 1rem 2rem; /* Increased padding */
+   border-radius: 5px;
+   font-size: 1.4rem; /* Adjusted font size */
+   margin-top: 1rem;
+   width: auto; /* Adjust width to content */
+}
+/* Targeting the second box in the Steps section for size adjustments */
+.steps .box-container .box:nth-child(2) {
+   flex-basis: 30rem; /* Ensure the width is consistent */
+   height: auto; /* Allow height to adjust */
+   font-size: 1rem; /* Decrease font size to match other cards */
+   padding: 2rem; /* Consistent padding */
+}
+
+/* Adjust the size of the second card in the Steps section */
+.steps .box-container .box:nth-child(2) {
+   flex-basis: 30rem; /* Ensure consistent width */
+   font-size: 1rem; /* Decrease font size */
+   padding: 2rem; /* Consistent padding */
+}
+
+/* Adjust the button size inside the second card */
+.steps .box-container .box:nth-child(2) .btn {
+   padding: 1rem 2rem; /* Adjust padding for button */
+   font-size: 1.3rem; /* Larger font size */
+}
+
+
+/* Reviews Section */
+.Reviews .box-container {
+   display: flex;
+   flex-wrap: wrap; /* Allow wrapping */
+   gap: 2rem;
+   justify-content: center;
+   align-items: flex-start; /* Align items to the start */
+}
+
+.Reviews .box-container .box {
+   background-color: var(--white);
+   padding: 2rem;
+   box-shadow: var(--box-shadow);
+   flex: 1 1 calc(33.33% - 2rem); /* Ensure boxes take 1/3 of the container width */
+   max-width: 35rem; /* Ensure consistent width */
+}
+
+.Reviews .box-container .box .user {
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   margin-bottom: 1rem;
+}
+
+.Reviews .box-container .box .user img {
+   height: 6rem;
+   width: 6rem;
+   border-radius: 50%;
+}
+
+.Reviews .box-container .box .user h3 {
+   font-size: 2rem;
+   color: var(--black);
+   padding-bottom: .3rem;
+}
+
+.Reviews .box-container .box .user .stars i {
+   font-size: 1.5rem;
+   color: var(--main-color);
+}
+
+.Reviews .box-container .box p {
+   line-height: 2;
+   padding-top: .5rem;
+   font-size: 1.6rem;
+   color: var(--light-color);
+}
+
+/* Adjust the heading color */
+.Reviews .heading {
+   color: black; /* Change the heading color to black */
+   font-size: 2.5rem;
+   text-align: center;
+   margin-bottom: 2rem;
+}
+
+/* Adjust the heading color */
+.Reviews .heading {
+   color: black; /* Change the heading color to black */
+   font-size: 2.5rem;
+   text-align: center;
+   margin-bottom: 2rem;
+}
+
+
+/* Contact Section */
+.contact .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.contact .row .image {
+    flex: 1 1 50rem;
+}
+
+.contact .row .image img {
+    width: 100%;
+}
+
+.contact .row form {
+    flex: 1 1 30rem;
+    background-color: var (--white);
+    box-shadow: var (--box-shadow);
+    padding: 2rem;
+}
+
+.contact .row form h3 {
+    padding-bottom: 1rem;
+    font-size: 2.5rem;
+    color: var (--black);
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.contact .row form .box {
+    width: 100%;
+    border: var (--border);
+    padding: 1.4rem;
+    color: var (--black);
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.contact .row form textarea {
+    height: 15rem;
+    resize: none;
+}
+
+/* FAQ Section */
+.faq .heading {
+   color: var(--main-color); /* or use var(--black) for black color */
+}
+.faq .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.faq .box-container .box {
+    flex: 1 1 40rem;
+    box-shadow: var (--box-shadow);
+}
+
+.faq .box-container .box h3 {
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+    background-color: var (--black);
+    color: var (--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.faq .box-container .box p {
+    font-size: 1.6rem;
+    color: var (--light-color);
+    background-color: var (--white);
+    padding: 1.5rem 2rem;
+    line-height: 1.5;
+    display: none;
+}
+
+.faq .box-container .box.active p {
+    display: block;
+}
+
+.faq .box-container .box.active h3 {
+    background-color: var (--main-color);
+}
+
+/* Filters Section */
+.filters form {
+    background-color: var (--white);
+    box-shadow: var (--box-shadow);
+    padding: 2rem;
+}
+
+.filters form #close-filter {
+    text-align: right;
+    padding-bottom: 2rem;
+    display: none;
+}
+
+.filters form #close-filter i {
+    height: 4.5rem;
+    width: 4.5rem;
+    line-height: 4.4rem;
+    background-color: var (--main-color);
+    color: var (--white);
+    cursor: pointer;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.filters form #close-filter i:hover {
+    background-color: var (--black);
+}
+
+.filters form h3 {
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
+    color: var (--black);
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.filters form .flex {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filters form .flex .box {
+    flex: 1 1 40rem;
+}
+
+.filters form .flex .box .input {
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    color: var (--black);
+    border: var (--border);
+    padding: 1.4rem;
+}
+
+.filters form .flex .box p {
+    font-size: 1.6rem;
+    color: var (--light-color);
+}
+
+#filter-btn {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: var (--border);
+    color: var (--white);
+    text-align: center;
+    height: 4.5rem;
+    width: 4.5rem;
+    line-height: 4.4rem;
+    z-index: 1000;
+    font-size: 2rem;
+    background-color: var (--main-color);
+    display: none;
+}
+
+/* Form Container */
+.form-container form {
+    max-width: 50rem;
+    margin: 0 auto;
+    background-color: var (--white);
+    box-shadow: var (--box-shadow);
+    padding: 2rem;
+    text-align: center;
+}
+
+.form-container form h3 {
+    padding-bottom: 1rem;
+    font-size: 2.5rem;
+    color: var (--black);
+    text-transform: capitalize;
+}
+
+.form-container form .box {
+    border: var (--border);
+    padding: 1.4rem;
+    color: var (--white);
+    margin: 1rem 0;
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.form-container form p {
+    font-size: 1.7rem;
+    padding: 1rem 0;
+    color: var (--light-color);
+}
+
+.form-container form p a {
+    color: var (--main-color);
+}
+
+.form-container form p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Section */
+
+.footer{
+   background-color: var(--black);
+}
+
+.footer .flex{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 2rem;
+   justify-content: space-between;
+}
+
+.footer .flex .box{
+   flex: 1 1 30rem;
+}
+
+.footer .flex .box a{
+   display: block;
+   padding: 1rem 0;
+   font-size: 1.8rem;
+}
+
+.footer .flex .box a span{
+   color: var(--white);
+}
+
+.footer .flex .box a:hover span{
+   text-decoration: underline;
+}
+
+.footer .flex .box a i{
+   color: var(--main-color);
+}
+
+.footer .flex .box:last-child{
+   text-align: right;
+}
+
+.footer .flex .box:last-child a i{
+   margin-left: 1.5rem;
+}
+
+.footer .flex .box:first-child a i{
+   margin-right: 1.5rem;
+}
+
+.footer .flex .box:nth-child(2){
+   text-align: center;
+}
+
+.footer .credit{
+   padding: 3rem 2rem;
+   text-align: center;
+   border-top: var(--border);
+   font-size: 2rem;
+   color: var(--white);
+   margin-top: 2rem;
+   /* padding-bottom: 10rem; */
+}
+
+.footer .credit span{
+   color: var(--main-color);
+}
+
+.address {
+   font-size: 1.8rem; /* Adjust the size as needed */
+   color: var(--main-color); /* Use a custom color or replace with a specific color */
+}
+
+.address a {
+   color: var(--main-color); /* Use a custom color or replace with a specific color */
+   text-decoration: grey; /* Remove underline */
+}
+
+.address a:hover {
+   color: var(--light-color); /* Change color on hover */
+   text-decoration: underline; /* Underline on hover */
+}
+
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.card-content p {
+    color: #555;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.card-content .price {
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+.card-content .location {
+    font-size: 14px;
+    color: #666;
+}
+
+.card-content .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #DA2C32;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.card-content .btn:hover {
+    background-color: #C00;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .card {
+        width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(100% - 40px);
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group .input {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.form-group .btn-primary {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-group .btn-primary:hover {
+    background-color: #c00;
+}
+
+@media (max-width: 991px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-btn {
+        display: inline-block;
+    }
+
+    .header .navbar .menu {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: var (--white);
+        border-top: var (--border);
+        transition: .2s linear;
+        z-index: 1;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .navbar .menu.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .navbar .menu ul li {
+        width: 100%;
+        position: relative;
+    }
+
+    .header .navbar .menu ul li a {
+        width: 100%;
+    }
+
+    .header .navbar .menu ul li ul {
+        position: relative;
+        width: 100%;
+    }
+
+    .header .navbar .menu ul li ul li a {
+        padding-left: 4rem;
+        background-color: var (--black);
+        color: var (--white);
+    }
+
+    .view-property .details .thumb .big-image img {
+        height: auto;
+    }
+
+    .view-property .details .thumb .small-images img {
+        height: 4rem;
+        width: 6rem;
+    }
+
+    #filter-btn {
+        display: inline-block;
+    }
+
+    .filters {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        background-color: var (--white);
+        z-index: 1100;
+        padding: 0;
+        display: none;
+    }
+
+    .filters.active {
+        display: block;
+    }
+
+    .filters form {
+        box-shadow: none;
+    }
+
+    .filters form #close-filter {
+        display: block;
+    }
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+
+    .header .navbar .flex .logo {
+        font-size: 1.8rem;
+    }
+
+    .home .center form .flex {
+        gap: 0;
+    }
+
+    .listings .box-container {
+        grid-template-columns: 1fr;
+    }
+
+    .reviews .box-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Listing Page Styles */
+.listings {
+  padding: 1rem 0;
+}
+
+.listings .card-container, .listings .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.listings .box {
+  flex: 1 1 calc(10% - 1rem); /* Adjust based on the number of items per row */
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  position: relative;
+}
+
+.listings .box .admin {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.listings .box .admin h3 {
+  background: #d90a0a;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.listings .box .admin div {
+  display: flex;
+  flex-direction: column;
+}
+
+.listings .box .thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: 0.3s;
+}
+.listings .box .thumb img:hover {
+  transform: scale(1.1);
+}
+
+.listings .box .thumb img {
+  width: 100%;
+  height: 150px; /* Adjust height */
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.listings .box .name {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 1rem 0;
+}
+
+.listings .box .location {
+  font-size: 1.4rem;
+  color: var(--light-color);
+  margin-bottom: 1rem;
+}
+
+.listings .box .flex {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.listings .box .flex p {
+  font-size: 1.4rem;
+  color: var(--light-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.listings .box .btn {
+  display: block;
+  text-align: center;
+  background: #d90a0a; /* Red background */
+  color: #fff; /* White text */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  width: 100%; /* Full width of the box */
+}
+
+.listings .box-container .box .thumb.slider {
+    display: flex;
+    overflow-x: auto;
+ 
+}
+/* Modal Styles */
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1000;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+   margin: auto;
+   display: block;
+   width: 80%;
+   max-width: 700px;
+}
+
+.close, .prev, .next {
+   cursor: pointer;
+   position: absolute;
+   top: 50%;
+   width: auto;
+   padding: 16px;
+   color: white;
+   font-weight: bold;
+   font-size: 20px;
+   transition: 0.3s;
+   user-select: none;
+}
+
+.close {
+   right: 25px;
+   top: 25px;
+   font-size: 35px;
+}
+
+.prev, .next {
+   top: 50%;
+   transform: translateY(-50%);
+   -webkit-transform: translateY(-50%);
+}
+
+.prev {
+   left: 0;
+}
+
+.next {
+   right: 0;
+}
+
+.prev:hover, .next:hover {
+   background-color: rgba(0,0,0,0.8);
+}
+
+.close:hover, .close:focus {
+   color: #bbb;
+   text-decoration: none;
+   cursor: pointer;
+}
+.listings .card .slider {
+   position: relative;
+   width: 100%;
+   overflow: hidden;
+   border-radius: 5px;
+}
+
+.listings .card .slider img {
+   width: 100%;
+   display: none;
+}
+
+.listings .card .slider img:first-child {
+   display: block;
+}
+/* Slider Styles */
+.slider img {
+   width: 100%;
+   height: auto;
+   display: none;
+}
+
+.slider img:first-child {
+   display: block;
+}
+
+
+/* Service Cards Container */
+.services .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Individual Service Card */
+.services .box-container .box {
+    background-color: var (--white);
+    box-shadow: var (--box-shadow);
+    padding: 2rem;
+    text-align: center;
+    /* Ensuring all boxes are the same size */
+    width: 30%;
+    /* adjust the height if needed */
+    height: auto;
+    margin-bottom: 2rem;
+    /* Flex properties to ensure they grow and shrink uniformly */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 30%;
+    /* Adjusting the size of cards slightly */
+    box-sizing: border-box;
+}
+
+/* Service Card Image */
+.services .box-container .box img {
+    margin: 1rem 0;
+    height: 8rem;
+}
+
+/* Service Card Title */
+.services .box-container .box h3 {
+    font-size: 2rem;
+    padding: 1rem 0;
+    color: var (--black);
+    text-transform: capitalize;
+}
+
+/* Service Card Description */
+.services .box-container .box p {
+    line-height: 2;
+    font-size: 1.6rem;
+    color: var (--light-color);
+    padding-top: .5rem;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+   html {
+       font-size: 55%;
+   }
+}
+
+@media (max-width: 768px) {
+   #menu-btn {
+       display: inline-block;
+   }}
+
+/* Other styles */
+.view-property .info-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.view-property .info {
+    flex: 1 1 45%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.view-property .details {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.view-property .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.view-property .box {
+    flex: 1 1 45%;
+    margin-bottom: 1rem;
+}
+
+.view-property .description {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}

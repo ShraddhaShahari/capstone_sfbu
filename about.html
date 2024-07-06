@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>About Us</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <style>
+      .agent-info {
+         font-size: 1.8rem;
+         margin: 0.5rem 0;
+         font-weight: bold;
+      }
+      .email-links {
+         font-size: 1.6rem;
+         display: block;
+         margin: 0.2rem 0 1rem 0;
+         text-decoration: none;
+         color: var(--main-color);
+      }
+      .email-links:hover {
+         text-decoration: underline;
+      }
+      .address {
+         font-size: 1.6rem;
+         margin-top: 1rem;
+      }
+   </style>
+</head>
+<body id="about-page">   
+<!-- header section starts  -->
+
+<header class="header">
+
+   <nav class="navbar nav-1">
+      <section class="flex">
+         <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+
+               </section>
+   </nav>
+
+   <nav class="navbar nav-2">
+      <section class="flex">
+         <div id="menu-btn" class="fas fa-bars"></div>
+
+         <div class="menu">
+            <ul>
+               <li><a href="#">Buy<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="listings.html">Houses</a></li>
+                     
+                  </ul>
+               </li>
+               <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="addproperty.html">Add Property</a></li>
+                     <li><a href="listings.html">View Property</a></li>
+                  </ul>
+               </li>
+                              <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="about.html">About Us</a></i></li>
+                     <li><a href="contact.html">Contact Us</a></i></li>
+                     <li><a href="contact.html#faq">FAQ</a></i></li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+
+         <div class="right-menu">
+         	<ul>
+                 <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
+		<ul>
+			<li><a href="chatbot.html">Chatbot</a></li>
+		</ul></li>
+       		 <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
+                <ul>
+                  
+                  <li><a href="home.html">House Price Prediction</a></li>
+               </ul>
+              </li>
+    	</ul>
+      </div>
+
+      </section>
+   </nav>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- about section starts  -->
+
+<section class="about">
+
+   <div class="row">
+      <div class="image">
+         <img src="images/about-img.svg" alt="">
+      </div>
+      <div class="content">
+         <h3>Why Choose Us?</h3>
+         <p>We offer unparalleled service in the real estate industry. Our team of experts is dedicated to helping you find the perfect home. Here are the contact details of our agents:</p>
+         <ul>
+            <li class="agent-info">Hartej - <a href="mailto:hartej@realestate.com" class="email-links">hartej@realestate.com</a> Phone: 123-456-7890</li>
+            <li class="agent-info">Rupali - <a href="mailto:rupali@realestate.com" class="email-links">rupali@realestate.com</a> Phone: 111-222-3333</li>
+            <li class="agent-info">Shraddha - <a href="mailto:shardha@realestate.com" class="email-links">shardha@realestate.com</a>, Phone: 444-555-6666</li>
+         </ul>
+         <p class="address">Visit us at our location: 1234 Elm Street, Fremont, CA, USA</p>
+         <a href="contact.html" class="inline-btn">Contact Us</a>
+      </div>
+   </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- steps section starts  -->
+
+<section class="steps">
+
+   <h1 class="heading">3 Simple Steps</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <img src="images/step-1.png" alt="">
+         <h3>Search Property</h3>
+         <p>Browse our extensive listings to find your perfect home. We offer properties across various locations to suit every need.</p>
+         <a href="listings.html" class="btn">View Listings</a>
+      </div>
+
+      <div class="box">
+         <img src="images/step-2.png" alt="">
+         <h3>Contact Agents</h3>
+         <p>Get in touch with our experienced agents for expert guidance through every step of the process.</p>
+         <a href="contact.html" class="btn">Contact Us</a>
+      </div>
+
+      <div class="box">
+         <img src="images/step-3.png" alt="">
+         <h3>Enjoy Property</h3>
+         <p>Move into your new home and start creating beautiful memories. We ensure a smooth and hassle-free experience.</p>
+         <a href="about.html" class="btn">Learn More</a>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- steps section ends -->
+
+<!-- review section starts  -->
+
+<section class="Reviews">
+
+   <h1 class="heading">Client's Reviews</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <div class="user">
+            <img src="images/pic-1.png" alt="">
+            <div>
+               <h3>David</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+         <p>The service was excellent. The agents were professional and helped us find our dream home quickly.</p>
+      </div>
+
+      <div class="box">
+         <div class="user">
+            <img src="images/pic-2.png" alt="">
+            <div>
+               <h3>Rita</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+         <p>Great experience! The team was supportive and ensured everything went smoothly.</p>
+      </div>
+
+      <div class="box">
+         <div class="user">
+            <img src="images/pic-3.png" alt="">
+            <div>
+               <h3>Johny</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+         <p>I highly recommend MyHome. They made buying a house an easy and enjoyable experience.</p>
+      </div>
+
+      <div class="box">
+         <div class="user">
+            <img src="images/pic-4.png" alt="">
+            <div>
+               <h3>Rupali</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+         <p>Excellent service! The agents were knowledgeable and helped me find exactly what I was looking for.</p>
+      </div>
+
+      <div class="box">
+         <div class="user">
+            <img src="images/pic-5.png" alt="">
+            <div>
+               <h3>Kasim</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+         <p>Very professional and responsive. MyHome made the process of selling my property a breeze.</p>
+      </div>
+
+      <div class="box">
+         <div class="user">
+            <img src="images/pic-6.png" alt="">
+            <div>
+               <h3>Devika</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+         <p>I had a great experience with MyHome. They were supportive and provided excellent service throughout.</p>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- footer section starts  -->
+
+<footer class="footer">
+
+   <section class="flex">
+
+      <div class="box">
+         <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+         <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+         <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</span></a>
+         <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
+
+      </div>
+
+      <div class="box">
+         <a href="home.html"><span>home</span></a>
+         <a href="about.html"><span>about</span></a>
+         <a href="contact.html"><span>contact</span></a>
+         <a href="listings.html"><span>all listings</span></a>
+         <a href="#"><span>saved properties</span></a>
+      </div>
+
+      <div class="box">
+         <a href="https://facebook.com"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+         <a href="https://twitter.com"><span>twitter</span><i class="fab fa-twitter"></i></a>
+         <a href="https://instagram.com"><span>instagram</span><i class="fab fa-instagram"></i></a>
+      </div>
+
+   </section>
+
+   <div class="credit">&copy; copyright @ 2024 by <span>MyHome Real Estate</span> | all rights reserved!</div>
+
+</footer>
+
+<!-- footer section ends -->
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

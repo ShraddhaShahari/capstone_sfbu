@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Real Estate Listings</title>
+
+   <!-- Font Awesome CDN link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- Swiper CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+   <!-- Leaflet CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+   
+   <!-- Leaflet Search CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css">
+
+   <!-- Custom CSS file link -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <style>
+      body {
+         margin: 0;
+         padding: 0;
+         font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .header {
+         display: flex;
+         justify-content: space-between;
+         padding: 10px 50px;
+         background: rgba(0, 0, 0, 0.5);
+         color: #fff;
+      }
+
+      .header a {
+         color: #fff;
+         text-decoration: none;
+         font-size: 20px;
+         margin-left: 20px;
+      }
+
+      .header .logo {
+         font-size: 25px;
+         font-weight: bold;
+      }
+
+      .header a:hover {
+         text-decoration: underline;
+      }
+
+      .navbar-secondary {
+         display: flex;
+         justify-content: space-around;
+         padding: 10px 50px;
+         background: rgba(0, 0, 0, 0.8);
+         color: #fff;
+      }
+
+      .navbar-secondary .searchbar, .navbar-secondary select, .navbar-secondary button {
+         padding: 10px;
+         margin: 5px;
+         border: none;
+         border-radius: 5px;
+         font-size: 16px;
+      }
+
+      .navbar-secondary .searchbar {
+         flex: 1;
+      }
+
+      .navbar-secondary select {
+         background: #fff;
+         color: #000;
+      }
+
+      .navbar-secondary button {
+         background: #4CAF50;
+         color: white;
+         cursor: pointer;
+      }
+
+      .navbar-secondary button:hover {
+         background: #45a049;
+      }
+
+      .main-content {
+         display: flex;
+         flex-direction: row;
+         padding: 20px;
+         gap: 20px;
+      }
+
+      .map-container {
+         width: 60%;
+         height: calc(100vh - 140px);
+      }
+
+      .right-container {
+         width: 40%;
+         display: flex;
+         flex-direction: column;
+         overflow-y: auto;
+      }
+
+      .swiper-container {
+         width: 100%;
+         height: 200px;
+         margin-bottom: 20px;
+      }
+
+      .swiper-slide img {
+         width: 100%;
+         height: 100%;
+         border-radius: 5px;
+      }
+
+      .swiper-pagination,
+      .swiper-button-next,
+      .swiper-button-prev {
+         color: #000;
+      }
+
+      .listings-container {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         overflow-y: auto;
+      }
+
+      .listing {
+         display: flex;
+         border: 1px solid #ddd;
+         margin: 10px 0;
+         border-radius: 5px;
+         overflow: hidden;
+         background: #fff;
+      }
+
+      .listing img {
+         width: 100px;
+         height: 100px;
+         object-fit: cover;
+      }
+
+      .listing-details {
+         padding: 10px;
+         flex: 1;
+      }
+
+      .footer {
+         background: rgba(0, 0, 0, 0.5);
+         color: #fff;
+         padding: 20px;
+         text-align: center;
+      }
+
+      .footer a {
+         color: #fff;
+         text-decoration: none;
+      }
+
+      .footer a:hover {
+         text-decoration: underline;
+      }
+   </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="header">
+   <a href="index.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+   <div>
+      <a href="index.html">Post Property</a>
+      <a href="index.html">Contact Agent</a>
+      <a href="index.html">Predict Price</a>
+   </div>
+</header>
+
+<!-- Secondary Navbar -->
+<nav class="navbar-secondary">
+   <input type="text" class="searchbar" placeholder="City, Neighborhood, ZIP, Address" id="location-search">
+   <select>
+      <option value="">Bedrooms</option>
+      <option value="2">2 Bedrooms</option>
+      <option value="3">3 Bedrooms</option>
+      <option value="4">4 Bedrooms</option>
+      <option value="5">5 Bedrooms</option>
+   </select>
+   <select>
+      <option value="">Floors</option>
+      <option value="1">1 Floor</option>
+      <option value="2">2 Floors</option>
+      <option value="3">3 Floors</option>
+   </select>
+   <select>
+      <option value="">Year Renovated</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+   </select>
+   <button id="search-button">Search</button>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+   <div class="map-container" id="map"></div>
+   <div class="right-container">
+      <div class="swiper-container">
+         <div class="swiper-wrapper">
+            <div class="swiper-slide">
+               <img src="images/house-img-5.webp" alt="House 1">
+            </div>
+            <div class="swiper-slide">
+               <img src="images/house-img-1.webp" alt="House 2">
+            </div>
+            <!-- Add more slides as needed -->
+         </div>
+         <!-- Add Pagination -->
+         <div class="swiper-pagination"></div>
+         <!-- Add Navigation -->
+         <div class="swiper-button-next"></div>
+         <div class="swiper-button-prev"></div>
+      </div>
+      <div class="listings-container">
+         <div class="listing">
+            <img src="images/house-img-5.webp" alt="House 1">
+            <div class="listing-details">
+               <h4>$775,000</h4>
+               <p>3 beds | 2 ba | 1,376 sqft</p>
+               <p>1741 Northstar Dr, Petaluma, CA 94954</p>
+            </div>
+         </div>
+         <div class="listing">
+            <img src="images/house-img-1.webp" alt="House 2">
+            <div class="listing-details">
+               <h4>$874,900</h4>
+               <p>4 beds | 3 ba | 2,511 sqft</p>
+               <p>3095 Latham Ln, El Dorado Hills, CA 95762</p>
+            </div>
+         </div>
+         <!-- Add more listings as needed -->
+      </div>
+   </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+   <div>
+      <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123456789</span></a>
+      <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</span></a>
+      <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
+
+
+   </div>
+   <div>
+      <a href="home.html"><span>Home</span></a>
+      <a href="about.html"><span>About</span></a>
+      <a href="contact.html"><span>Contact</span></a>
+      <a href="listings.html"><span>All Listings</span></a>
+         </div>
+   <div>
+      <a href="#"><span>Facebook</span><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><span>Twitter</span><i class="fab fa-twitter"></i></a>
+            <a href="#"><span>Instagram</span><i class="fab fa-instagram"></i></a>
+   </div>
+   <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
+</footer>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Leaflet Search JS -->
+<script src="https://unpkg.com/leaflet-search/dist/leaflet-search.min.js"></script>
+
+<script>
+   var map = L.map('map').setView([51.505, -0.09], 13);
+
+   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+   }).addTo(map);
+
+   L.marker([51.5, -0.09]).addTo(map)
+      .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+      .openPopup();
+
+   var searchControl = new L.Control.Search({
+      url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+      jsonpParam: 'json_callback',
+      propertyName: 'display_name',
+      propertyLoc: ['lat','lon'],
+      marker: L.marker([0,0]),
+      autoCollapse: true,
+      autoType: false,
+      minLength: 2
+   });
+
+   searchControl.on('search:locationfound', function(e) {
+      map.setView(e.latlng, 13);
+      if (e.layer) {
+         e.layer.addTo(map).bindPopup(e.text).openPopup();
+      }
+   });
+
+   map.addControl(searchControl);
+
+   var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      pagination: {
+         el: '.swiper-pagination',
+         clickable: true,
+      },
+      navigation: {
+         nextEl: '.swiper-button-next',
+         prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+         delay: 3000,
+         disableOnInteraction: false,
+      },
+   });
+</script>
+
+</body>
+</html>
