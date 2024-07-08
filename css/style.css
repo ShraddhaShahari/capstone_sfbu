@@ -34,6 +34,7 @@
 }
 
 
+
 *::-webkit-scrollbar-thumb {
     background-color: var(--white);
     border-radius: 5rem;
@@ -61,7 +62,7 @@ section {
     text-align: center;
     padding-bottom: 2.5rem;
     font-size: 3rem;
-    color: var(--black);
+    color: var(--white);
     text-transform: capitalize;
 }
 
@@ -118,7 +119,28 @@ section {
 .header .navbar.nav-1 {
     background-color: var(--black);
 }
+.nav-1 .signout-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: auto; /* Pushes the button to the right */
+    text-decoration: none; /* Ensure it looks like a button */
+ }
 
+ .nav-1 .signout-btn:hover {
+    background-color: darkred;
+ }
+
+ .nav-1 .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+ }
 .header .navbar.nav-2 {
     background-color: var(--white);
 }
@@ -253,7 +275,7 @@ section {
 .transparent-btn {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.5); /* Slightly transparent background */
+    background: rgba(255, 255, 255, 0.855); /* Slightly transparent background */
     border: 1px solid rgba(255, 255, 255, 0.7); /* Slightly transparent border */
     color: var(--black); /* Text color */
     border-radius: 5px; /* Rounded corners */
@@ -329,6 +351,7 @@ section {
     -moz-appearance: none;
     appearance: none;
 }
+
 /* Services Section */
 .services .box-container {
     display: grid;
@@ -343,39 +366,60 @@ section {
     box-shadow: var(--box-shadow);
     padding: 2rem;
     text-align: center;
-    border-radius: 10px; /* Added for rounded corners */
+    border-radius: 10px; /* Rounded corners */
 }
 
 .services .box-container .box img {
     margin: 1rem 0;
-    height: 8rem;
+    height: 12rem; /* Increased image height */
 }
 
 .services .box-container .box h3 {
-    font-size: 2rem;
+    font-size: 2rem; /* Adjust the font size if needed */
     padding: 1rem 0;
-    color: var(--black);
+    color: var(--black); /* Ensure this is set to your desired color */
     text-transform: capitalize;
+    font-weight: 3000; /* Make the text bold */
+    line-height: 1.2; /* Adjusted line height for better spacing */
 }
 
 .services .box-container .box p {
     line-height: 2;
     font-size: 1.6rem;
-    color: var(--light-color);
+    color: var(--black); /* Dark black text */
     padding-top: .5rem;
 }
+
+.services .box-container .box .btn {
+    margin-top: 1rem;
+    padding: .8rem 2rem;
+    font-size: 1.6rem;
+    color: var(--white);
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.services .box-container .box .btn:hover {
+    background-color: darkred;
+}
+
+
 
 /* Home Page Listings Section */
 .home .listings .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    gap: 2rem;
     justify-content: center; /* Center the content */
 }
 
 /* Listings Section */
 .listings {
-    padding: 1rem 0;
+    padding: 2rem 0;
 }
 
 /* Centering the transparent box for Latest Listings heading */
@@ -401,13 +445,13 @@ section {
 }
 
 .home-listings {
-    padding: 1rem 0;
+    padding: 2rem 0;
 }
 
 .home-listings .box-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+    gap: 2rem; /* Adjust gap between boxes */
 }
 
 .home-listings .box {
@@ -474,10 +518,10 @@ section {
 
 .home-listings .box .location {
     font-size: 1.4rem;
-    color: var(--light-color);
     margin-bottom: 1rem;
-    text-align: center; /* Center align text */
-}
+    margin-right: 1rem;
+    color: var(--main-color);
+  }
 
 .home-listings .box .location i {
     margin-right: 1rem;
@@ -625,27 +669,44 @@ section {
     flex-wrap: wrap;
 }
 
-.view-property .details .flex .box {
-    flex: 1 1 40rem;
+.view-property .details .box {
+    flex: 1 1 calc(50% - 1rem); /* Adjusts the boxes to take 50% width minus the gap */
+    display: flex;
+    flex-direction: column;
 }
 
-.view-property .details .flex .box p {
-    padding: .5rem 0;
-    font-size: 1.6rem;
-    color: var(--light-color);
+
+.view-property .details .box p {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.9); /* Optional: adds a slight background to details */
+    border-radius: 5px; /* Optional: adds rounded corners */
+    font-size: 1.6rem; /* Adjust font size */
+    margin: 0.2rem 0; /* Add margin for better spacing */
+}
+.view-property .details .box p i {
+    margin-right: 0rem; /* Reduce the space between icon/label and value */
+}
+
+.view-property .details .box p span {
+    margin-left: 0rem; /* Adjust this value to bring the span closer to the label */
 }
 
 .view-property .details .flex .box i {
     color: var(--main-color);
-    margin-right: 1.5rem;
 }
 
 .view-property .details .description {
-    padding: .5rem 0;
-    margin-top: .5rem;
-    font-size: 1.6rem;
-    color: var(--light-color);
-    line-height: 1.5;
+    text-align: justify; /* Align text in the description */
+    font-size: 1.6rem; /* Adjust font size for description */
+    line-height: 1.6; /* Adjust line height for better readability */
+    margin: .3rem 0; /* Add margin for better spacing */
+}
+
+.view-property h3.title {
+    font-size: 2rem; /* Adjust font size for titles */
+    margin-top: 1rem; /* Add margin for spacing */
 }
 
 /* About Section */
@@ -683,6 +744,66 @@ section {
     color: var(--light-color);
 }
 
+.about .agent-info {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    text-align: left;
+    list-style: none; /* Remove bullet points */
+}
+
+.about .agent-info span,
+.about .agent-info a {
+    display: inline;
+    font-size: 1.5rem; /* Ensure consistent font size */
+}
+
+.about .email-links {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.about .email-links:hover {
+    text-decoration: underline;
+}
+
+.about .address {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.about .address p {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.about .address i {
+    margin-right: 0.5rem;
+    color: var(--main-color);
+}
+.about .address:hover {
+        text-decoration: underline;
+    }
+
+
+.inline-btn {
+    margin-top: 1.5rem;
+    padding: 1rem 3rem;
+    background-color: var(--main-color);
+    color: var(--white);
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.inline-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+
+
 /* Steps Section */
 .steps .heading {
    color: black;
@@ -702,6 +823,7 @@ section {
     text-align: center;
     box-shadow: var(--box-shadow);
     flex: 1 1 calc(30% - 2rem);
+    border-radius: 15px; /* Add rounded corners */
 }
 
 .steps .box-container .box img {
@@ -769,6 +891,8 @@ section {
    box-shadow: var(--box-shadow);
    flex: 1 1 calc(33.33% - 2rem); /* Ensure boxes take 1/3 of the container width */
    max-width: 35rem; /* Ensure consistent width */
+   border-radius: 15px; /* Add rounded corners */
+
 }
 
 .Reviews .box-container .box .user {
@@ -866,49 +990,50 @@ section {
 
 /* FAQ Section */
 .faq .heading {
-   color: var(--main-color); /* or use var(--black) for black color */
-}
-.faq .box-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.faq .box-container .box {
-    flex: 1 1 40rem;
-    box-shadow: var (--box-shadow);
-}
-
-.faq .box-container .box h3 {
-    padding: 1.5rem 2rem;
-    font-size: 2rem;
-    background-color: var (--black);
-    color: var (--white);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    cursor: pointer;
-}
-
-.faq .box-container .box p {
-    font-size: 1.6rem;
-    color: var (--light-color);
-    background-color: var (--white);
-    padding: 1.5rem 2rem;
-    line-height: 1.5;
-    display: none;
-}
-
-.faq .box-container .box.active p {
-    display: block;
-}
-
-.faq .box-container .box.active h3 {
-    background-color: var (--main-color);
-}
-
+    color: var(--main-color); /* or use var(--black) for black color */
+ }
+ 
+ .faq .box-container {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 2rem;
+     align-items: flex-start;
+ }
+ 
+ .faq .box-container .box {
+     flex: 1 1 40rem;
+     box-shadow: var(--box-shadow);
+ }
+ 
+ .faq .box-container .box h3 {
+     padding: 1.5rem 2rem;
+     font-size: 2rem;
+     background-color: var(--black);
+     color: var(--white);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 1rem;
+     cursor: pointer;
+ }
+ 
+ .faq .box-container .box p {
+     font-size: 1.6rem;
+     color: var(--light-color);
+     background-color: var(--white);
+     padding: 1.5rem 2rem;
+     line-height: 1.5;
+     display: none;
+ }
+ 
+ .faq .box-container .box.active p {
+     display: block;
+ }
+ 
+ .faq .box-container .box.active h3 {
+     background-color: var(--main-color);
+ }
+ 
 /* Filters Section */
 .filters form {
     background-color: var (--white);
@@ -1340,14 +1465,14 @@ section {
 }
 
 .listings .box {
-  flex: 1 1 calc(10% - 1rem); /* Adjust based on the number of items per row */
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: var(--box-shadow);
-  padding: 1rem;
-  position: relative;
+    flex: 1 1 calc(25% - 1rem); /* Adjust based on the number of items per row */
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    position: relative;
+    text-align: center; /* Center-align text */
 }
-
 .listings .box .admin {
   display: flex;
   align-items: center;
@@ -1390,20 +1515,22 @@ section {
 
 .listings .box .name {
   font-size: 1.5rem;
-  color: #333;
+  color: black;
   margin: 1rem 0;
 }
 
 .listings .box .location {
   font-size: 1.4rem;
-  color: var(--light-color);
   margin-bottom: 1rem;
+  margin-right: 1rem;
+  color: var(--main-color);
 }
 
 .listings .box .flex {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  justify-content: center; /* Center-align flex items */
 }
 
 .listings .box .flex p {
@@ -1426,11 +1553,6 @@ section {
   width: 100%; /* Full width of the box */
 }
 
-.listings .box-container .box .thumb.slider {
-    display: flex;
-    overflow-x: auto;
- 
-}
 /* Modal Styles */
 .modal {
    display: none;
