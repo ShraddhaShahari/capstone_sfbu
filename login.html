@@ -85,7 +85,7 @@
          margin: 100px auto;
          text-align: center;
          color: #000;
-         margin-top: 70px;
+         margin-top: 210px;
       }
 
       .login-container h2 {
@@ -263,7 +263,7 @@
 
   <!-- Header Section -->
   <header class="header">
-    <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+    <a href="login.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
     <div class="auth-buttons">
       <button onclick="showPopup('signin')" class="btn">Sign In</button>
       <button onclick="showPopup('signup')" class="btn">Sign Up</button>
@@ -321,10 +321,7 @@
         <small>At least 1 lowercase letter and 1 uppercase letter</small>
       </p>
       <input type="password" id="signup-popup-confirm-password" class="input" placeholder="Confirm password">
-      <label>
-        <input type="checkbox" id="is-popup-landlord"> I am a landlord or industry professional
-      </label>
-      <button class="btn" onclick="submitSignUp(event)">Sign Up</button>
+            <button class="btn" onclick="submitSignUp(event)">Sign Up</button>
       <p class="error-message" id="signup-popup-error"></p>
       <p class="success-message" id="signup-popup-success"></p>
       <p><a href="#" onclick="showPopup('signin')">Already have an account? Sign in</a></p>
