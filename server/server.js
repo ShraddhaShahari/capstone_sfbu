@@ -7,11 +7,12 @@ const app = express();
 const PORT = 3005;
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from this origin
-  methods: ['GET', 'POST'], // Allow these methods
-  allowedHeaders: ['Content-Type'], // Allow these headers
+  origin: 'http://localhost:3000', 
+  methods: ['GET', 'POST'], 
+  allowedHeaders: ['Content-Type'], 
 }));
 
+// Route to fetch all properties available on listings page
 app.get('/properties', async (req, res) => {
 
     async function createPropertyTable() {
@@ -51,7 +52,7 @@ app.get('/properties', async (req, res) => {
     });
 });
 
-
+// Route to delete property details by ID
 app.delete('/property/:id', async (req, res) => {
     const propertyId = req.params.id;
     try {
@@ -76,7 +77,7 @@ app.delete('/property/:id', async (req, res) => {
     }
   });
     
-
+// Route to add new property details 
 app.post('/property', async (req, res) => {
 async function insertProperty() {
     try {
@@ -107,6 +108,26 @@ async function insertProperty() {
   insertProperty();
 });
 
+
+// Route to fetch property details by ID
+app.get('/property/:id', async (req, res) => {
+  const propertyId = req.params.id;
+  try {
+    const query = 'SELECT * FROM property WHERE id = $1';
+    const result = await pool.query(query, [propertyId]);
+    if (result.rows.length > 0) {
+      res.json(result.rows[0]);
+    } else {
+      res.status(404).send('Property not found');
+    }
+  } catch (error) {
+    console.error('Error fetching property details:', error.stack);
+    res.sendStatus(500);
+  }
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-})
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+

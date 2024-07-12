@@ -5,6 +5,9 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>View Property</title>
+   <!-- custom js file link  -->
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <script type="module" src="js/script.js" defer></script>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -20,9 +23,9 @@
 
    <nav class="navbar nav-1">
       <section class="flex">
-         <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
-         
-      </section>
+         <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+         <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->     
+     </section>
    </nav>
 
    <nav class="navbar nav-2">
@@ -75,103 +78,104 @@
 <!-- header section ends -->
 
 <!-- view property section starts  -->
+<section class="view-property"></section>
+   <div class="details">
 
-<section class="view-property">
-    <div class="details">
-        <div class="thumb">
-            <div class="slider big-image">
-                <img id="main-image" src="images/homeimage1.jpg" alt="">
-                <img src="images/hall-img-1.webp" alt="">
-                <img src="images/kitchen-img-1.webp" alt="">
-                <img src="images/bathroom-img-6.jpg" alt="">
-            </div>
-            <div class="small-images">
-                <img src="images/homeimage1.jpg" alt="">
-                <img src="images/hall-img-1.webp" alt="">
-                <img src="images/kitchen-img-1.webp" alt="">
-                <img src="images/bathroom-img-6.jpg" alt="">
-            </div>
-        </div>
-        <h3 class="name">Modern House</h3>
-        <p class="location"><i class="fas fa-map-marker-alt"></i><span>Fremont, CA, USA</span></p>
-        <div class="info-box">
-            <div class="info">
-                <p><i class="fas fa-tag"></i><span>5 million</span></p>
-                <p><i class="fas fa-user"></i><span>Henry (owner)</span></p>
-                <p><i class="fas fa-phone"></i><a href="tel:1234567890">1234567890</a></p>
-                <p><i class="fas fa-building"></i><span>House</span></p>
-                <p><i class="fas fa-house"></i><span>Sale</span></p>
-                <p><i class="fas fa-calendar"></i><span>05/26/2024</span></p>
-            </div>
-        </div>
-        <h3 class="title">Details</h3>
-        <div class="flex">
-            <div class="box">
-                <p><i>Bedrooms :</i><span>3</span></p>
-                <p><i>sqft_living :</i><span>3000</span></p>
-                <p><i>sqft_lot :</i><span>5000</span></p>
-                <p><i>Floors :</i><span>3</span></p>
-                <p><i>View :</i><span>2</span></p>
-                <p><i>Condition :</i><span>Excellent</span></p>
-            </div>
-            <div class="box">
-                <p><i>Above Ground (sqft) :</i><span>2000</span></p>
-                <p><i>Basement (sqft) :</i><span>1000</span></p>
-                <p><i>Year Built :</i><span>2005</span></p>
-                <p><i>Year Renovated :</i><span>2023</span></p>
-                <p><i>Street :</i><span>1234 North 1st Street</span></p>
-                <p><i>City :</i><span>San Jose</span></p>
-            </div>
-        </div>
-        <h3 class="title">Description-new-testing</h3>
-        <p class="description">Welcome to this stunning and contemporary home located in the heart of Fremont, CA. This beautifully designed house offers a perfect blend of modern amenities and classic charm. Featuring 3 spacious bedrooms and 2 well-appointed bathrooms, this home provides ample space for comfortable living.
+    <title>Property Details</title>
 
-            The open-concept living area is filled with natural light, creating a warm and inviting atmosphere. The gourmet kitchen is equipped with high-end appliances, sleek countertops, and plenty of cabinet space, making it ideal for both everyday cooking and entertaining guests.
+    <h1>Property Details</h1>
+    <p><strong>Bedroom:</strong> <span id="bedroom"></span></p>
+    <p><strong>Floors:</strong> <span id="floors"></span></p>
+    <p><strong>Living Area:</strong> <span id="living_area"></span></p>
+    <p><strong>View:</strong> <span id="view"></span></p>
+    <p><strong>Lot Area:</strong> <span id="lot_area"></span></p>
+    <p><strong>Condition:</strong> <span id="condition"></span></p>
+    <p><strong>Above Ground:</strong> <span id="above_ground"></span></p>
+    <p><strong>Date Renovated:</strong> <span id="date_renovated"></span></p>
+    <p><strong>Basement:</strong> <span id="basement"></span></p>
+    <p><strong>Street:</strong> <span id="street"></span></p>
+    <p><strong>Date Added:</strong> <span id="date_added"></span></p>
+    <p><strong>City:</strong> <span id="city"></span></p>
+    <p><strong>Price:</strong> <span id="price"></span></p>
+    <p><strong>Image:</strong> <img id="image" src="" alt="Property Image"></p>
 
-            Enjoy the serene views from the cozy balcony, or take advantage of the large backyard, perfect for outdoor gatherings and relaxation. The property also includes a garage with ample storage space.
+</div>
 
-            Situated in a family-friendly neighborhood, this home is within close proximity to top-rated schools, parks, shopping centers, and dining options. With easy access to major highways, commuting to nearby cities is a breeze.
+    <script src="randomImages.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const propertyId = urlParams.get('id');
+            const response = await fetch(`http://localhost:3005/property/${propertyId}`);
+            const property = await response.json();
+            
+            document.getElementById('bedroom').textContent = property.bedroom;
+            document.getElementById('floors').textContent = property.floors;
+            document.getElementById('living_area').textContent = property.living_area;
+            document.getElementById('view').textContent = property.view;
+            document.getElementById('lot_area').textContent = property.lot_area;
+            document.getElementById('condition').textContent = property.condition;
+            document.getElementById('above_ground').textContent = property.above_ground;
+            document.getElementById('date_renovated').textContent = property.date_renovated;
+            document.getElementById('basement').textContent = property.basement;
+            document.getElementById('street').textContent = property.street;
+            document.getElementById('date_added').textContent = property.date_added;
+            document.getElementById('city').textContent = property.city;
+            document.getElementById('price').textContent = property.price;
 
-            Don't miss the opportunity to make this beautiful house your new home. It's a perfect blend of luxury, comfort, and convenience, ready to welcome its new owners.
-        </p>
-        
-    </div>
+
+            const imageSources = [
+                    'images/homeimage1.jpg',
+                    'images/homeimage2.jpg',
+                    'images/homeimage3.jpg',
+                    'images/homeimage4.webp',
+                    'images/homeimage5.jpg',
+                    'images/homeimage6.jpg',
+                    'images/homeimage7.jpg',
+                    'images/homeimage8.jpg'
+                ];
+
+            function getRandomImages(count) {
+                    // Shuffle array to get random selection
+                    const shuffled = imageSources.sort(() => 0.5 - Math.random());
+                    return shuffled.slice(0, count); // Return 'count' number of images
+                }
+            // Get a random image
+            const randomImages = getRandomImages(3);
+            const randomImageSrc = randomImages[0];
+
+            // Set the src attribute of the img element
+            document.getElementById('image').src = randomImageSrc;
+        });
+   </script>
+
 </section>
-
 <!-- view property section ends -->
 
 <!-- footer section starts  -->
 
 <footer class="footer">
-
    <section class="flex">
-
-      <div class="box">
-         <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
-         <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
-         <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</span></a>
-         <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
-      </div>
-
-      <div class="box">
-         <a href="home.html"><span>Home</span></a>
-         <a href="about.html"><span>About Us</span></a>
-         <a href="contact.html"><span>Contact Us</span></a>
-         <a href="listings.html"><span>All Listings</span></a>
-         
-      </div>
-
-      <div class="box">
-         <a href="#"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-         <a href="#"><span>twitter</span><i class="fab fa-twitter"></i></a>
-         <a href="#"><span>instagram</span><i class="fab fa-instagram"></i></a>
-
-      </div>
-
+       <div class="box">
+           <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+        <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+           <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+          <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+       </div>
+       </div>
+       <div class="box">
+           <a href="home.html"><span>Home</span></a>
+           <a href="about.html"><span>About Us</span></a>
+           <a href="contact.html"><span>Contact Us</span></a>
+           <a href="listings.html"><span>All Listings</span></a>
+       </div>
+       <div class="box">
+           <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+           <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+           <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+       </div>
    </section>
-
    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
-
 </footer>
 
 <!-- footer section ends -->
