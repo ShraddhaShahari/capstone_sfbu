@@ -1027,4 +1027,307 @@ section{
       grid-template-columns: 1fr;
    }
 
+
+   /* Map page styling*/
+/* General Styles */
+html, body {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header Styles */
+.header {
+   position: sticky;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 1000;
+   box-shadow: none;
+}
+
+.header .navbar.nav-1 {
+   background-color: var(--black);
+}
+
+.header a:hover {
+   text-decoration: underline;
+}
+
+.header .navbar.nav-1 .flex {
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+}
+
+.nav-1 .signout-btn {
+   background-color: red;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 1rem;
+   margin-left: auto; /* Pushes the button to the right */
+   text-decoration: none; /* Ensure it looks like a button */
+}
+
+.nav-1 .signout-btn:hover {
+   background-color: darkred;
+}
+
+.nav-1 .flex {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+
+.header .navbar .flex {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.header .navbar .flex .logo {
+   font-size: 2.2rem;
+   color: var(--white);
+}
+
+.header .navbar .flex .logo i {
+   color: var(--main-color);
+   margin-right: 1rem;
+}
+
+.header .navbar .flex ul {
+   list-style: none;
+}
+
+.header .navbar .flex ul li {
+   float: left;
+   position: relative;
+}
+
+.header .navbar .flex ul li a {
+   display: inline-block;
+   padding: 1.2rem 2rem;
+   font-size: 1.8rem;
+   color: var(--black);
+   background-color: var(--white);
+}
+
+.header .navbar .flex ul li a:hover {
+   background-color: var(--main-color);
+   color: var(--white);
+}
+
+.header .navbar .flex ul li a i {
+   margin-left: 1rem;
+}
+
+.header .navbar .flex ul li ul {
+   position: absolute;
+   width: 17rem;
+   left: 0;
+}
+
+.header .navbar .flex ul li ul li {
+   width: 100%;
+}
+
+.header .navbar .flex ul li ul li a {
+   display: none;
+}
+
+.header .navbar .flex ul li:hover ul li a {
+   display: block;
+}
+
+#menu-btn {
+   font-size: 2.5rem;
+   color: var(--black);
+   display: none;
+}
+
+/* Navbar Secondary Styles */
+.navbar-secondary {
+   display: flex;
+   justify-content: space-around;
+   padding: 5px 40px; /* Reduced padding */
+   background: dark grey;
+   color: #696464;
+}
+
+.navbar-secondary .searchbar, .navbar-secondary select, .navbar-secondary button {
+   padding: 10px;
+   margin: 5px;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+}
+
+.navbar-secondary .searchbar {
+   flex: 1;
+}
+
+.navbar-secondary select {
+   background: #fff;
+   color: #000;
+}
+
+.navbar-secondary button {
+   background: red;
+   color: white;
+   cursor: pointer;
+}
+
+.navbar-secondary button:hover {
+   background: rgb(240, 8, 8);
+}
+
+/* Main Content Styles */
+.main-content {
+   display: flex;
+   flex-direction: row;
+   padding: 20px;
+   gap: 20px;
+}
+
+.map-container {
+   width: 100%;
+   height: 100vh;
+   object-fit: cover;
+}
+
+/* Content Container Styles */
+.content-container {
+   position: absolute;
+   top: 22%;
+   left: 60%;
+   background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+   border: 1px solid #474545; /* Light border */
+   border-radius: 5px; /* Rounded corners */
+   padding: 10px;
+   z-index: 1; /* Ensure it is above the map */
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+   width: auto; /* Automatically size to content */
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   overflow-y: auto;
+   box-sizing: border-box;
+}
+
+/* Styling for the label and dropdown */
+.content-container label {
+   display: block;
+   margin-bottom: 5px;
+   font-weight: bold;
+   font-size: medium;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Dropdown styling */
+.content-container select {
+   display: block;
+   width: 100%;
+   padding: 5px;
+   margin-bottom: 10px;
+   font-size: 14px;
+}
+
+/* Button styling */
+.content-container button {
+   display: block;
+   width: 100%;
+   padding: 7px;
+   background-color: red; /*red background */
+   color: white; /* White text */
+   border: none; /* No border */
+   border-radius: 3px; /* Slightly rounded corners */
+   font-size: 14px;
+   cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button hover effect */
+.content-container button:hover {
+   background-color: darkred; /* Dark red on hover */
+}
+
+/* Right Container Styles */
+.right-container {
+   position: relative;
+   width: 30%;
+   height: 100vh;
+   overflow-y: auto;
+}
+
+.box-container {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   justify-content: space-between;
+}
+
+.box {
+   flex: 1 1 calc(48% - 1rem);
+   background: #8f8989;
+   border-radius: 5px;
+   box-shadow: var(--box-shadow);
+   padding: 0;
+   margin: 0.5rem;
+   position: relative;
+   box-sizing: border-box;
+}
+
+.box img {
+   object-fit: cover;
+   width: 100%;
+   height: 150px;
+   border-radius: 5px;
+}
+
+.box .location {
+   font-size: 1.4rem;
+   color: #533a3a;
+   margin-bottom: 1rem;
+}
+
+.box .flex {
+   display: flex;
+   color: #533a3a;
+   gap: 1rem;
+   margin-bottom: 1rem;
+}
+
+.box .flex p {
+   font-size: 1.4rem;
+   color: #533a3a;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.box .btn {
+   display: block;
+   width: 100%;
+   text-align: center;
+}
+
+.box .btn:hover {
+   background-color: darkred;
+}
+
+/* Swiper styles */
+.swiper-container {
+   width: 100%;
+   height: 200px;
+   margin-bottom: 20px;
+}
+
+.swiper-slide img {
+   width: 100%;
+   height: 100%;
+   border-radius: 5px;
+}
+
 }

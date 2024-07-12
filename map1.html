@@ -16,6 +16,7 @@
 
    <!-- Custom CSS file link -->
    <link rel="stylesheet" href="css/style_map.css">
+   <link rel="stylesheet" href="css/style.css">
 
    <body>
       
@@ -25,99 +26,30 @@
   </html>
 
    <style>
-      body {
-         margin: 0;
-         padding: 0;
-         font-family: Arial, Helvetica, sans-serif;
-      }
 
-      .header {
-         display: flex;
-         justify-content: space-between;
-         padding: 10px 50px;
-         background: rgba(0, 0, 0, 0.5);
-         color: #fff;
-      }
-
-      .header a {
-         color: #fff;
-         text-decoration: none;
-         font-size: 20px;
-         margin-left: 20px;
-      }
-
-      .header .logo {
-         font-size: 25px;
-         font-weight: bold;
-      }
-
-      .header a:hover {
-         text-decoration: underline;
-      }
-
-      .navbar-secondary {
-         display: flex;
-         justify-content: space-around;
-         padding: 10px 50px;
-         background: rgba(0, 0, 0, 0.8);
-         color: #fff;
-      }
-
-      .navbar-secondary .searchbar, .navbar-secondary select, .navbar-secondary button {
-         padding: 10px;
-         margin: 5px;
-         border: none;
-         border-radius: 5px;
-         font-size: 16px;
-      }
-
-      .navbar-secondary .searchbar {
-         flex: 1;
-      }
-
-      .navbar-secondary select {
-         background: #fff;
-         color: #000;
-      }
-
-      .navbar-secondary button {
-         background: #4CAF50;
-         color: white;
-         cursor: pointer;
-      }
-
-      .navbar-secondary button:hover {
-         background: #45a049;
-      }
-
-      .main-content {
-         display: flex;
-         flex-direction: row;
-         padding: 20px;
-         gap: 20px;
-      }
-
-      .map-container {
-         width: 100%;
-         height: calc(100vh - 140px);
-      }
+   .map-container {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
       
-      .content-container {
-         position: absolute;
-         top: 22%;
-         left: 60%;
-         background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-         border: 1px solid #ccc; /* Light border */
-         border-radius: 5px; /* Rounded corners */
-         padding: 10px;
-         z-index: 1; /* Ensure it is above the map */
-         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
-         width: auto; /* Automatically size to content */
-         flex: 1;
-         display: flex;
-         flex-direction: column;
-         overflow-y: auto;
-      }
+   .content-container {
+    position: absolute;
+    top: 22%;
+    left: 60%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #474545;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
 
       /* Styling for the label and dropdown */
       .content-container label {
@@ -174,7 +106,7 @@
       }
 
       .right-container .box-container .box {
-         flex: 1 1 calc(10% - 1rem);
+         flex: 1 1 calc(20% - 1rem);
          background: #e9e8e8;
          border-radius: 5px;
          box-shadow: var(--box-shadow);
@@ -275,12 +207,13 @@
 
 <!-- Header Section -->
 <header class="header">
-   <a href="index.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
-   <div>
-      <a href="index.html">Post Property</a>
-      <a href="index.html">Contact Agent</a>
-      <a href="index.html">Predict Price</a>
-   </div>
+   <nav class="navbar nav-1">
+       <section class="flex">
+         <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+         <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->     
+       </section>
+   </nav>
+
 </header>
 
 <!-- Secondary Navbar -->
@@ -357,28 +290,34 @@
 
 </html>
 
-<!-- Footer Section -->
+<!-- footer section starts  -->
+
 <footer class="footer">
-   <div>
-      <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123456789</span></a>
-      <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</span></a>
-      <a href="#"><i class="fas fa-map-marker-alt"></i><span>Fremont, CA, USA</span></a>
-   </div>
-   <div>
-      <a href="home.html"><span>Home</span></a>
-      <a href="about.html"><span>About</span></a>
-      <a href="contact.html"><span>Contact</span></a>
-      <a href="listings.html"><span>All Listings</span></a>
-      <a href="#"><span>Saved Properties</span></a>
-   </div>
-   <div>
-      <a href="#"><span>Facebook</span><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><span>Twitter</span><i class="fab fa-twitter"></i></a>
-      <a href="#"><span>LinkedIn</span><i class="fab fa-linkedin"></i></a>
-      <a href="#"><span>Instagram</span><i class="fab fa-instagram"></i></a>
-   </div>
+   <section class="flex">
+       <div class="box">
+           <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+        <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+           <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+          <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+       </div>
+       </div>
+       <div class="box">
+           <a href="home.html"><span>Home</span></a>
+           <a href="about.html"><span>About Us</span></a>
+           <a href="contact.html"><span>Contact Us</span></a>
+           <a href="listings.html"><span>All Listings</span></a>
+       </div>
+       <div class="box">
+           <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+           <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+           <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+       </div>
+   </section>
    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
 </footer>
+
+<!-- footer section ends -->
+
 <script type="module" src="./js/script_map.js"></script>
 <script async
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1AY9z1LKbIdCvrME84kjJlVIkkM_vKX0&libraries=maps,places&v=beta&&loading=async&callback=initMap">

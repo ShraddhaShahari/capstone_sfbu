@@ -244,35 +244,6 @@ function addProperty() {
 }
 
 
-// function fetchPropertyListings() {
-//     axios.get('http://localhost:3005/properties')
-//         .then(function (response) {
-//             const listingsContainer = document.querySelector('.box-container');
-//             listingsContainer.innerHTML = ''; // Clear existing listings
-//             console.log(response.data.res)
-//             response.data.res.forEach(function (property) {
-//                 const box = document.createElement('div');
-//                 box.classList.add('box');
-
-//                 // Example: Create HTML structure for each property listing
-//                 box.innerHTML = `
-//                     <p class="location"><i class="fas fa-map-marker-alt"></i><span>${property.city}</span></p>
-//                     <div class="flex">
-//                         <p><i class="fas fa-bed"></i><span>${property.bedroom}</span></p>
-//                         <p><i class="fas fa-maximize"></i><span>${property.lot_area}</span></p>
-//                     </div>
-//                     <a href="view_property.html" class="btn">view property</a>
-//                 `;
-
-//                 listingsContainer.appendChild(box);
-//             });
-//         })
-//         .catch(function (error) {
-//             console.error('Error fetching property listings:', error);
-//         });
-// }
-
-
 function fetchPropertyListingsMap() {
     axios.get('http://localhost:3005/properties')
         .then(function (response) {
@@ -325,7 +296,7 @@ function fetchPropertyListingsMap() {
                         <p><i class="fas fa-bed"></i><span>${property.bedroom}</span></p>
                         <p><i class="fas fa-maximize"></i><span>${property.lot_area}</span></p>
                     </div>
-                    <a href="view_property.html" class="btn">view property</a>
+                    <button class="btn" onclick="viewProperty(${property.id})">view property</button>
                 `;
 
                 listingsContainer.appendChild(box);
@@ -336,11 +307,27 @@ function fetchPropertyListingsMap() {
         });
 }
 
+
+function viewProperty(propertyId) {
+    axios.get(`http://localhost:3005/property/${propertyId}`)
+        .then(function (response) {
+            if (response.status === 200) {
+                window.location.href = `view_property.html?id=${propertyId}`;
+            } else {
+                console.error('Error fetching property details:', response.status);
+            }
+        })
+        .catch(function (error) {
+            console.error('Error fetching property details:', error);
+        });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
 
 
 window.addProperty = addProperty;
+window.viewProperty = viewProperty;
 window.fetchPropertyListingsMap = fetchPropertyListingsMap;
 
