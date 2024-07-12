@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,27 +11,7 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-   <style>
-      .agent-info {
-         font-size: 1.8rem;
-         margin: 0.5rem 0;
-         font-weight: bold;
-      }
-      .email-links {
-         font-size: 1.6rem;
-         display: block;
-         margin: 0.2rem 0 1rem 0;
-         text-decoration: none;
-         color: var(--main-color);
-      }
-      .email-links:hover {
-         text-decoration: underline;
-      }
-      .address {
-         font-size: 1.6rem;
-         margin-top: 1rem;
-      }
-   </style>
+   
 </head>
 <body id="about-page">   
 <!-- header section starts  -->
@@ -43,8 +21,8 @@
    <nav class="navbar nav-1">
       <section class="flex">
          <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
-
-               </section>
+ <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->      </section>
+               
    </nav>
 
    <nav class="navbar nav-2">
@@ -62,7 +40,7 @@
                <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="addproperty.html">Add Property</a></li>
-                     <li><a href="listings.html">View Property</a></li>
+                     <li><a href="view_property.html">View Property</a></li>
                   </ul>
                </li>
                               <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
@@ -100,7 +78,6 @@
 <!-- about section starts  -->
 
 <section class="about">
-
    <div class="row">
       <div class="image">
          <img src="images/about-img.svg" alt="">
@@ -108,16 +85,22 @@
       <div class="content">
          <h3>Why Choose Us?</h3>
          <p>We offer unparalleled service in the real estate industry. Our team of experts is dedicated to helping you find the perfect home. Here are the contact details of our agents:</p>
-         <ul>
-            <li class="agent-info">Hartej - <a href="mailto:hartej@realestate.com" class="email-links">hartej@realestate.com</a> Phone: 123-456-7890</li>
-            <li class="agent-info">Rupali - <a href="mailto:rupali@realestate.com" class="email-links">rupali@realestate.com</a> Phone: 111-222-3333</li>
-            <li class="agent-info">Shraddha - <a href="mailto:shardha@realestate.com" class="email-links">shardha@realestate.com</a>, Phone: 444-555-6666</li>
-         </ul>
-         <p class="address">Visit us at our location: 1234 Elm Street, Fremont, CA, USA</p>
+         <div class="agent-info">
+            <span>Hartej - </span><a href="mailto:hartej@realestate.com" class="email-links">hartej@realestate.com</a><span> , Phone: 123-456-7890</span>
+         </div>
+         <div class="agent-info">
+            <span>Rupali - </span><a href="mailto:rupali@realestate.com" class="email-links">rupali@realestate.com</a><span> , Phone: 111-222-3333</span>
+         </div>
+         <div class="agent-info">
+            <span>Shraddha - </span><a href="mailto:shraddha@realestate.com" class="email-links">shraddha@realestate.com</a><span> , Phone: 444-555-6666</span>
+         </div>
+         <div class="address">
+            <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+
+         </div>
          <a href="contact.html" class="inline-btn">Contact Us</a>
       </div>
    </div>
-
 </section>
 
 <!-- about section ends -->
@@ -276,37 +259,28 @@
 <!-- footer section starts  -->
 
 <footer class="footer">
-
-   <section class="flex">
-
-      <div class="box">
-         <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+    <section class="flex">
+        <div class="box">
+            <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
          <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
-         <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</span></a>
-         <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
-
-      </div>
-
-      <div class="box">
-         <a href="home.html"><span>home</span></a>
-         <a href="about.html"><span>about</span></a>
-         <a href="contact.html"><span>contact</span></a>
-         <a href="listings.html"><span>all listings</span></a>
-         <a href="#"><span>saved properties</span></a>
-      </div>
-
-      <div class="box">
-         <a href="https://facebook.com"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-         <a href="https://twitter.com"><span>twitter</span><i class="fab fa-twitter"></i></a>
-         <a href="https://instagram.com"><span>instagram</span><i class="fab fa-instagram"></i></a>
-      </div>
-
-   </section>
-
-   <div class="credit">&copy; copyright @ 2024 by <span>MyHome Real Estate</span> | all rights reserved!</div>
-
+            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+           <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+        </div>
+        </div>
+        <div class="box">
+            <a href="home.html"><span>Home</span></a>
+            <a href="about.html"><span>About Us</span></a>
+            <a href="contact.html"><span>Contact Us</span></a>
+            <a href="listings.html"><span>All Listings</span></a>
+        </div>
+        <div class="box">
+            <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
 </footer>
-
 <!-- footer section ends -->
 
 

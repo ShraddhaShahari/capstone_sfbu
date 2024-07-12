@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Contact Us</title>
 
@@ -14,91 +13,7 @@
 
    <!-- additional CSS -->
    <style>
-      .contact .btn {
-         display: block;
-         margin: 0 auto;
-         width: 100%;
-         padding: 1.2rem 0;
-         background-color: var(--main-color);
-         color: var(--white);
-         border: none;
-         cursor: pointer;
-         border-radius: 5px;
-         font-size: 1.8rem;
-         text-transform: capitalize;
-      }
-
-      .contact .btn:hover {
-         background-color: var(--black);
-         color: var(--red);
-      }
-
-      .faq .box.active h3 {
-         background-color: var(--main-color);
-         color: var(--white);
-      }
-
-      .faq .box h3 {
-         cursor: pointer;
-         background-color: var(--black);
-         color: var(--white);
-         padding: 1.5rem 2rem;
-         font-size: 2rem;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 1rem;
-      }
-
-      .faq .box p {
-         display: none;
-         padding: 1.5rem 2rem;
-         font-size: 1.6rem;
-         background-color: var(--white);
-         color: var(--light-color);
-      }
-
-      .faq .box.active p {
-         display: block;
-      }
-
-      .footer .box a {
-         display: block;
-         padding: 1rem 0;
-         font-size: 1.8rem;
-         color: var(--red);
-         transition: color 0.3s;
-      }
-
-      .footer .box a:hover span,
-      .footer .box a:focus span{
-         color: var(--grey);
-      }
-
-      .footer .box a i {
-         color: var(--black);
-         margin-left: 1rem;
-         transition: color 0.3s;
-      }
-
-      .footer .box a:hover i,
-      .footer .box a:focus i {
-         color: var(--main-color);
-      }
-
-      .footer .box a span {
-         color: var(--black);
-         transition: color 0.3s;
-      }
-
-      .footer .box a:hover span,
-      .footer .box a:focus span {
-         color: var(--main-color);
-      }
-.address a:hover {
-   color: var(--light-color); /* Change color on hover */
-   text-decoration: underline; /* Underline on hover */
-}
+      /* Your existing CSS */
    </style>
 </head>
 <body id="contact-page">   
@@ -108,6 +23,7 @@
    <nav class="navbar nav-1">
       <section class="flex">
          <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+ <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->      
                </section>
    </nav>
 
@@ -124,7 +40,7 @@
                <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="addproperty.html">Add Property</a></li>
-                            <li><a href="listings.html"></a></li>
+                            <li><a href="view_property.html">View Property</a></li>
 
                   </ul>
                </li>
@@ -171,8 +87,9 @@
          <h3>Get in Touch</h3>
          <input type="text" name="name" required maxlength="50" placeholder="Enter your name" class="box">
          <input type="email" id="agent-email" name="email" required maxlength="50" placeholder="Enter your email" class="box">
-         <input type="number" name="number" required maxlength="10" max="9999999999" min="0" placeholder="Enter your number" class="box">
+         <input type="tel" name="number" required maxlength="10" placeholder="Enter your phone number" class="box">
          <textarea name="message" placeholder="Enter your message" required maxlength="1000" cols="30" rows="10" class="box"></textarea>
+         <input type="hidden" name="agentEmail" value="<?php echo htmlspecialchars($_GET['agentEmail']); ?>">
          <input type="submit" value="Send Message" name="send" class="btn">
       </form>
    </div>
@@ -217,28 +134,29 @@
 <!-- footer section starts  -->
 
 <footer class="footer">
-   <section class="flex">
-      <div class="box">
-         <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+    <section class="flex">
+        <div class="box">
+            <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
          <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
-         
-         <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
-
-      </div>
-      <div class="box">
-         <a href="home.html"><span>home</span></a>
-         <a href="about.html"><span>about</span></a>
-         <a href="contact.html"><span>contact</span></a>
-         <a href="listings.html"><span>all listings</span></a>
-               </div>
-      <div class="box">
-         <a href="https://facebook.com"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-         <a href="https://twitter.com"><span>twitter</span><i class="fab fa-twitter"></i></a>
-         <a href="https://instagram.com"><span>instagram</span><i class="fab fa-instagram"></i></a>
-      </div>
-   </section>
-   <div class="credit">&copy; copyright @ 2024 by <span>MyHome Real Estate</span> | all rights reserved!</div>
+            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+           <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+        </div>
+        </div>
+        <div class="box">
+            <a href="home.html"><span>Home</span></a>
+            <a href="about.html"><span>About Us</span></a>
+            <a href="contact.html"><span>Contact Us</span></a>
+            <a href="listings.html"><span>All Listings</span></a>
+        </div>
+        <div class="box">
+            <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
 </footer>
+
 
 <!-- footer section ends -->
 
