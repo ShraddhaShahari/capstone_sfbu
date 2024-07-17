@@ -322,6 +322,59 @@ function viewProperty(propertyId) {
         });
 }
 
+function onPageLoad() {
+    console.log("fetching locations");
+    axios.get("http://127.0.0.1:5000/get_location_names")
+        .then(function(response) {
+            var locations = response.data.locations;
+            // console.log("got response for get_location_names request ", locations);
+            var ui_city = document.getElementById("ui_city");
+            // $('#ui_city').empty();
+            locations.forEach(function(location) {
+                var opt = new Option(location);
+                ui_city.appendChild(opt);
+            });
+        })
+        .catch(function(error) {
+            console.error("Error fetching locations:", error);
+        });
+}
+
+function onClickedEstimatePrice() {
+    console.log("Estimate price button clicked");
+    var sqft_living = document.getElementById("ui_sqft_living").value;
+    var sqft_lot = document.getElementById("ui_sqft_lot").value;
+    var city = document.getElementById("ui_city").value;
+    var bedrooms = document.getElementById("ui_bedrooms").value;
+    console.log("Estimate price button clicked after", sqft_living, sqft_lot, bedrooms, city);
+    var t1 =   parseInt(sqft_living)
+    console.log("after", t1)
+
+    
+    axios.post("http://127.0.0.1:5000/predict_home_price", {
+        sqft_living: parseInt(sqft_living),
+        sqft_lot: parseInt(sqft_lot),
+        bedrooms: parseInt(bedrooms),
+        city: city
+    })
+    .then(function(response) {
+        console.log("Response from server:", response.data);
+        // Assuming you have an element with id "ui_estimated_price" to show the result
+        var estPrice = document.getElementById("ui_estimated_price");
+        if (response.data && response.data.estimated_price !== undefined) {
+            estPrice.innerHTML = "<h2>Estimated Price: $" + response.data.estimated_price.toString() + "</h2>";
+        } else {
+            estPrice.innerHTML = "<h2>Error: Failed to estimate price</h2>";
+        }
+    })
+    .catch(function(error) {
+        console.error("Error in POST request:", error);
+        var estPrice = document.getElementById("ui_estimated_price");
+        estPrice.innerHTML = "<h2>Error: Failed to estimate price</h2>";
+    });
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
@@ -330,4 +383,4 @@ document.addEventListener('DOMContentLoaded', function () {
 window.addProperty = addProperty;
 window.viewProperty = viewProperty;
 window.fetchPropertyListingsMap = fetchPropertyListingsMap;
-
+window.onload = onPageLoad;
