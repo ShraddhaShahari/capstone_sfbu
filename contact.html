@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Contact Us</title>
 
@@ -14,6 +13,7 @@
 
    <!-- additional CSS -->
    <style>
+
       .contact .btn {
          display: block;
          margin: 0 auto;
@@ -110,6 +110,7 @@
    <nav class="navbar nav-1">
       <section class="flex">
          <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+ <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->      
                </section>
    </nav>
 
@@ -126,6 +127,7 @@
                <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="addproperty.html">Add Property</a></li>
+
                      <li><a href="listings.html">View Property</a></li>
 
                   </ul>
@@ -172,8 +174,9 @@
          <h3>Get in Touch</h3>
          <input type="text" name="name" required maxlength="50" placeholder="Enter your name" class="box">
          <input type="email" id="agent-email" name="email" required maxlength="50" placeholder="Enter your email" class="box">
-         <input type="number" name="number" required maxlength="10" max="9999999999" min="0" placeholder="Enter your number" class="box">
+         <input type="tel" name="number" required maxlength="10" placeholder="Enter your phone number" class="box">
          <textarea name="message" placeholder="Enter your message" required maxlength="1000" cols="30" rows="10" class="box"></textarea>
+         <input type="hidden" name="agentEmail" value="<?php echo htmlspecialchars($_GET['agentEmail']); ?>">
          <input type="submit" value="Send Message" name="send" class="btn">
       </form>
    </div>
@@ -218,28 +221,29 @@
 <!-- footer section starts  -->
 
 <footer class="footer">
-   <section class="flex">
-      <div class="box">
-         <a href="Tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+    <section class="flex">
+        <div class="box">
+            <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
          <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
-         
-         <p class="address">Visit us at our location: <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank">1234 Elm Street, Fremont, CA, USA</a></p>
-
-      </div>
-      <div class="box">
-         <a href="home.html"><span>home</span></a>
-         <a href="about.html"><span>about</span></a>
-         <a href="contact.html"><span>contact</span></a>
-         <a href="listings.html"><span>all listings</span></a>
-               </div>
-      <div class="box">
-         <a href="https://facebook.com"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-         <a href="https://twitter.com"><span>twitter</span><i class="fab fa-twitter"></i></a>
-         <a href="https://instagram.com"><span>instagram</span><i class="fab fa-instagram"></i></a>
-      </div>
-   </section>
-   <div class="credit">&copy; copyright @ 2024 by <span>MyHome Real Estate</span> | all rights reserved!</div>
+            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+           <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+        </div>
+        </div>
+        <div class="box">
+            <a href="home.html"><span>Home</span></a>
+            <a href="about.html"><span>About Us</span></a>
+            <a href="contact.html"><span>Contact Us</span></a>
+            <a href="listings.html"><span>All Listings</span></a>
+        </div>
+        <div class="box">
+            <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
 </footer>
+
 
 <!-- footer section ends -->
 

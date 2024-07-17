@@ -95,8 +95,20 @@
             width: 100%;
         }
 
-        input[type=number] {
-            appearance: auto;
+  .error-message {
+            color: red;
+            margin-top: 1rem;
+            display: none;
+        }
+input[type="number"] {
+            -moz-appearance: textfield; /* Firefox */
+            -webkit-appearance: none; /* Chrome/Safari */
+            appearance: none; /* Standard syntax */
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     </style>
 </head>
@@ -106,10 +118,12 @@
 
 <header class="header">
     <nav class="navbar nav-1">
+
       <section class="flex">
         <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
         <a href="index.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->     
     </section>
+
     </nav>
 
     <nav class="navbar nav-2">
@@ -125,7 +139,7 @@
                     <li><a href="addproperty.html">Sell<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li><a href="addproperty.html">Add Property</a></li>
-                            <li><a href="listings.html">View Property</a></li>
+                            <li><a href="view_property.html">View Property</a></li>
                         </ul>
                     </li>
                     <li><a href="#">help<i class="fas fa-angle-down"></i></a>
@@ -160,66 +174,36 @@
 <!-- home section starts  -->
 
 <div class="home">
+
   <section class="center">
       <div id="price-calculator-form-container">
-          <form id="price-calculator-form">
-              <h3>House Price Prediction</h3>
-              <div class="form-group">
-                  <select name="bedrooms" class="input" required>
-                      <option value="" disabled selected>Bedrooms</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                  </select>
-                  <input type="text" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
-                  <input type="text" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
-              </div>
-              <div class="form-group">
-                  <select name="floors" class="input" required>
-                      <option value="" disabled selected>Floors</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                  </select>
-                  <select name="view" class="input" required>
-                      <option value="" disabled selected>Views</option>
-                      <option value="0">View 0</option>
-                      <option value="1">View 1</option>
-                      <option value="2">View 2</option>
-                      <option value="3">View 3</option>
-                      <option value="4">View 4</option>
-                  </select>
-                  <select name="condition" class="input" required>
-                      <option value="" disabled selected>Condition</option>
-                      <option value="1">Condition 1</option>
-                      <option value="2">Condition 2</option>
-                      <option value="3">Condition 3</option>
-                      <option value="4">Condition 4</option>
-                      <option value="5">Condition 5</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <input type="text" name="sqft_above" placeholder="Above Ground (sqft)" required class="input">
-                  <input type="text" name="sqft_basement" placeholder="Basement (sqft)" required class="input">
-                  <input type="text" name="yr_built" placeholder="Year Built" required class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
-              </div>
-              <div class="form-group">
-                  <input type="text" name="yr_renovated" placeholder="Year Renovated" class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
-                  <input type="text" name="street" placeholder="Street" required maxlength="100" class="input">
-                  <input type="text" name="city" placeholder="City" required maxlength="50" class="input">
-              </div>
-              <div class="btn-container">
-                  <button type="submit" class="btn btn-primary">Calculate Price</button>
-              </div>
-              <p id="calculated-price">Calculated Price: $0</p>
-            
-          </form>
+
+        <form id="price-calculator-form">
+            <h3>House Price Prediction</h3>
+            <div class="form-group">
+                <select id="ui_bedrooms" name="bedrooms" class="input" required>
+                    <option value="" disabled selected>Bedrooms</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <input type="text" id="ui_sqft_living" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
+                <input type="text" id="ui_sqft_lot" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
+                <select name="city" id="ui_city" class="input" required>
+                    <option value="" disabled selected>Choose a City</option>
+                    <!-- <option value="Sunnyvale" onclick="onPage()">Sunnyvale</option> -->
+                    <!-- <option value="Seattle">Seattle</option> -->
+                </select>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary" onclick="onClickedEstimatePrice()">Estimate</button>
+            </div>
+            <p id="ui_estimated_price" class="result">Calculated Price: $0</p>
+        </form>          
       </div>
   </section>
 
@@ -229,6 +213,7 @@
 <!-- services section starts  -->
 
 <section class="services">
+
   <h1 class="heading transparent-btn">Our Services</h1>
   <div class="box-container1">
       <div class="box rounded-corner transparent-bg">
@@ -315,20 +300,50 @@
 <script src="js/script.js"></script>
 
 <!-- JavaScript for Price Calculation -->
+
 <!-- <script>
 function calculatePrice() {
     var sqft_living = document.getElementsByName('sqft_living')[0].value;
     var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
     var price_per_sqft = document.getElementsByName('price_per_sqft')[0].value;
 
-    if (sqft_living && price_per_sqft) {
-        var price = sqft_living * price_per_sqft;
+   document.getElementById('price-calculator-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form values
+        var bedrooms = document.getElementsByName('bedrooms')[0].value;
+        var sqft_living = document.getElementsByName('sqft_living')[0].value;
+        var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
+        var floors = document.getElementsByName('floors')[0].value;
+        var view = document.getElementsByName('view')[0].value;
+        var condition = document.getElementsByName('condition')[0].value;
+        var sqft_above = document.getElementsByName('sqft_above')[0].value;
+        var sqft_basement = document.getElementsByName('sqft_basement')[0].value;
+        var yr_built = document.getElementsByName('yr_built')[0].value;
+        var yr_renovated = document.getElementsByName('yr_renovated')[0].value;
+        var street = document.getElementsByName('street')[0].value;
+        var city = document.getElementsByName('city')[0].value;
+
+        // Validate form values
+        if (!bedrooms || !sqft_living || !sqft_lot || !floors || !view || !condition || !sqft_above || !sqft_basement || !yr_built || !street || !city || !yr_renovated) {
+            document.getElementById('error-message').style.display = 'block';
+            return;
+        }
+
+        document.getElementById('error-message').style.display = 'none';
+
+        // Perform calculation (dummy calculation here)
+        var price = sqft_living * 200; // Dummy calculation for demonstration
+
+        // Display calculated price
         document.getElementById('calculated-price').innerText = 'Calculated Price: $' + price.toLocaleString();
+
     } else {
         document.getElementById('calculated-price').innerText = 'Please fill in all required fields';
     }
 }
 </script> -->
+
 
 <div id="image-modal" class="modal">
     <span class="close">&times;</span>
