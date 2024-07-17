@@ -177,64 +177,33 @@ input[type="number"] {
 
   <section class="center">
       <div id="price-calculator-form-container">
-          <form id="price-calculator-form">
-              <h3>House Price Prediction</h3>
-              <div class="form-group">
-                  <select name="bedrooms" class="input" required>
-                      <option value="" disabled selected>Bedrooms</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                  </select>
-                  <input type="text" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
-                  <input type="text" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
-              </div>
-              <div class="form-group">
-                  <select name="floors" class="input" required>
-                      <option value="" disabled selected>Floors</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                  </select>
-                  <select name="view" class="input" required>
-                      <option value="" disabled selected>Views</option>
-                      <option value="0">View 0</option>
-                      <option value="1">View 1</option>
-                      <option value="2">View 2</option>
-                      <option value="3">View 3</option>
-                      <option value="4">View 4</option>
-                  </select>
-                  <select name="condition" class="input" required>
-                      <option value="" disabled selected>Condition</option>
-                      <option value="1">Condition 1</option>
-                      <option value="2">Condition 2</option>
-                      <option value="3">Condition 3</option>
-                      <option value="4">Condition 4</option>
-                      <option value="5">Condition 5</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <input type="text" name="sqft_above" placeholder="Above Ground (sqft)" required class="input">
-                  <input type="text" name="sqft_basement" placeholder="Basement (sqft)" required class="input">
-                  <input type="text" name="yr_built" placeholder="Year Built" required class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
-              </div>
-              <div class="form-group">
-                  <input type="text" name="yr_renovated" placeholder="Year Renovated" class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
-                  <input type="text" name="street" placeholder="Street" required maxlength="100" class="input">
-                  <input type="text" name="city" placeholder="City" required maxlength="50" class="input">
-              </div>
-              <div class="btn-container">
-                  <button type="submit" class="btn btn-primary">Calculate Price</button>
-              </div>
-              <p id="calculated-price">Calculated Price: $0</p>
-            
-          </form>
+
+        <form id="price-calculator-form">
+            <h3>House Price Prediction</h3>
+            <div class="form-group">
+                <select id="ui_bedrooms" name="bedrooms" class="input" required>
+                    <option value="" disabled selected>Bedrooms</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <input type="text" id="ui_sqft_living" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
+                <input type="text" id="ui_sqft_lot" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
+                <select name="city" id="ui_city" class="input" required>
+                    <option value="" disabled selected>Choose a City</option>
+                    <!-- <option value="Sunnyvale" onclick="onPage()">Sunnyvale</option> -->
+                    <!-- <option value="Seattle">Seattle</option> -->
+                </select>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary" onclick="onClickedEstimatePrice()">Estimate</button>
+            </div>
+            <p id="ui_estimated_price" class="result">Calculated Price: $0</p>
+        </form>          
       </div>
   </section>
 
