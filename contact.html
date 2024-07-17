@@ -13,10 +13,97 @@
 
    <!-- additional CSS -->
    <style>
-      /* Your existing CSS */
+
+      .contact .btn {
+         display: block;
+         margin: 0 auto;
+         width: 100%;
+         padding: 1.2rem 0;
+         background-color: var(--main-color);
+         color: var(--white);
+         border: none;
+         cursor: pointer;
+         border-radius: 5px;
+         font-size: 1.8rem;
+         text-transform: capitalize;
+      }
+
+      .contact .btn:hover {
+         background-color: var(--black);
+         color: var(--red);
+      }
+
+      .faq .box.active h3 {
+         background-color: var(--main-color);
+         color: var(--white);
+      }
+
+      .faq .box h3 {
+         cursor: pointer;
+         background-color: var(--black);
+         color: var(--white);
+         padding: 1.5rem 2rem;
+         font-size: 2rem;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 1rem;
+      }
+
+      .faq .box p {
+         display: none;
+         padding: 1.5rem 2rem;
+         font-size: 1.6rem;
+         background-color: var(--white);
+         color: var(--light-color);
+      }
+
+      .faq .box.active p {
+         display: block;
+      }
+
+      .footer .box a {
+         display: block;
+         padding: 1rem 0;
+         font-size: 1.8rem;
+         color: var(--red);
+         transition: color 0.3s;
+      }
+
+      .footer .box a:hover span,
+      .footer .box a:focus span{
+         color: var(--grey);
+      }
+
+      .footer .box a i {
+         color: var(--black);
+         margin-left: 1rem;
+         transition: color 0.3s;
+      }
+
+      .footer .box a:hover i,
+      .footer .box a:focus i {
+         color: var(--main-color);
+      }
+
+      .footer .box a span {
+         color: var(--black);
+         transition: color 0.3s;
+      }
+
+      .footer .box a:hover span,
+      .footer .box a:focus span {
+         color: var(--main-color);
+      }
+      .address a:hover {
+      color: var(--light-color); /* Change color on hover */
+      text-decoration: underline; /* Underline on hover */
+      }
+
    </style>
 </head>
-<body id="contact-page">   
+<body id="contact-page">  
+
 <!-- header section starts  -->
 
 <header class="header">
@@ -69,7 +156,6 @@
                     </li>
                 </ul>
             </div>
-
 
       </section>
    </nav>
