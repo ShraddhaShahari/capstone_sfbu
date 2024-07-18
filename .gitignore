@@ -15,3 +15,4 @@ __pycache__/
 # Specific ignores
 price_prediction/server/.DS_Store
 price_prediction/server/__pycache__/
+
