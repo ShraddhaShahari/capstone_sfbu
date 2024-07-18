@@ -1,291 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>About Us</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-   
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- custom css for modal -->
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+          /* Center the "Add Your Review" button */
+        .center-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+    </style>
 </head>
-<body id="about-page">   
-<!-- header section starts  -->
 
-<header class="header">
+<body id="about-page">
+    <!-- header section starts  -->
+    <header class="header">
+        <nav class="navbar nav-1">
+            <section class="flex">
+                <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+                <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->
+            </section>
+        </nav>
 
-   <nav class="navbar nav-1">
-      <section class="flex">
-         <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
- <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->      </section>
-               
-   </nav>
+        <nav class="navbar nav-2">
+            <section class="flex">
+                <div id="menu-btn" class="fas fa-bars"></div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">Buy<i class="fas fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="listings.html">Houses</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="addproperty.html">Add Property</a></li>
+                                <li><a href="view_property.html">View Property</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="contact.html#faq">FAQ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-menu">
+                    <ul>
+                        <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="chatbot.html">Chatbot</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
+                            <ul>
+                                <li><a href="home.html">House Price Prediction</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </nav>
+    </header>
 
-   <nav class="navbar nav-2">
-      <section class="flex">
-         <div id="menu-btn" class="fas fa-bars"></div>
+    <!-- header section ends -->
 
-         <div class="menu">
-            <ul>
-               <li><a href="#">Buy<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="listings.html">Houses</a></li>
-                     
-                  </ul>
-               </li>
-               <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="addproperty.html">Add Property</a></li>
-                     <li><a href="view_property.html">View Property</a></li>
-                  </ul>
-               </li>
-                              <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
-                  <ul>
-                     <li><a href="about.html">About Us</a></i></li>
-                     <li><a href="contact.html">Contact Us</a></i></li>
-                     <li><a href="contact.html#faq">FAQ</a></i></li>
-                  </ul>
-               </li>
-            </ul>
-         </div>
-
-         <div class="right-menu">
-         	<ul>
-                 <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
-		<ul>
-			<li><a href="chatbot.html">Chatbot</a></li>
-		</ul></li>
-       		 <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
-                <ul>
-                  
-                  <li><a href="home.html">House Price Prediction</a></li>
-               </ul>
-              </li>
-    	</ul>
-      </div>
-
-      </section>
-   </nav>
-
-</header>
-
-<!-- header section ends -->
-
-<!-- about section starts  -->
-
-<section class="about">
-   <div class="row">
-      <div class="image">
-         <img src="images/about-img.svg" alt="">
-      </div>
-      <div class="content">
-         <h3>Why Choose Us?</h3>
-         <p>We offer unparalleled service in the real estate industry. Our team of experts is dedicated to helping you find the perfect home. Here are the contact details of our agents:</p>
-         <div class="agent-info">
-            <span>Hartej - </span><a href="mailto:hartej@realestate.com" class="email-links">hartej@realestate.com</a><span> , Phone: 123-456-7890</span>
-         </div>
-         <div class="agent-info">
-            <span>Rupali - </span><a href="mailto:rupali@realestate.com" class="email-links">rupali@realestate.com</a><span> , Phone: 111-222-3333</span>
-         </div>
-         <div class="agent-info">
-            <span>Shraddha - </span><a href="mailto:shraddha@realestate.com" class="email-links">shraddha@realestate.com</a><span> , Phone: 444-555-6666</span>
-         </div>
-         <div class="address">
-            <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
-
-         </div>
-         <a href="contact.html" class="inline-btn">Contact Us</a>
-      </div>
-   </div>
-</section>
-
-<!-- about section ends -->
-
-<!-- steps section starts  -->
-
-<section class="steps">
-
-   <h1 class="heading">3 Simple Steps</h1>
-
-   <div class="box-container">
-
-      <div class="box">
-         <img src="images/step-1.png" alt="">
-         <h3>Search Property</h3>
-         <p>Browse our extensive listings to find your perfect home. We offer properties across various locations to suit every need.</p>
-         <a href="listings.html" class="btn">View Listings</a>
-      </div>
-
-      <div class="box">
-         <img src="images/step-2.png" alt="">
-         <h3>Contact Agents</h3>
-         <p>Get in touch with our experienced agents for expert guidance through every step of the process.</p>
-         <a href="contact.html" class="btn">Contact Us</a>
-      </div>
-
-      <div class="box">
-         <img src="images/step-3.png" alt="">
-         <h3>Enjoy Property</h3>
-         <p>Move into your new home and start creating beautiful memories. We ensure a smooth and hassle-free experience.</p>
-         <a href="about.html" class="btn">Learn More</a>
-      </div>
-
-   </div>
-
-</section>
-
-<!-- steps section ends -->
-
-<!-- review section starts  -->
-
-<section class="Reviews">
-
-   <h1 class="heading">Client's Reviews</h1>
-
-   <div class="box-container">
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-1.png" alt="">
-            <div>
-               <h3>David</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+    <!-- about section starts  -->
+    <section class="about">
+        <div class="row">
+            <div class="image">
+                <img src="images/about-img.svg" alt="">
             </div>
-         </div>
-         <p>The service was excellent. The agents were professional and helped us find our dream home quickly.</p>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-2.png" alt="">
-            <div>
-               <h3>Rita</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+            <div class="content">
+                <h3>Why Choose Us?</h3>
+                <p>We offer unparalleled service in the real estate industry. Our team of experts is dedicated to helping you find the perfect home. Here are the contact details of our agents:</p>
+                <div class="agent-info">
+                    <span>Hartej - </span><a href="contact.html?agentEmail=hartej.0506@gmail.com" class="email-links">hartej.0506@gmail.com</a><span> , Phone: 123-456-7890</span>
+                </div>
+                <div class="agent-info">
+                    <span>Rupali - </span><a href="contact.html?agentEmail=rupali@realestate.com" class="email-links">rupali@realestate.com</a><span> , Phone: 111-222-3333</span>
+                </div>
+                <div class="agent-info">
+                    <span>Shraddha - </span><a href="contact.html?agentEmail=shraddhashahari7@gmail.com" class="email-links">shraddhashahari7@gmail.com</a><span> , Phone: 444-555-6666</span>
+                </div>
+                <div class="address">
+                    <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+                </div>
+                <a href="contact.html" class="inline-btn">Contact Us</a>
             </div>
-         </div>
-         <p>Great experience! The team was supportive and ensured everything went smoothly.</p>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-3.png" alt="">
-            <div>
-               <h3>Johny</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-            </div>
-         </div>
-         <p>I highly recommend MyHome. They made buying a house an easy and enjoyable experience.</p>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-4.png" alt="">
-            <div>
-               <h3>Rupali</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-            </div>
-         </div>
-         <p>Excellent service! The agents were knowledgeable and helped me find exactly what I was looking for.</p>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-5.png" alt="">
-            <div>
-               <h3>Kasim</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-            </div>
-         </div>
-         <p>Very professional and responsive. MyHome made the process of selling my property a breeze.</p>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-6.png" alt="">
-            <div>
-               <h3>Devika</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-            </div>
-         </div>
-         <p>I had a great experience with MyHome. They were supportive and provided excellent service throughout.</p>
-      </div>
-
-   </div>
-
-</section>
-
-<!-- review section ends -->
-
-<!-- footer section starts  -->
-
-<footer class="footer">
-    <section class="flex">
-        <div class="box">
-            <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
-         <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
-            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
-           <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
-        </div>
-        </div>
-        <div class="box">
-            <a href="home.html"><span>Home</span></a>
-            <a href="about.html"><span>About Us</span></a>
-            <a href="contact.html"><span>Contact Us</span></a>
-            <a href="listings.html"><span>All Listings</span></a>
-        </div>
-        <div class="box">
-            <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
         </div>
     </section>
-    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
-</footer>
-<!-- footer section ends -->
 
+    <!-- about section ends -->
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+    <!-- steps section starts  -->
+    <section class="steps">
+        <h1 class="heading">3 Simple Steps</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="images/step-1.png" alt="">
+                <h3>Search Property</h3>
+                <p>Browse our extensive listings to find your perfect home. We offer properties across various locations to suit every need.</p>
+                <a href="listings.html" class="btn">View Listings</a>
+            </div>
+            <div class="box">
+                <img src="images/step-2.png" alt="">
+                <h3>Contact Agents</h3>
+                <p>Get in touch with our experienced agents for expert guidance through every step of the process.</p>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
+            <div class="box">
+                <img src="images/step-3.png" alt="">
+                <h3>Enjoy Property</h3>
+                <p>Move into your new home and start creating beautiful memories. We ensure a smooth and hassle-free experience.</p>
+                <a href="about.html" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- steps section ends -->
+
+    <!-- review section starts  -->
+    <section class="Reviews">
+        <h1 class="heading">Client's Reviews</h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="user">
+                    <img src="images/pic-1.png" alt="">
+                    <div>
+                        <h3>David</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>The service was excellent. The agents were professional and helped us find our dream home quickly.</p>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+
+            <div class="box">
+                <div class="user">
+                    <img src="images/pic-2.png" alt="">
+                    <div>
+                        <h3>Rita</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Great experience! The team was supportive and ensured everything went smoothly.</p>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+
+            <div class="box">
+                <div class="user">
+                    <img src="images/pic-3.png" alt="">
+                    <div>
+                        <h3>Johny</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>I highly recommend MyHome. They made buying a house an easy and enjoyable experience.</p>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+
+            <div class="box">
+                <div class="user">
+                    <img src="images/pic-4.png" alt="">
+                    <div>
+                        <h3>Rupali</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Excellent service! The agents were knowledgeable and helped me find exactly what I was looking for.</p>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+
+            <div class="box">
+                <div class="user">
+                    <img src="images/pic-5.png" alt="">
+                    <div>
+                        <h3>Kasim</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Very professional and responsive. MyHome made the process of selling my property a breeze.</p>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+
+            <div class="box">
+                <div class="user">
+                    <img src="images/pic-6.png" alt="">
+                    <div>
+                        <h3>Devika</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>I had a great experience with MyHome. They were supportive and provided excellent service throughout.</p>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- review section ends -->
+
+    <!-- button to open the modal -->
+    <div class="center-btn-container">
+      <button id="open-modal-btn" class="inline-btn">Add Your Review</button>
+  </div>
+  
+    <!-- The Modal -->
+    <div id="reviewModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="heading">Add Your Review</h1>
+            <div class="form-container">
+                <form id="review-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" class="input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Upload Photo:</label>
+                        <input type="file" id="photo" name="photo" class="input" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review">Review:</label>
+                        <textarea id="review" name="review" class="input" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select id="rating" name="rating" class="input" required>
+                            <option value="5">5 Stars</option>
+                            <option value="4.5">4.5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3.5">3.5 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2.5">2.5 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1.5">1.5 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer section starts  -->
+    <footer class="footer">
+        <section class="flex">
+            <div class="box">
+                <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+                <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+                <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
+                <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+            </div>
+            <div class="box">
+                <a href="home.html"><span>Home</span></a>
+                <a href="about.html"><span>About Us</span></a>
+                <a href="contact.html"><span>Contact Us</span></a>
+                <a href="listings.html"><span>All Listings</span></a>
+            </div>
+            <div class="box">
+                <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+        <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
+
+    <!-- Add the following script to handle modal, form submission, review addition, deletion, and modification -->
+    <script>
+        let editingReview = null;
+
+        // Get the modal
+        const modal = document.getElementById('reviewModal');
+
+        // Get the button that opens the modal
+        const btn = document.getElementById('open-modal-btn');
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName('close')[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = 'none';
+            resetForm();
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                resetForm();
+            }
+        }
+
+        document.getElementById('review-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const photoInput = document.getElementById('photo');
+            const reviewText = document.getElementById('review').value;
+            const rating = document.getElementById('rating').value;
+
+            // Handle photo upload
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const photo = e.target.result; // Base64 image string
+
+                if (editingReview) {
+                    // Update the existing review
+                    editingReview.querySelector('.user h3').textContent = name;
+                    editingReview.querySelector('.user img').src = photo;
+                    editingReview.querySelector('p').textContent = reviewText;
+                    editingReview.querySelector('.stars').innerHTML = getStarsHTML(rating);
+                    editingReview = null;
+                } else {
+                    // Create new review box
+                    const newReview = document.createElement('div');
+                    newReview.classList.add('box');
+
+                    // Create the inner HTML for the new review
+                    newReview.innerHTML = `
+                        <div class="user">
+                            <img src="${photo}" alt="">
+                            <div>
+                                <h3>${name}</h3>
+                                <div class="stars">
+                                    ${getStarsHTML(rating)}
+                                </div>
+                            </div>
+                        </div>
+                        <p>${reviewText}</p>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    `;
+
+                    // Add new review to the reviews container
+                    document.querySelector('.Reviews .box-container').appendChild(newReview);
+                }
+
+                // Close the modal and reset the form
+                modal.style.display = 'none';
+                resetForm();
+            };
+
+            // Read the photo file as a data URL
+            reader.readAsDataURL(photoInput.files[0]);
+        });
+
+        // Function to generate star HTML based on rating
+        function getStarsHTML(rating) {
+            const fullStar = '<i class="fas fa-star"></i>';
+            const halfStar = '<i class="fas fa-star-half-alt"></i>';
+            const emptyStar = '<i class="far fa-star"></i>';
+
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (rating >= i) {
+                    starsHTML += fullStar;
+                } else if (rating >= i - 0.5) {
+                    starsHTML += halfStar;
+                } else {
+                    starsHTML += emptyStar;
+                }
+            }
+            return starsHTML;
+        }
+
+        // Function to handle review deletion and editing
+        document.querySelector('.Reviews .box-container').addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-btn')) {
+                const reviewBox = event.target.closest('.box');
+                reviewBox.remove();
+            } else if (event.target.classList.contains('edit-btn')) {
+                const reviewBox = event.target.closest('.box');
+                editingReview = reviewBox;
+
+                // Populate the form with the existing review data
+                document.getElementById('name').value = reviewBox.querySelector('.user h3').textContent;
+                document.getElementById('review').value = reviewBox.querySelector('p').textContent;
+
+                const rating = [...reviewBox.querySelectorAll('.stars i')]
+                    .map(star => star.classList.contains('fa-star-half-alt') ? 0.5 : 1)
+                    .reduce((a, b) => a + b, 0);
+
+                document.getElementById('rating').value = rating;
+
+                // Set up the photo input to handle image preview
+                const imgSrc = reviewBox.querySelector('.user img').src;
+                const blob = dataURLtoBlob(imgSrc);
+                const file = new File([blob], "photo.png", { type: "image/png" });
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                document.getElementById('photo').files = dataTransfer.files;
+
+                // Open the modal for editing
+                modal.style.display = 'block';
+            }
+        });
+
+        // Function to reset the form
+        function resetForm() {
+            document.getElementById('review-form').reset();
+            editingReview = null;
+        }
+
+        // Function to convert data URL to Blob
+        function dataURLtoBlob(dataurl) {
+            const arr = dataurl.split(',');
+            const mime = arr[0].match(/:(.*?);/)[1];
+            const bstr = atob(arr[1]);
+            let n = bstr.length;
+            const u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], { type: mime });
+        }
+        
+    </script>
 </body>
+
 </html>

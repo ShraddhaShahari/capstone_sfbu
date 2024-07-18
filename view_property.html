@@ -14,24 +14,153 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <style>
+      body {
+          margin: 0;
+          padding: 0;
+          font-family: Arial, Helvetica, sans-serif;
+          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/bg2.avif') no-repeat center center fixed;
+          background-size: cover;
+      }
 
+    
+      /* View Property Page */
+      .view-property .details {
+          background-color: var(--white);
+          box-shadow: var(--box-shadow);
+          padding: 2rem;
+          overflow-x: hidden;
+          max-width: 1200px;
+          margin: 2rem auto;
+          border-radius: 8px;
+      }
+
+      .view-property .details .thumb {
+          background-color: var(--black);
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .view-property .details .thumb .big-image {
+          width: 100%;
+          max-width: 800px;
+          margin-bottom: 1.5rem;
+      }
+
+      .view-property .details .thumb .big-image img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          border-radius: 8px;
+      }
+
+      .view-property .details .thumb .small-images {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+      }
+
+      .view-property .details .thumb .small-images img {
+          height: 7rem;
+          width: 10rem;
+          object-fit: cover;
+          cursor: pointer;
+          transition: .2s linear;
+          border-radius: 8px;
+      }
+
+      .view-property .details .thumb .small-images img:hover {
+          transform: scale(1.1);
+      }
+
+      .view-property .details .name {
+          font-size: 2.5rem;
+          text-overflow: ellipsis;
+          overflow-x: hidden;
+          margin-bottom: .5rem;
+          text-align: center;
+          font-weight: bold;
+      }
+
+      .view-property .details .location {
+          padding-top: 1rem;
+          font-size: 1.8rem;
+          color: var(black);
+          text-align: center;
+      }
+
+      .view-property .details .location i {
+          margin-right: 1rem;
+          color: var(--main-color);
+      }
+
+      .view-property .details .info {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Create a grid with 6 equal columns */
+    gap: 1rem;
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+}
+
+.view-property .details .info p {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0.5rem 0;
+    font-weight: bold;
+    flex: 1;
+    min-width: 120px; /* Ensure each item takes at least this much space */
+}
+
+      .view-property .details .info p span,
+      .view-property .details .info p a {
+          color: var(--light-color);
+      }
+
+      .view-property .details .info p a:hover {
+          text-decoration: underline;
+      }
+
+      .view-property .details .info p i {
+          margin-right: 0.5rem;
+          color: var(--main-color);
+      }
+
+      .view-property .details .title {
+          font-size: 2.2rem;
+          color: var(--black);
+          padding-bottom: 1.5rem;
+          border-bottom: var(--border);
+          text-align: center;
+      }
+
+      .view-property .details .description {
+          padding: .5rem 0;
+          margin-top: .5rem;
+          font-size: 1.6rem;
+          color: var(--light-color);
+          line-height: 1.5;
+          text-align: center;
+      }
+   </style>
 </head>
 <body id="view_property-page">   
 <!-- header section starts  -->
-
 <header class="header">
-
    <nav class="navbar nav-1">
       <section class="flex">
          <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
          <a href="index.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->     
      </section>
    </nav>
-
    <nav class="navbar nav-2">
       <section class="flex">
-         <div id="menu-btn" class="fas fa-bars"></div>
-
          <div class="menu">
             <ul>
                <li><a href="#">Buy<i class="fas fa-angle-down"></i></a>
@@ -42,9 +171,10 @@
                <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="addproperty.html">Add Property</a></li>
-                     <li><a href="listings.html">View Property</a></li>
+                     <li><a href="view_property.html">View Property</a></li>
                   </ul>
                </li>
+
                <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="about.html">About Us</a></li>
@@ -54,114 +184,64 @@
                </li>
             </ul>
          </div>
-
          <div class="right-menu">
-                <ul>
-                    <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
-                        <ul>
-                            <li><a href="chatbot.html">Chatbot</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
-                        <ul>
-                            <li><a href="home.html">House Price Prediction</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
+            <ul>
+               <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="chatbot.html">Chatbot</a></li>
+                  </ul>
+               </li>
+               <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="home.html">House Price Prediction</a></li>
+                  </ul>
+               </li>
+               <li><a href="index.html">Sign Out</a></li> <!-- Sign Out button added -->
+            </ul>
+         </div>
       </section>
    </nav>
-
 </header>
-
 <!-- header section ends -->
 
 <!-- view property section starts  -->
-<section class="view-property"></section>
+<section class="view-property">
    <div class="details">
-
-    <title>Property Details</title>
-
-    <h1>Property Details</h1>
-    <p><strong>Bedroom:</strong> <span id="bedroom"></span></p>
-    <p><strong>Floors:</strong> <span id="floors"></span></p>
-    <p><strong>Living Area:</strong> <span id="living_area"></span></p>
-    <p><strong>View:</strong> <span id="view"></span></p>
-    <p><strong>Lot Area:</strong> <span id="lot_area"></span></p>
-    <p><strong>Condition:</strong> <span id="condition"></span></p>
-    <p><strong>Above Ground:</strong> <span id="above_ground"></span></p>
-    <p><strong>Date Renovated:</strong> <span id="date_renovated"></span></p>
-    <p><strong>Basement:</strong> <span id="basement"></span></p>
-    <p><strong>Street:</strong> <span id="street"></span></p>
-    <p><strong>Date Added:</strong> <span id="date_added"></span></p>
-    <p><strong>City:</strong> <span id="city"></span></p>
-    <p><strong>Price:</strong> <span id="price"></span></p>
-    <p><strong>Image:</strong> <img id="image" src="" alt="Property Image"></p>
-
-</div>
-
-    <script src="randomImages.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const propertyId = urlParams.get('id');
-            const response = await fetch(`http://localhost:3005/property/${propertyId}`);
-            const property = await response.json();
-            
-            document.getElementById('bedroom').textContent = property.bedroom;
-            document.getElementById('floors').textContent = property.floors;
-            document.getElementById('living_area').textContent = property.living_area;
-            document.getElementById('view').textContent = property.view;
-            document.getElementById('lot_area').textContent = property.lot_area;
-            document.getElementById('condition').textContent = property.condition;
-            document.getElementById('above_ground').textContent = property.above_ground;
-            document.getElementById('date_renovated').textContent = property.date_renovated;
-            document.getElementById('basement').textContent = property.basement;
-            document.getElementById('street').textContent = property.street;
-            document.getElementById('date_added').textContent = property.date_added;
-            document.getElementById('city').textContent = property.city;
-            document.getElementById('price').textContent = property.price;
-
-
-            const imageSources = [
-                    'images/homeimage1.jpg',
-                    'images/homeimage2.jpg',
-                    'images/homeimage3.jpg',
-                    'images/homeimage4.webp',
-                    'images/homeimage5.jpg',
-                    'images/homeimage6.jpg',
-                    'images/homeimage7.jpg',
-                    'images/homeimage8.jpg'
-                ];
-
-            function getRandomImages(count) {
-                    // Shuffle array to get random selection
-                    const shuffled = imageSources.sort(() => 0.5 - Math.random());
-                    return shuffled.slice(0, count); // Return 'count' number of images
-                }
-            // Get a random image
-            const randomImages = getRandomImages(3);
-            const randomImageSrc = randomImages[0];
-
-            // Set the src attribute of the img element
-            document.getElementById('image').src = randomImageSrc;
-        });
-   </script>
-
+      <div class="thumb">
+         <div class="big-image">
+            <img id="image" src="" alt="Property Image">
+         </div>
+         <div class="small-images" id="small-images">
+            <!-- Small images will be populated here -->
+         </div>
+      </div>
+      <h1 class="name" id="property-name">Property Details</h1>
+      <p class="location"><i class="fas fa-map-marker-alt"></i> <span id="street"></span>, <span id="city"></span></p>
+      <div class="info">
+         <p><i class="fas fa-bed"></i> Bedrooms: <span id="bedroom"></span></p>
+         <p><i class="fas fa-layer-group"></i> Floors: <span id="floors"></span></p>
+         <p><i class="fas fa-arrows-alt"></i> Living Area: <span id="living_area"></span></p>
+         <p><i class="fas fa-eye"></i> View: <span id="view"></span></p>
+         <p><i class="fas fa-map"></i> Lot Area: <span id="lot_area"></span></p>
+         <p><i class="fas fa-tools"></i> Condition: <span id="condition"></span></p>
+         <p><i class="fas fa-level-up-alt"></i> Above Ground: <span id="above_ground"></span></p>
+         <p><i class="fas fa-calendar-alt"></i> Date Renovated: <span id="date_renovated"></span></p>
+         <p><i class="fas fa-store-alt"></i> Basement: <span id="basement"></span></p>
+         <p><i class="fas fa-calendar-plus"></i> Date Added: <span id="date_added"></span></p>
+         <p><i class="fas fa-dollar-sign"></i> Price: <span id="price"></span></p>
+      </div>
+   </div>
 </section>
 <!-- view property section ends -->
-
 
 <!-- footer section starts  -->
 <footer class="footer">
    <section class="flex">
        <div class="box">
            <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
-        <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+           <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
            <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
-          <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
-       </div>
+           <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
        </div>
        <div class="box">
            <a href="home.html"><span>Home</span></a>
@@ -177,11 +257,61 @@
    </section>
    <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
 </footer>
-
 <!-- footer section ends -->
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = urlParams.get('id');
+        const response = await fetch(`http://localhost:3005/property/${propertyId}`);
+        const property = await response.json();
+        
+        document.getElementById('bedroom').textContent = property.bedroom;
+        document.getElementById('floors').textContent = property.floors;
+        document.getElementById('living_area').textContent = property.living_area;
+        document.getElementById('view').textContent = property.view;
+        document.getElementById('lot_area').textContent = property.lot_area;
+        document.getElementById('condition').textContent = property.condition;
+        document.getElementById('above_ground').textContent = property.above_ground;
+        document.getElementById('date_renovated').textContent = property.date_renovated;
+        document.getElementById('basement').textContent = property.basement;
+        document.getElementById('street').textContent = property.street;
+        document.getElementById('date_added').textContent = property.date_added;
+        document.getElementById('city').textContent = property.city;
+        document.getElementById('price').textContent = property.price;
 
+        const imageSources = [
+            'images/homeimage1.jpg',
+            'images/homeimage2.jpg',
+            'images/homeimage3.jpg',
+            'images/homeimage4.webp',
+            'images/homeimage5.jpg',
+            'images/homeimage6.jpg',
+            'images/homeimage7.jpg',
+            'images/homeimage8.jpg'
+        ];
+
+        function getRandomImages(count) {
+            const shuffled = imageSources.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        const randomImages = getRandomImages(3);
+        const randomImageSrc = randomImages[0];
+        document.getElementById('image').src = randomImageSrc;
+
+        const smallImagesContainer = document.getElementById('small-images');
+        randomImages.forEach(imgSrc => {
+            const imgElement = document.createElement('img');
+            imgElement.src = imgSrc;
+            imgElement.addEventListener('click', () => {
+                document.getElementById('image').src = imgSrc;
+            });
+            smallImagesContainer.appendChild(imgElement);
+        });
+    });
+</script>
 </body>
 </html>

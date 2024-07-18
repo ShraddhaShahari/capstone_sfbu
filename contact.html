@@ -4,29 +4,17 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Contact Us</title>
-
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-
-   <!-- additional CSS -->
-   <style>
-      /* Your existing CSS */
-   </style>
 </head>
 <body id="contact-page">   
-<!-- header section starts  -->
-
 <header class="header">
    <nav class="navbar nav-1">
       <section class="flex">
          <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
- <a href="login.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->      
-               </section>
+         <a href="index.html" class="signout-btn">Sign Out</a>
+      </section>
    </nav>
-
    <nav class="navbar nav-2">
       <section class="flex">
          <div id="menu-btn" class="fas fa-bars"></div>
@@ -40,66 +28,51 @@
                <li><a href="#">Sell<i class="fas fa-angle-down"></i></a>
                   <ul>
                      <li><a href="addproperty.html">Add Property</a></li>
-
                      <li><a href="listings.html">View Property</a></li>
-
                   </ul>
                </li>
                <li><a href="#">Help<i class="fas fa-angle-down"></i></a>
                   <ul>
-                     <li><a href="About.html">About us</a></i></li>
-                     <li><a href="contact.html">Contact us</a></i></li>
-                     <li><a href="contact.html#faq">FAQ</a></i></li>
+                     <li><a href="about.html">About Us</a></li>
+                     <li><a href="contact.html">Contact Us</a></li>
+                     <li><a href="contact.html#faq">FAQ</a></li>
                   </ul>
                </li>
             </ul>
          </div>
-
          <div class="right-menu">
-                <ul>
-                    <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
-                        <ul>
-                            <li><a href="chatbot.html">Chatbot</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
-                        <ul>
-                            <li><a href="home.html">House Price Prediction</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-
+            <ul>
+               <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="chatbot.html">Chatbot</a></li>
+                  </ul>
+               </li>
+               <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
+                  <ul>
+                     <li><a href="home.html">House Price Prediction</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
       </section>
    </nav>
 </header>
-
-<!-- header section ends -->
-
-<!-- contact section starts  -->
-
 <section class="contact">
    <div class="row">
       <div class="image">
          <img src="images/contact-img.svg" alt="">
       </div>
-      <form action="send_email.php" method="post">
+      <form id="contact-form">
          <h3>Get in Touch</h3>
          <input type="text" name="name" required maxlength="50" placeholder="Enter your name" class="box">
-         <input type="email" id="agent-email" name="email" required maxlength="50" placeholder="Enter your email" class="box">
-         <input type="tel" name="number" required maxlength="10" placeholder="Enter your phone number" class="box">
+         <input type="email" id="email" name="email" required maxlength="50" placeholder="Enter your email" class="box">
+         <input type="tel" name="phone" required maxlength="10" placeholder="Enter your phone number" class="box">
          <textarea name="message" placeholder="Enter your message" required maxlength="1000" cols="30" rows="10" class="box"></textarea>
-         <input type="hidden" name="agentEmail" value="<?php echo htmlspecialchars($_GET['agentEmail']); ?>">
-         <input type="submit" value="Send Message" name="send" class="btn">
+         <input type="hidden" name="agentEmail" id="agentEmail" value="defaultAgentEmail@example.com">
+         <button type="submit" class="btn">Send Message</button>
       </form>
    </div>
 </section>
-
-<!-- contact section ends -->
-
-<!-- faq section starts  -->
-
 <section class="faq" id="faq">
    <h1 class="heading">FAQ</h1>
    <div class="box-container">
@@ -129,19 +102,13 @@
       </div>
    </div>
 </section>
-
-<!-- faq section ends -->
-
-<!-- footer section starts  -->
-
 <footer class="footer">
     <section class="flex">
         <div class="box">
             <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
-         <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+            <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
             <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
-           <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
-        </div>
+            <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
         </div>
         <div class="box">
             <a href="home.html"><span>Home</span></a>
@@ -157,23 +124,36 @@
     </section>
     <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
 </footer>
-
-
-<!-- footer section ends -->
-
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
-
 <script>
-   // Populate email field based on selected agent
-   document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
       const urlParams = new URLSearchParams(window.location.search);
       const agentEmail = urlParams.get('agentEmail');
       if (agentEmail) {
-         document.getElementById('agent-email').value = agentEmail;
+         document.getElementById('agentEmail').value = agentEmail;
       }
+
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+         event.preventDefault();
+
+         const formData = new FormData(this);
+         const formObject = Object.fromEntries(formData.entries());
+
+         fetch('http://localhost:3005/send-message', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formObject)
+         })
+         .then(response => response.text())
+         .then(data => {
+            alert(data);
+            this.reset();
+         })
+         .catch(error => console.error('Error:', error));
+      });
    });
 </script>
-
 </body>
 </html>
