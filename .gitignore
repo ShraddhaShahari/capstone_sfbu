@@ -1,3 +1,18 @@
 node_modules
 package-lock.json
 package.json
+
+# Ignore macOS .DS_Store files
+*.DS_Store
+
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore any other files or directories you want to ignore
+# Add your other patterns here
+
+# Specific ignores
+price_prediction/server/.DS_Store
+price_prediction/server/__pycache__/
+
