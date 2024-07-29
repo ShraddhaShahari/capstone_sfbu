@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
 
 // Serving static files (like CSS, images, etc.)

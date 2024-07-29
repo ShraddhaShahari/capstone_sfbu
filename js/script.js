@@ -3,9 +3,21 @@ let menu = document.querySelector('.header .menu');
 const listingsContainer = document.querySelector('.listings-container');
 
 
-document.querySelector('#menu-btn').onclick = () => {
-    menu.classList.toggle('active');
-};
+// document.querySelector('#menu-btn').onclick = () => {
+//     menu.classList.toggle('active');
+// };
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('#menu-btn');
+    const menu = document.querySelector('#menu');
+
+    if (menuBtn) {
+        menuBtn.onclick = () => {
+            menu.classList.toggle('active');
+        };
+    }
+});
 
 window.onscroll = () => {
     menu.classList.remove('active');
@@ -124,7 +136,11 @@ function submitSignUp(event) {
 }
 
 function googleSignIn() {
-    alert("Google Sign-In is not set up.");
+    // alert("Google Sign-In is not set up.");
+    function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+        // Send the ID token to your server for verification
+      }
 }
 
 // Image slider functionality for listings page
@@ -269,8 +285,22 @@ function fetchPropertyListingsMap() {
                     'images/homeimage4.webp',
                     'images/homeimage5.jpg',
                     'images/homeimage6.jpg',
-                    'images/homeimage7.jpg',
-                    'images/homeimage8.jpg'
+                    'images/homeimage8.jpg', 
+                    'images/homeimage9.jpg',
+                    'images/houseimage7.jpg',
+                    'images/homeimage10.jpg',
+                    'images/homeimage11.jpg',
+                    'images/homeimage12.jpg',
+                    'images/homeimage13.jpg',
+                    'images/homeimagein1.1.webp',
+                    'images/homeimagein2.2.webp',
+                    'images/homeimagein2.3.webp',
+                    'images/homeimageint1.webp',
+                    'images/house-img-4.jpg',
+                    'images/house-img-4.jpg (2).jpg',
+                    'images/house-img-4.jpg.jpg',
+                    'images/houseimg-4.jpg',
+                    'images/houseimg.avif'
                 ];
 
                 // Function to get random unique images

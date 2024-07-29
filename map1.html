@@ -1,326 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Real Estate Listings</title>
-   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Listings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style_map.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .main-content {
+            display: flex;
+            position: relative;
+        }
+        .map-container {
+            flex: 3;
+            height: 100vh;
+        }
+        .content-container {
+            position: absolute;
+            top: 8%;
+            left: 56%;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #474545;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 200px;
+        }
+        .content-container label,
+        .content-container select,
+        .content-container button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: small;
+            font-weight: 900;
+        }
+        .content-container button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 7px;
+            cursor: pointer;
+        }
+        .content-container button:hover {
+            background-color: #c9302c;
+        }
+        .listings-container {
+            flex: 1;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            height: 100vh;
+        }
+        .listings-container .box {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            padding: 10px;
+            text-align: center; /* Center text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .listings-container .box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .listings-container .box .location {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .listings-container .box .flex {
+            display: flex;
+            justify-content: space-between;
+            width: 100%; /* Ensure flex items take full width */
+        }
+        .listings-container .box .flex p {
+            margin: 0;
+        }
+        .listings-container .box .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .listings-container .box .btn:hover {
+            background-color: #c9302c;
+        }
+        .listings-container .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .listings-container .box-container {
+            width: 48%; /* Adjust width to fit two boxes in a row */
+        }
+        .listings-container .row .box-container .box .location i {
+        margin-right: 1rem;
+        color: var(--main-color);
+        }
 
-   <!-- Font Awesome CDN link -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        .property-info {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .property-info img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .property-info strong {
+            flex-direction: column;
+            flex: 1;
 
-   <!-- Swiper CSS -->
-   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
-
-   <!-- Custom CSS file link -->
-   <link rel="stylesheet" href="css/style_map.css">
-   <link rel="stylesheet" href="css/style.css">
-
-   <body>
-      
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script src="js/map.js"></script>
-  </body>
-  </html>
-
-   <style>
-
-   .map-container {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
+        }
+        .property-info i {
+            margin-right: 5px;
+            color: var(--main-color);
 }
-      
-   .content-container {
-    position: absolute;
-    top: 22%;
-    left: 60%;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #474545;
-    border-radius: 5px;
-    padding: 10px;
-    z-index: 1;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    width: auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    box-sizing: border-box;
-}
-
-      /* Styling for the label and dropdown */
-      .content-container label {
-         display: block;
-         margin-bottom: 5px;
-         font-weight: bold;
-         font-size: medium;
-         font-family: Arial, Helvetica, sans-serif
-         }
-
-      /* Dropdown styling */
-         .content-container select {
-         display: block;
-         width: 100%;
-         padding: 5px;
-         margin-bottom: 10px;
-         font-size: 14px;
-         }
-
-      /* Button styling */
-         .content-container button {
-         display: block;
-         width: 100%;
-         padding: 7px;
-         background-color: #007bff; /* Blue background */
-         color: white; /* White text */
-         border: none; /* No border */
-         border-radius: 3px; /* Slightly rounded corners */
-         font-size: 14px;
-         cursor: pointer; /* Pointer cursor on hover */
-         }
-
-         /* Button hover effect */
-         .content-container button:hover {
-         background-color: #0056b3; /* Darker blue on hover */
-         }
-
-      .right-container {
-         position: unset;
-         top: /* Header height */ + 0px;
-         right: 10px;
-         left: -2px;
-         width: 30%;
-         height: 100vh;
-         overflow-x: hidden;
-         bottom: unset;
-      }
-
-      .right-container .box-container {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 1rem;
-         justify-content: space-between;
-      }
-
-      .right-container .box-container .box {
-         flex: 1 1 calc(20% - 1rem);
-         background: #e9e8e8;
-         border-radius: 5px;
-         box-shadow: var(--box-shadow);
-         padding: 0rem;
-         position: relative;
-      }
-
-      .right-container .box-container .box img{
-         object-fit: cover;
-      }
-      
-
-      .right-container .box-container .box .location {
-      font-size: 1.4rem;
-      color: #533a3a;
-      margin-bottom: 1rem;
-      }
-
-      .right-container .box-container .box .flex {
-      display: flex;
-      color: #533a3a;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      }
-
-      .right-container .box-container .box .flex p {
-      font-size: 1.4rem;
-      color: #533a3a;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      }
-
-      .right-container .box-container .box .btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-
-      }
-
-      .swiper-container {
-         width: 100%;
-         height: 200px;
-         margin-bottom: 20px;
-      }
-
-      .swiper-slide img {
-         width: 100%;
-         height: 100%;
-         border-radius: 5px;
-      }
-
-      .listings-container {
-         flex: 1;
-         display: flex;
-         flex-direction: column;
-         overflow-y: auto;
-      }
-
-      .listing {
-         display: flex;
-         border: 1px solid #ddd;
-         margin: 10px 0;
-         border-radius: 5px;
-         overflow: hidden;
-         background: #fff;
-      }
-
-      .listing img {
-         width: 100px;
-         height: 100px;
-         object-fit: cover;
-      }
-
-      .listing-details {
-         padding: 10px;
-         flex: 1;
-      }
-
-      .footer {
-         background: rgba(0, 0, 0, 0.5);
-         color: #fff;
-         padding: 20px;
-         text-align: center;
-      }
-
-      .footer a {
-         color: #fff;
-         text-decoration: none;
-      }
-
-      .footer a:hover {
-         text-decoration: underline;
-      }
-   </style>
+        
+    </style>
 </head>
 <body>
+    <header class="header">
+        <nav class="navbar nav-1">
+            <section class="flex">
+                <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+                <a href="index.html" class="signout-btn">Sign Out</a>     
+            </section>
+        </nav>
+    </header>
 
-<!-- Header Section -->
-<header class="header">
-   <nav class="navbar nav-1">
-       <section class="flex">
-         <a href="home.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
-         <a href="index.html" class="signout-btn">Sign Out</a> <!-- Sign Out button -->     
-       </section>
-   </nav>
-
-</header>
-
-<!-- Secondary Navbar -->
-<nav class="navbar-secondary">
-   <input type="text" class="searchbar" placeholder="City, Neighborhood, ZIP, Address" id="location-search">
-   <select>
-      <option value="">Bedrooms</option>
-      <option value="2">2 Bedrooms</option>
-      <option value="3">3 Bedrooms</option>
-      <option value="4">4 Bedrooms</option>
-      <option value="5">5 Bedrooms</option>
-   </select>
-   <select>
-      <option value="">Floors</option>
-      <option value="1">1 Floor</option>
-      <option value="2">2 Floors</option>
-      <option value="3">3 Floors</option>
-   </select>
-   <select>
-      <option value="">Year Renovated</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
-      <option value="2023">2023</option>
-   </select>
-   <button id="search-button">Search</button>
-</nav>
-
-<!-- Main Content -->
-<html>
-<div class="main-content">
-   <div class="map-container" id="map"></div>
-      
-  <head>
-    <title>Google Map with Nearby Search</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
-    <link rel="stylesheet" type="text/css" href="./css/style_map.css" />
-    
-  </head>
-  <body>
-    <div class="container">
-      <div class="map-container">
-        <gmp-map
-          center="36.778259, -119.417931"
-          zoom="10"
-          map-id="DEMO_MAP_ID"
-          class="map"
-          id="map"
-        ></gmp-map>
-      </div>
-      <div class="content-container">
-        <label for="places">Select a category:</label>
-        <select id="places">
-          <option value="school">Schools</option>
-          <option value="hospital">Hospitals</option>
-          <option value="restaurant">Restaurants</option>
-          <option value="park">Parks</option>
+    <nav class="navbar-secondary">
+        <input type="text" class="searchbar" placeholder="City, Neighborhood, ZIP, Address" id="location-search">
+        <select id="bedrooms">
+            <option value="">Bedrooms</option>
+            <option value="2">2 Bedrooms</option>
+            <option value="3">3 Bedrooms</option>
+            <option value="4">4 Bedrooms</option>
+            <option value="5">5 Bedrooms</option>
         </select>
-        <button id="searchButton">Search Nearby</button>
-      </div>
+        <select id="floors">
+            <option value="">Floors</option>
+            <option value="1">1 Floor</option>
+            <option value="2">2 Floors</option>
+            <option value="3">3 Floors</option>
+        </select>
+        <select id="year-renovated">
+            <option value="">Year Renovated</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+        </select>
+        <button id="search-button">Search</button>
+    </nav>
+
+    <div class="main-content">
+        <div class="map-container" id="map"></div>
+        <div class="content-container">
+            <label for="places">Select a category:</label>
+            <select id="places">
+                <option value="school">Schools</option>
+                <option value="hospital">Hospitals</option>
+                <option value="restaurant">Restaurants</option>
+                <option value="park">Parks</option>
+            </select>
+            <button id="searchButton">Search Nearby</button>
+        </div>
+        <div id="listings-container" class="listings-container"></div>
     </div>
 
-  </body>
+    <footer class="footer">
+        <section class="flex">
+            <div class="box">
+                <a href="tel:1234567890"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
+                <a href="fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
+                <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</span></a>
+                <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
+            </div>
+            <div class="box">
+                <a href="home.html"><span>Home</span></a>
+                <a href="about.html"><span>About Us</span></a>
+                <a href="contact.html"><span>Contact Us</span></a>
+                <a href="listings.html"><span>All Listings</span></a>
+            </div>
+            <div class="box">
+                <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+        <div class="credit">&copy; 2024 by <span>housepricing@realestate.com</span> | All rights reserved!</div>
+    </footer>
+
+    // Map related code starts here
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let map, infoWindow, markers = [];
+        const blueIconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
 
-   <div class="right-container">
-      <div class="box-container">
-      </div>
-      
+        const imageSources = [
+                    'images/homeimage1.jpg',
+                    'images/homeimage2.jpg',
+                    'images/homeimage3.jpg',
+                    'images/homeimage4.webp',
+                    'images/homeimage5.jpg',
+                    'images/homeimage6.jpg',
+                    'images/homeimage8.jpg', 
+                    'images/homeimage9.jpg',
+                    'images/houseimage7.jpg',
+                    'images/homeimage10.jpg',
+                    'images/homeimage11.jpg',
+                    'images/homeimage12.jpg',
+                    'images/homeimage13.jpg',
+                    'images/homeimagein1.1.webp',
+                    'images/homeimagein2.2.webp',
+                    'images/homeimagein2.3.webp',
+                    'images/homeimageint1.webp',
+                    'images/house-img-4.jpg',
+                    'images/house-img-4.jpg (2).jpg',
+                    'images/house-img-4.jpg.jpg',
+                    'images/houseimg-4.jpg',
+                    'images/houseimg.avif'
+                        ];
 
-   </div>
-</div>
+                        function getRandomImages(count) {
+                            const shuffled = imageSources.sort(() => 0.5 - Math.random());
+                            return shuffled.slice(0, count); // Return 'count' number of images
+                        }
 
-</html>
 
-<!-- footer section starts  -->
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 37.7749, lng: -122.4194 },
+                zoom: 10,
+                mapTypeId: "roadmap"
+            });
+            infoWindow = new google.maps.InfoWindow();
+            fetchPropertyListingsMap();
+        }
 
-<footer class="footer">
-   <section class="flex">
-       <div class="box">
-           <a href="tel:1234567890" onclick="return false;"><i class="fas fa-phone"></i><span>123-456-7890</span></a>
-        <a href="Fax:1112223333"><i class="fas fa-fax"></i><span>111-222-3333</span></a>
-           <a href="mailto:housepricing@realestate.com"><i class="fas fa-envelope"></i><span>housepricing@realestate.com</a>
-          <a href="https://www.google.com/maps/place/1234+Elm+Street,+Fremont,+CA,+USA" target="_blank"><i class="fas fa-map-marker-alt"></i><span>1234 Elm Street, Fremont, CA, USA</span></a>
-       </div>
-       </div>
-       <div class="box">
-           <a href="home.html"><span>Home</span></a>
-           <a href="about.html"><span>About Us</span></a>
-           <a href="contact.html"><span>Contact Us</span></a>
-           <a href="listings.html"><span>All Listings</span></a>
-       </div>
-       <div class="box">
-           <a href="https://facebook.com" target="_blank"><span>facebook</span><i class="fab fa-facebook-f"></i></a>
-           <a href="https://twitter.com" target="_blank"><span>twitter</span><i class="fab fa-twitter"></i></a>
-           <a href="https://instagram.com" target="_blank"><span>instagram</span><i class="fab fa-instagram"></i></a>
-       </div>
-   </section>
-   <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
-</footer>
+        function fetchPropertyListingsMap() {
+            axios.get('http://localhost:3005/properties')
+                .then(function (response) {
+                    const listingsContainer = document.getElementById('listings-container');
 
-<!-- footer section ends -->
+                    if (!listingsContainer) {
+                        console.error('Error: #listings-container not found in the DOM.');
+                        return;
+                    }
 
-<script type="module" src="./js/script_map.js"></script>
-<script async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1AY9z1LKbIdCvrME84kjJlVIkkM_vKX0&libraries=maps,places&v=beta&&loading=async&callback=initMap">
+                    listingsContainer.innerHTML = ''; // Clear existing listings
+                    console.log(response.data.res);
+
+                    const row = document.createElement('div');
+                    row.classList.add('row');
+                    listingsContainer.appendChild(row);
+
+                    response.data.res.forEach(function (property) {
+                        const boxContainer = document.createElement('div');
+                        boxContainer.classList.add('box-container');
+                        
+                        const box = document.createElement('div');
+                        box.classList.add('box');
+
+                        
+
+                        const randomImages = getRandomImages(1);
+
+                        const imageElements = randomImages.map(src => `<img src="${src}" alt="Property Image ">`).join('');
+
+                        box.innerHTML = `
+                            <div class="thumb slider">
+                                ${imageElements}
+                            </div>
+                            
+                            <p class="location" onclick="showPropertyOnMap('${property.city}', ${property.id}, ${property.bedroom}, ${property.lot_area})">
+                            <i class="fas fa-map-marker-alt"></i><span>${property.city}, ${property.street}</span>
+                            </p>
+
+
+                            <div class="flex">   
+                            <p><i class="fas fa-bed"></i><span>${property.bedroom}</span></p>
+                            <p><i class="fas fa-maximize"></i><span>${property.lot_area}</span></p>
+                                
+                            </div>
+                            <button class="btn" onclick="viewProperty(${property.id})">View Property</button>
+                        `;
+
+                        boxContainer.appendChild(box);
+                        row.appendChild(boxContainer);
+                        
+                        addMarkerForProperty(property);
+                    });
+                })
+                .catch(function (error) {
+                    console.error('Error fetching property listings:', error);
+                });
+        }
+
+        function viewProperty(propertyId) {
+            axios.get(`http://localhost:3005/property/${propertyId}`)
+                .then(function (response) {
+                    if (response.status === 200) {
+                        window.location.href = `view_property.html?id=${propertyId}`;
+                    } else {
+                        console.error('Error fetching property details:', response.status);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error fetching property details:', error);
+                });
+        }
+
+        function addMarkerForProperty(property) {
+            if (!property.city || !property.street) {
+                console.error('Invalid coordinates for property:', property);
+                return;
+            }
+            const location = { city: parseInt(property.city), street: parseInt(property.street) };
+            const marker = new google.maps.Marker({
+                map: map,
+                position: location,
+                icon: blueIconUrl
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.setContent(`
+                    <b>${property.city}</b><br>
+                    <img src="images/homeimage1.jpg" alt="Property Image" style="width:100px;height:auto;"><br>
+                    Bedrooms: ${property.bedroom}<br>
+                    Lot Area: ${property.lot_area}
+                `);
+                infoWindow.open(map, marker);
+            });
+            markers.push(marker);
+        }
+
+        function geocodeAddress() {
+            const address = document.getElementById('location-search').value;
+            if (!address) return;
+
+            axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                params: {
+                    address: address,
+                    key: 'AIzaSyD1AY9z1LKbIdCvrME84kjJlVIkkM_vKX0'
+                }
+            })
+            .then(response => {
+                const location = response.data.results[0].geometry.location;
+                map.setCenter(location);
+                new google.maps.Marker({
+                    map: map,
+                    position: location
+                });
+            })
+            .catch(error => console.error(error));
+        }
+
+
+        function clearMarkers() {
+            for (let i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            markers = [];
+        }
+
+        //  function to show property on map after clicking on the particular house
+
+        function showPropertyOnMap(city, propertyId, bedroom, lot_area) {
+        // Use the Geocoding API to fetch the coordinates for the city
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: city }, (results, status) => {
+            if (status === 'OK' && results[0]) {
+                clearMarkers(); // Clear existing markers
+                const location = results[0].geometry.location;
+                const marker = new google.maps.Marker({
+                    map: map,
+                    position: location,
+                    icon: blueIconUrl
+                });
+        // Get a random image URL
+            const randomImages = getRandomImages(1);
+            const imageUrl = randomImages[0];
+
+            marker.addListener('click', () => {
+                infoWindow.setContent(`
+                <div class="property-info">
+                                <img src="${imageUrl}" alt="Property Image"/><br>
+                                <strong>Property ID:</strong> ${propertyId}<br>
+                                <strong>City:</strong> ${city}<br>
+                                <strong><i class="fas fa-bed"></i> No. of bed:</strong> ${bedroom}<br>
+                                <strong><i class="fas fa-ruler-combined"></i> Total lot area:</strong> ${lot_area} sq ft
+                            </div>        
+                `);
+                infoWindow.open(map, marker);
+            });
+
+                markers.push(marker);
+                map.setCenter(location); // Center the map on the new marker
+            } else {
+                console.error('Geocode was not successful for the following reason:', status);
+            }
+        });
+    }
+
+        // function to show property on map after clicking on the particular house
+        function searchNearbyPlaces() {
+            const selectedPlace = document.getElementById('places').value;
+
+            if (!selectedPlace) {
+                alert('Please select a place category.');
+                return;
+            }
+        //Clear existing markers
+            //clearMarkers(); 
+
+            const service = new google.maps.places.PlacesService(map);
+            const request = {
+                location: map.getCenter(),
+                radius: '5000',
+                type: [selectedPlace]
+            };
+
+            service.nearbySearch(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (let i = 0; i < results.length; i++) {
+                        const place = results[i];
+                        const marker = new google.maps.Marker({
+                            map: map,
+                            position: place.geometry.location
+                        });
+                        marker.addListener('click', () => {
+                            infoWindow.setContent(place.name);
+                            infoWindow.open(map, marker);
+                        });
+                        markers.push(marker);
+                    }
+                } else {
+                    console.error('Error performing nearby search:', status);
+                }
+            });
+        }
+
+        document.getElementById('search-button').addEventListener('click', geocodeAddress);
+        document.getElementById('searchButton').addEventListener('click', searchNearbyPlaces);
+
+        window.addEventListener('DOMContentLoaded', initMap);
+        window.viewProperty = viewProperty;
+        window.fetchPropertyListingsMap = fetchPropertyListingsMap;
+    </script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1AY9z1LKbIdCvrME84kjJlVIkkM_vKX0&libraries=places&callback=initMap">
     </script>
 </body>
 </html>
