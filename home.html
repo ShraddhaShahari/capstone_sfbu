@@ -139,7 +139,7 @@ input[type="number"] {
                     <li><a href="addproperty.html">Sell<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li><a href="addproperty.html">Add Property</a></li>
-                            <li><a href="view_property.html">View Property</a></li>
+                            <li><a href="listings.html">View Property</a></li>
                         </ul>
                     </li>
                     <li><a href="#">help<i class="fas fa-angle-down"></i></a>
@@ -195,8 +195,6 @@ input[type="number"] {
                 <input type="text" id="ui_sqft_lot" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
                 <select name="city" id="ui_city" class="input" required>
                     <option value="" disabled selected>Choose a City</option>
-                    <!-- <option value="Sunnyvale" onclick="onPage()">Sunnyvale</option> -->
-                    <!-- <option value="Seattle">Seattle</option> -->
                 </select>
             </div>
             <div class="btn-container">
@@ -298,52 +296,6 @@ input[type="number"] {
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
-
-<!-- JavaScript for Price Calculation -->
-
-<!-- <script>
-function calculatePrice() {
-    var sqft_living = document.getElementsByName('sqft_living')[0].value;
-    var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
-    var price_per_sqft = document.getElementsByName('price_per_sqft')[0].value;
-
-   document.getElementById('price-calculator-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Get form values
-        var bedrooms = document.getElementsByName('bedrooms')[0].value;
-        var sqft_living = document.getElementsByName('sqft_living')[0].value;
-        var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
-        var floors = document.getElementsByName('floors')[0].value;
-        var view = document.getElementsByName('view')[0].value;
-        var condition = document.getElementsByName('condition')[0].value;
-        var sqft_above = document.getElementsByName('sqft_above')[0].value;
-        var sqft_basement = document.getElementsByName('sqft_basement')[0].value;
-        var yr_built = document.getElementsByName('yr_built')[0].value;
-        var yr_renovated = document.getElementsByName('yr_renovated')[0].value;
-        var street = document.getElementsByName('street')[0].value;
-        var city = document.getElementsByName('city')[0].value;
-
-        // Validate form values
-        if (!bedrooms || !sqft_living || !sqft_lot || !floors || !view || !condition || !sqft_above || !sqft_basement || !yr_built || !street || !city || !yr_renovated) {
-            document.getElementById('error-message').style.display = 'block';
-            return;
-        }
-
-        document.getElementById('error-message').style.display = 'none';
-
-        // Perform calculation (dummy calculation here)
-        var price = sqft_living * 200; // Dummy calculation for demonstration
-
-        // Display calculated price
-        document.getElementById('calculated-price').innerText = 'Calculated Price: $' + price.toLocaleString();
-
-    } else {
-        document.getElementById('calculated-price').innerText = 'Please fill in all required fields';
-    }
-}
-</script> -->
-
 
 <div id="image-modal" class="modal">
     <span class="close">&times;</span>

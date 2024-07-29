@@ -1066,7 +1066,7 @@ html, body {
    padding: 10px 20px;
    border-radius: 5px;
    cursor: pointer;
-   font-size: 1rem;
+   font-size: small;
    margin-left: auto; /* Pushes the button to the right */
    text-decoration: none; /* Ensure it looks like a button */
 }
