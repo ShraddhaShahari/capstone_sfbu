@@ -1,10 +1,11 @@
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const express = require('express');
-const pool = require('./dbConnect'); // Ensure you have dbConnect.js properly set up
+const pool = require('./dbConnect');
 const fs = require('fs');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const multer = require('multer');
 
 const app = express();
 const PORT = 3005;
@@ -28,6 +29,18 @@ if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
 
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
+
+// Set up multer for file uploads
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + '-' + file.originalname);
+    }
+  })
+});
 
 // Route to fetch all properties available on listings page
 app.get('/properties', async (req, res) => {
@@ -96,37 +109,44 @@ app.delete('/property/:id', async (req, res) => {
 });
 
 // Route to add new property details
-app.post('/property', async (req, res) => {
-  async function insertProperty() {
-    try {
-      const imagePath = path.join(__dirname, '/new-image4.jpg');
-      const imageBuffer = fs.readFileSync(imagePath);
+app.post('/property', upload.single('image_upload'), async (req, res) => {
+  try {
+    console.log('Received data:', req.body);
+    console.log('Uploaded file:', req.file);
 
-      const query = `
-        INSERT INTO property (
-          bedroom, floors, living_area, view, lot_area, condition,
-          above_ground, date_renovated, basement, street, date_added,
-          city, price, upload_image, upload_image_name
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW(), $11, $12, $13, $14)
-        RETURNING *;
-      `;
+    const {
+      bedroom, floors, living_area, view, lot_area,
+      condition, above_ground, date_renovated, basement,
+      street, city, price
+    } = req.body;
 
-      const values = [
-        req.body.bedroom, req.body.floors, req.body.living_area, req.body.view, req.body.lot_area,
-        req.body.condition, req.body.above_ground, req.body.date_renovated, req.body.basement, req.body.street,
-        req.body.city, req.body.price, imageBuffer, path.basename(imagePath),
-      ];
+    const upload_image_name = req.file ? req.file.filename : null;
 
-      const result = await pool.query(query, values);
-      console.log('Data inserted successfully:', result.rows[0]);
-      res.sendStatus(200);
-    } catch (error) {
-      console.error('Error inserting data:', error.stack);
-      res.sendStatus(400);
-    }
+    const query = `
+      INSERT INTO property (
+        bedroom, floors, living_area, view, lot_area, condition,
+        above_ground, date_renovated, basement, street, date_added,
+        city, price, upload_image_name
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), $10, $11, $12)
+      RETURNING *;
+    `;
+
+    const values = [
+      bedroom, floors, living_area, view, lot_area,
+      condition, above_ground, date_renovated, basement, street,
+      city, price, upload_image_name
+    ];
+
+    console.log('Inserting values:', values);
+    const result = await pool.query(query, values);
+    console.log('Data inserted successfully:', result.rows[0]);
+    res.status(200).json({ property: result.rows[0] });
+  } catch (error) {
+    console.error('Error inserting data:', error);
+    res.status(400).json({ error: error.message });
   }
-  insertProperty();
 });
+
 
 // Route to fetch property details by ID
 app.get('/property/:id', async (req, res) => {
@@ -139,7 +159,7 @@ app.get('/property/:id', async (req, res) => {
     const query = 'SELECT * FROM property WHERE id = $1';
     const result = await pool.query(query, [propertyId]);
     if (result.rows.length > 0) {
-      console.log('Fetched property:', result.rows[0]); // Log fetched property
+      console.log('Fetched property:', result.rows[0]);
       res.json(result.rows[0]);
     } else {
       res.status(404).send('Property not found');

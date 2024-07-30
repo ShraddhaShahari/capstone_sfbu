@@ -1,38 +1,37 @@
+// Import axios if needed (uncomment the next line if axios is not globally available)
 // import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
+
 let menu = document.querySelector('.header .menu');
-const listingsContainer = document.querySelector('.listings-container');
-
-
-// document.querySelector('#menu-btn').onclick = () => {
-//     menu.classList.toggle('active');
-// };
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('#menu-btn');
-    const menu = document.querySelector('#menu');
+    const menu = document.querySelector('.menu');
 
     if (menuBtn) {
         menuBtn.onclick = () => {
             menu.classList.toggle('active');
         };
     }
-});
 
-window.onscroll = () => {
-    menu.classList.remove('active');
-};
-
-document.querySelectorAll('input[type="number"]').forEach(inputNumber => {
-    inputNumber.oninput = () => {
-        if (inputNumber.value.length > inputNumber.maxLength) inputNumber.value = inputNumber.value.slice(0, inputNumber.maxLength);
+    window.onscroll = () => {
+        if (menu) {
+            menu.classList.remove('active');
+        }
     };
-});
 
-document.querySelectorAll('.faq .box-container .box h3').forEach(headings => {
-    headings.onclick = () => {
-        headings.parentElement.classList.toggle('active');
-    };
+    document.querySelectorAll('input[type="number"]').forEach(inputNumber => {
+        inputNumber.oninput = () => {
+            if (inputNumber.value.length > inputNumber.maxLength) inputNumber.value = inputNumber.value.slice(0, inputNumber.maxLength);
+        };
+    });
+
+    document.querySelectorAll('.faq .box-container .box h3').forEach(headings => {
+        headings.onclick = () => {
+            headings.parentElement.classList.toggle('active');
+        };
+    });
+
+    fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
 
 function showPopup(type) {
@@ -136,11 +135,7 @@ function submitSignUp(event) {
 }
 
 function googleSignIn() {
-    // alert("Google Sign-In is not set up.");
-    function handleCredentialResponse(response) {
-        console.log("Encoded JWT ID token: " + response.credential);
-        // Send the ID token to your server for verification
-      }
+    // Google Sign-In implementation goes here
 }
 
 // Image slider functionality for listings page
@@ -231,31 +226,41 @@ function addProperty() {
         console.error('Form not found!');
         return;
     }
+
     const data = new FormData(form);
     const formDataObject = Object.fromEntries(data.entries());
     const transformedObject = {
-        bedroom: formDataObject.bedrooms,
+        bedroom: formDataObject.bedroom,
         floors: formDataObject.floors,
-        living_area: formDataObject.sqft_living,
+        living_area: formDataObject.living_area,
         view: formDataObject.view,
-        lot_area: formDataObject.sqft_lot,
+        lot_area: formDataObject.lot_area,
         condition: formDataObject.condition,
-        above_ground: formDataObject.sqft_above,
-        date_renovated: formDataObject.yr_renovated,
-        basement: formDataObject.sqft_basement,
+        above_ground: formDataObject.above_ground,
+        date_renovated: formDataObject.date_renovated,
+        basement: formDataObject.basement,
         street: formDataObject.street,
         city: formDataObject.city,
         price: formDataObject.price
     };
+
     axios.post('http://localhost:3005/property', transformedObject)
       .then(function (response) {
         console.log(response);
         form.reset();
-        alert("Property has been added successfully....!");
+        alert("Property has been added successfully!");
       })
       .catch(function (error) {
-        console.log(error);
-        alert("Unable to add the property...!");
+        if (error.response) {
+            console.error('Error response data:', error.response.data);
+            console.error('Error response status:', error.response.status);
+            console.error('Error response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request error:', error.request);
+        } else {
+            console.error('Error:', error.message);
+        }
+        alert("Unable to add the property: " + (error.response ? error.response.data : error.message));
       });
 }
 
@@ -267,7 +272,7 @@ function fetchPropertyListingsMap() {
 
             // Check if the element was found
             if (!listingsContainer) {
-                console.error('Error: .listings-container not found in the DOM.');
+                console.error('Error: .box-container not found in the DOM.');
                 return;
             }
 
@@ -337,7 +342,6 @@ function fetchPropertyListingsMap() {
         });
 }
 
-
 function viewProperty(propertyId) {
     axios.get(`http://localhost:3005/property/${propertyId}`)
         .then(function (response) {
@@ -357,9 +361,7 @@ function onPageLoad() {
     axios.get("http://127.0.0.1:5000/get_location_names")
         .then(function(response) {
             var locations = response.data.locations;
-            // console.log("got response for get_location_names request ", locations);
             var ui_city = document.getElementById("ui_city");
-            // $('#ui_city').empty();
             locations.forEach(function(location) {
                 var opt = new Option(location);
                 ui_city.appendChild(opt);
@@ -370,45 +372,9 @@ function onPageLoad() {
         });
 }
 
-function onClickedEstimatePrice() {
-    console.log("Estimate price button clicked");
-    var sqft_living = document.getElementById("ui_sqft_living").value;
-    var sqft_lot = document.getElementById("ui_sqft_lot").value;
-    var city = document.getElementById("ui_city").value;
-    var bedrooms = document.getElementById("ui_bedrooms").value;
-    console.log("Estimate price button clicked after", sqft_living, sqft_lot, bedrooms, city);
-    var t1 =   parseInt(sqft_living)
-    console.log("after", t1)
-
-    
-    axios.post("http://127.0.0.1:5000/predict_home_price", {
-        sqft_living: parseInt(sqft_living),
-        sqft_lot: parseInt(sqft_lot),
-        bedrooms: parseInt(bedrooms),
-        city: city
-    })
-    .then(function(response) {
-        console.log("Response from server:", response.data);
-        // Assuming you have an element with id "ui_estimated_price" to show the result
-        var estPrice = document.getElementById("ui_estimated_price");
-        if (response.data && response.data.estimated_price !== undefined) {
-            estPrice.innerHTML = "<h2>Estimated Price: $" + response.data.estimated_price.toString() + "</h2>";
-        } else {
-            estPrice.innerHTML = "<h2>Error: Failed to estimate price</h2>";
-        }
-    })
-    .catch(function(error) {
-        console.error("Error in POST request:", error);
-        var estPrice = document.getElementById("ui_estimated_price");
-        estPrice.innerHTML = "<h2>Error: Failed to estimate price</h2>";
-    });
-}
-
-
 document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
-
 
 window.addProperty = addProperty;
 window.viewProperty = viewProperty;
