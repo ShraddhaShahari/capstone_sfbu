@@ -11,7 +11,9 @@
 
    <!-- Custom CSS file link -->
    <link rel="stylesheet" href="css/style.css">
-
+   
+   <!-- Axios CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
    <style>
       body {
          margin: 0;
@@ -26,7 +28,7 @@
          display: flex;
          justify-content: space-between;
          padding: 5px 10px;
-         background: rgba(0, 0, 0, 0.5);
+         background: rgba(0, 0, 0, 0.884);
          position: fixed;
          width: 100%;
          top: 0;
@@ -77,7 +79,7 @@
       }
 
       .login-container {
-         background: rgba(255, 255, 255, 0.9);
+         background: rgb(252, 252, 252);
          padding: 40px;
          border-radius: 10px;
          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -263,75 +265,75 @@
 
   <!-- Header Section -->
   <header class="header">
-    <a href="index.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
-    <div class="auth-buttons">
-      <button onclick="showPopup('signin')" class="btn">Sign In</button>
-      <button onclick="showPopup('signup')" class="btn">Sign Up</button>
-    </div>
-  </header>
+   <a href="index.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+   <div id="menu-btn" class="menu-btn">Menu</div>
+   <div class="auth-buttons">
+     <button onclick="showPopup('signin')" class="btn">Sign In</button>
+     <button onclick="showPopup('signup')" class="btn">Sign Up</button>
+   </div>
+ </header>
 
-  <!-- Login Container -->
-  <div class="login-container">
+ <!-- Login Container -->
+ <div class="login-container">
    <h2>Sign In</h2>
    <form onsubmit="validateSignIn(event)">
-      <input type="email" id="signin-email" placeholder="Enter email" required>
-      <input type="password" id="signin-password" placeholder="Enter password" required>
-      <button type="submit">Sign In</button>
-      <p class="error-message" id="signin-error">Invalid email or password</p>
+     <input type="email" id="signin-email" placeholder="Enter email" required>
+     <input type="password" id="signin-password" placeholder="Enter password" required>
+     <button type="submit">Sign In</button>
+     <p class="error-message" id="signin-error">Invalid email or password</p>
    </form>
    <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
    <div class="forgot-password">
-      <a href="forget_pass.html">Forgot your password?</a>
+     <a href="forgot_password.html">Forgot your password?</a>
    </div>
    <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
-</div>
+ </div>
 
-<!-- Sign In Popup -->
-<div class="popup" id="signin-popup">
+ <!-- Sign In Popup -->
+ <div class="popup" id="signin-popup">
+   <div class="popup-content">
+     <button class="close" onclick="hidePopup('signin')">&times;</button>
+     <h2>Sign In</h2>
+     <input type="email" id="signin-popup-email" class="input" placeholder="Enter email">
+     <input type="password" id="signin-popup-password" class="input" placeholder="Enter password">
+     <button class="btn" onclick="validateSignIn(event)">Sign In</button>
+     <p class="error-message" id="signin-popup-error">Invalid email or password</p>
+     <p class="success-message" id="signin-popup-success"></p>
+     <p><a href="forgot_password.html">Forgot your password?</a></p>
+     <p>Or connect with:</p>
+     <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
+     <div class="forgot-password">
+       <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
+     </div>
+   </div>
+ </div>
 
-    <div class="popup-content">
-        <button class="close" onclick="hidePopup('signin')">&times;</button>
-        <h2>Sign In</h2>
-        <input type="email" id="signin-popup-email" class="input" placeholder="Enter email">
-        <input type="password" id="signin-popup-password" class="input" placeholder="Enter password">
-        <button class="btn" onclick="validateSignIn(event)">Sign In</button>
-        <p class="error-message" id="signin-popup-error">Invalid email or password</p>
-        <p class="success-message" id="signin-popup-success"></p>
-        <p><a href="forget_pass.html">Forgot your password?</a></p>
-        <p>Or connect with:</p>
-        <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
-        <div class="forgot-password">
-            <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
-        </div>
-    </div>
-</div>
-
-
-  <!-- Sign Up Popup -->
-  <div class="popup" id="signup-popup">
-    <div class="popup-content">
-      <button class="close" onclick="hidePopup('signup')">&times;</button>
-      <h2>Sign Up</h2>
-      <input type="text" id="signup-popup-username" class="input" placeholder="Username">
-      <input type="email" id="signup-popup-email" class="input" placeholder="Enter email">
-      <input type="password" id="signup-popup-password" class="input" placeholder="Create password">
-      <p class="password-requirements" id="password-requirements">
-        <small>At least 8 characters</small><br>
-        <small>Mix of letters and numbers</small><br>
-        <small>At least 1 special character</small><br>
-        <small>At least 1 lowercase letter and 1 uppercase letter</small>
-      </p>
-      <input type="password" id="signup-popup-confirm-password" class="input" placeholder="Confirm password">
-            <button class="btn" onclick="submitSignUp(event)">Sign Up</button>
-      <p class="error-message" id="signup-popup-error"></p>
-      <p class="success-message" id="signup-popup-success"></p>
-      <p><a href="#" onclick="showPopup('signin')">Already have an account? Sign in</a></p>
-      <p>Or connect with:</p>
-      <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
-    </div>
-  </div>
-
+ <!-- Sign Up Popup -->
+ <div class="popup" id="signup-popup">
+   <div class="popup-content">
+     <button class="close" onclick="hidePopup('signup')">&times;</button>
+     <h2>Sign Up</h2>
+     <input type="text" id="signup-popup-username" class="input" placeholder="Username">
+     <input type="email" id="signup-popup-email" class="input" placeholder="Enter email">
+     <input type="password" id="signup-popup-password" class="input" placeholder="Create password">
+     <p class="password-requirements" id="password-requirements">
+       <small>At least 8 characters</small><br>
+       <small>Mix of letters and numbers</small><br>
+       <small>At least 1 special character</small><br>
+       <small>At least 1 lowercase letter and 1 uppercase letter</small>
+     </p>
+     <input type="password" id="signup-popup-confirm-password" class="input" placeholder="Confirm password">
+     <button class="btn" onclick="submitSignUp(event)">Sign Up</button>
+     <p class="error-message" id="signup-popup-error"></p>
+     <p class="success-message" id="signup-popup-success"></p>
+     <p><a href="#" onclick="showPopup('signin')">Already have an account? Sign in</a></p>
+     <p>Or connect with:</p>
+     <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
+   </div>
+ </div>
   <!-- Custom JS file link below -->
   <script src="js/script.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 </body>
 </html>
