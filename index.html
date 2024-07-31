@@ -79,7 +79,10 @@
       }
 
       .login-container {
-         background: rgb(252, 252, 252);
+
+         background-color: #fff;
+         /* background: rgba(255, 255, 255, 0.9); */
+
          padding: 40px;
          border-radius: 10px;
          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -287,50 +290,50 @@
      <a href="forgot_password.html">Forgot your password?</a>
    </div>
    <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
- </div>
 
- <!-- Sign In Popup -->
- <div class="popup" id="signin-popup">
-   <div class="popup-content">
-     <button class="close" onclick="hidePopup('signin')">&times;</button>
-     <h2>Sign In</h2>
-     <input type="email" id="signin-popup-email" class="input" placeholder="Enter email">
-     <input type="password" id="signin-popup-password" class="input" placeholder="Enter password">
-     <button class="btn" onclick="validateSignIn(event)">Sign In</button>
-     <p class="error-message" id="signin-popup-error">Invalid email or password</p>
-     <p class="success-message" id="signin-popup-success"></p>
-     <p><a href="forgot_password.html">Forgot your password?</a></p>
-     <p>Or connect with:</p>
-     <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
-     <div class="forgot-password">
-       <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
-     </div>
-   </div>
- </div>
+</div>
 
- <!-- Sign Up Popup -->
- <div class="popup" id="signup-popup">
-   <div class="popup-content">
-     <button class="close" onclick="hidePopup('signup')">&times;</button>
-     <h2>Sign Up</h2>
-     <input type="text" id="signup-popup-username" class="input" placeholder="Username">
-     <input type="email" id="signup-popup-email" class="input" placeholder="Enter email">
-     <input type="password" id="signup-popup-password" class="input" placeholder="Create password">
-     <p class="password-requirements" id="password-requirements">
-       <small>At least 8 characters</small><br>
-       <small>Mix of letters and numbers</small><br>
-       <small>At least 1 special character</small><br>
-       <small>At least 1 lowercase letter and 1 uppercase letter</small>
-     </p>
-     <input type="password" id="signup-popup-confirm-password" class="input" placeholder="Confirm password">
-     <button class="btn" onclick="submitSignUp(event)">Sign Up</button>
-     <p class="error-message" id="signup-popup-error"></p>
-     <p class="success-message" id="signup-popup-success"></p>
-     <p><a href="#" onclick="showPopup('signin')">Already have an account? Sign in</a></p>
-     <p>Or connect with:</p>
-     <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
-   </div>
- </div>
+<!-- Sign In Popup -->
+<div class="popup" id="signin-popup">
+
+    <div class="popup-content">
+        <h2>Sign In</h2>
+        <input type="email" id="signin-popup-email" class="input" placeholder="Enter email">
+        <input type="password" id="signin-popup-password" class="input" placeholder="Enter password">
+        <button class="btn" onclick="validateSignIn(event)">Sign In</button>
+        <p class="error-message" id="signin-popup-error">Invalid email or password</p>
+        <p class="success-message" id="signin-popup-success"></p>
+        <p><a href="forget_pass.html">Forgot your password?</a></p>
+        <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
+        <div class="forgot-password">
+            <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Sign Up Popup -->
+  <div class="popup" id="signup-popup">
+    <div class="popup-content">
+      <h2>Sign Up</h2>
+      <input type="text" id="signup-popup-username" class="input" placeholder="Username">
+      <input type="email" id="signup-popup-email" class="input" placeholder="Enter email">
+      <input type="password" id="signup-popup-password" class="input" placeholder="Create password">
+      <p class="password-requirements" id="password-requirements">
+        <small>At least 8 characters</small><br>
+        <small>Mix of letters and numbers</small><br>
+        <small>At least 1 special character</small><br>
+        <small>At least 1 lowercase letter and 1 uppercase letter</small>
+      </p>
+      <input type="password" id="signup-popup-confirm-password" class="input" placeholder="Confirm password">
+            <button class="btn" onclick="submitSignUp(event)">Sign Up</button>
+      <p class="error-message" id="signup-popup-error"></p>
+      <p class="success-message" id="signup-popup-success"></p>
+      <p><a href="#" onclick="showPopup('signin')">Already have an account? Sign in</a></p>
+      <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
+    </div>
+  </div>
+
   <!-- Custom JS file link below -->
   <script src="js/script.js"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>

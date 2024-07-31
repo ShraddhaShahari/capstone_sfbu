@@ -6,6 +6,7 @@ const fs = require('fs');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const multer = require('multer');
+
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'uploads' });
@@ -18,6 +19,9 @@ const PORT = 3005;
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Specify the views directory
+
+
+const upload = multer({ dest: 'uploads' });
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -47,6 +51,7 @@ const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
 const jwtSecret = process.env.JWT_SECRET;
 
+
 // Set up nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -56,17 +61,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-//Set up multer for file uploads
-// const upload = multer({
-//   storage: multer.diskStorage({
-//     destination: (req, file, cb) => {
-//       cb(null, 'uploads/');
-//     },
-//     filename: (req, file, cb) => {
-//       cb(null, Date.now() + '-' + file.originalname);
-//     }
-//   })
-// });
 
 // Middleware for JWT verification
 function verifyToken(req, res, next) {
