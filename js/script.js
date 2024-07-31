@@ -1,6 +1,3 @@
-// Import axios if needed (uncomment the next line if axios is not globally available)
-// import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
-
 let menu = document.querySelector('.header .menu');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -227,8 +224,15 @@ function addProperty() {
         return;
     }
 
+  // Check if the file input exists and get the file
+
+    const fileInput = form.querySelector('input[name="upload_image"]');
+    const file = fileInput && fileInput.files[0];
+
     const data = new FormData(form);
+
     const formDataObject = Object.fromEntries(data.entries());
+    
     const transformedObject = {
         bedroom: formDataObject.bedroom,
         floors: formDataObject.floors,
@@ -241,26 +245,27 @@ function addProperty() {
         basement: formDataObject.basement,
         street: formDataObject.street,
         city: formDataObject.city,
-        price: formDataObject.price
+        price: formDataObject.price,
+        upload_image: file,
+        upload_image_name: file ? file.name : null
     };
 
-    axios.post('http://localhost:3005/property', transformedObject)
+
+    console.log('print:',formDataObject)
+
+    axios.post('http://localhost:3005/property', transformedObject, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       .then(function (response) {
         console.log(response);
         form.reset();
         alert("Property has been added successfully!");
       })
       .catch(function (error) {
-        if (error.response) {
-            console.error('Error response data:', error.response.data);
-            console.error('Error response status:', error.response.status);
-            console.error('Error response headers:', error.response.headers);
-        } else if (error.request) {
-            console.error('Request error:', error.request);
-        } else {
-            console.error('Error:', error.message);
-        }
-        alert("Unable to add the property: " + (error.response ? error.response.data : error.message));
+        console.log(error);
+        alert("Unable to add the property!");
       });
 }
 
