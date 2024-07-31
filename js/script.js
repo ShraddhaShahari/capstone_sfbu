@@ -1,6 +1,3 @@
-// Import axios if needed (uncomment the next line if axios is not globally available)
-// import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
-
 let menu = document.querySelector('.header .menu');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -227,8 +224,15 @@ function addProperty() {
         return;
     }
 
+  // Check if the file input exists and get the file
+
+    const fileInput = form.querySelector('input[name="upload_image"]');
+    const file = fileInput && fileInput.files[0];
+
     const data = new FormData(form);
+
     const formDataObject = Object.fromEntries(data.entries());
+    
     const transformedObject = {
         bedroom: formDataObject.bedroom,
         floors: formDataObject.floors,
@@ -241,26 +245,27 @@ function addProperty() {
         basement: formDataObject.basement,
         street: formDataObject.street,
         city: formDataObject.city,
-        price: formDataObject.price
+        price: formDataObject.price,
+        upload_image: file,
+        upload_image_name: file ? file.name : null
     };
 
-    axios.post('http://localhost:3005/property', transformedObject)
+
+    console.log('print:',formDataObject)
+
+    axios.post('http://localhost:3005/property', transformedObject, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       .then(function (response) {
         console.log(response);
         form.reset();
         alert("Property has been added successfully!");
       })
       .catch(function (error) {
-        if (error.response) {
-            console.error('Error response data:', error.response.data);
-            console.error('Error response status:', error.response.status);
-            console.error('Error response headers:', error.response.headers);
-        } else if (error.request) {
-            console.error('Request error:', error.request);
-        } else {
-            console.error('Error:', error.message);
-        }
-        alert("Unable to add the property: " + (error.response ? error.response.data : error.message));
+        console.log(error);
+        alert("Unable to add the property!");
       });
 }
 
@@ -374,6 +379,144 @@ function onPageLoad() {
 
 document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
+});
+
+// Forgot Password Script
+const forgotPasswordForm = document.getElementById('forgot-password-form');
+if (forgotPasswordForm) {
+    forgotPasswordForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email_ip').value;
+
+        try {
+            const response = await fetch('http://localhost:3005/forgot-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            if (!response.ok) {
+                // Log the response status and text
+                const errorText = await response.text();
+                console.error('Response status:', response.status);
+                console.error('Response text:', errorText);
+                throw new Error('Network response was not ok: ' + errorText);
+            }
+
+            const data = await response.text();
+            alert(data);
+        } catch (error) {
+            console.error('There was a problem with your fetch operation:', error);
+            alert('Error: ' + error.message);
+        }
+    });
+} else {
+    console.error('Element with ID "forgot-password-form" not found in the DOM.');
+}
+// Chatbot functionality
+document.addEventListener('DOMContentLoaded', () => {
+    // Create the chatbot button
+    const chatbotButton = document.createElement('div');
+    chatbotButton.id = 'chatbot-button';
+    chatbotButton.className = 'chatbot-button';
+    chatbotButton.innerHTML = '<i class="fas fa-comment"></i> Chat with us!';
+    document.body.appendChild(chatbotButton);
+
+    // Create the chatbot popup
+    const chatbotPopup = document.createElement('div');
+    chatbotPopup.id = 'chatbot-popup';
+    chatbotPopup.className = 'chatbot-popup';
+    chatbotPopup.innerHTML = `
+        <div class="chatbot-header">
+            <span>Chatbot</span>
+            <button id="chatbot-close" class="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your message..." />
+            <button id="chatbot-send" class="chatbot-send">Send</button>
+        </div>
+    `;
+    document.body.appendChild(chatbotPopup);
+
+    // Show popup on button click
+    chatbotButton.addEventListener('click', () => {
+        chatbotPopup.style.display = 'flex';
+    });
+
+    // Close popup on close button click
+    const chatbotCloseButton = document.getElementById('chatbot-close');
+    chatbotCloseButton.addEventListener('click', () => {
+        console.log("Close button clicked"); // Debugging line
+        chatbotPopup.style.display = 'none';
+    });
+
+    // Handle sending messages
+    document.getElementById('chatbot-send').addEventListener('click', () => {
+        sendMessage();
+    });
+
+    document.getElementById('chatbot-input').addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+
+        if (message) {
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chatbot-message user-message';
+            userMessage.textContent = message;
+            document.getElementById('chatbot-messages').appendChild(userMessage);
+
+            // Clear input field
+            input.value = '';
+
+            // Simulate bot response
+            simulateBotResponse(message);
+        }
+    }
+
+    function simulateBotResponse(message) {
+        // Replace this with your bot's API endpoint
+        fetch('https://your-chatbot-api.com/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const botMessage = document.createElement('div');
+            botMessage.className = 'chatbot-message bot-message';
+            botMessage.textContent = data.reply;
+            document.getElementById('chatbot-messages').appendChild(botMessage);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to open the chatbot popup
+    function openChatbot() {
+        const chatbotPopup = document.getElementById('chatbot-popup');
+        if (chatbotPopup) {
+            chatbotPopup.style.display = 'flex';
+        }
+    }
+
+    // Assign the function to the global window object
+    window.openChatbot = openChatbot;
+
+    // Add event listeners if necessary
+    document.getElementById('chatbot-button')?.addEventListener('click', openChatbot);
+    document.getElementById('chatbot-close')?.addEventListener('click', () => {
+        document.getElementById('chatbot-popup').style.display = 'none';
+    });
 });
 
 window.addProperty = addProperty;

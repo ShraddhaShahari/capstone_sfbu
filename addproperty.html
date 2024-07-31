@@ -133,7 +133,7 @@
                     <ul>
                         <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
                             <ul>
-                                <li><a href="chatbot.html">Chatbot</a></li>
+                                <li><a href="javascript:void(0);" onclick="openChatbot();">Chatbot</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
@@ -152,7 +152,7 @@
                 <form action="addproperty.html" method="post" id="add-property-form" enctype="multipart/form-data">
                     <h3>Add Property</h3>
                     <div class="form-group">
-                        <select name="bedrooms" class="input" required>
+                        <select name="bedroom" class="input" required>
                             <option value="" disabled selected>Bedrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -162,8 +162,8 @@
                             <option value="6">6</option>
                             <option value="7">7</option>
                         </select>
-                        <input type="text" name="sqft_living" placeholder="Living Area (sqft)" required class="input">
-                        <input type="text" name="sqft_lot" placeholder="Lot Area (sqft)" required class="input">
+                        <input type="text" name="living_area" placeholder="Living Area (sqft)" required class="input">
+                        <input type="text" name="lot_area" placeholder="Lot Area (sqft)" required class="input">
                     </div>
                     <div class="form-group">
                         <select name="floors" class="input" required>
@@ -192,12 +192,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="sqft_above" placeholder="Above Ground (sqft)" required class="input">
-                        <input type="text" name="sqft_basement" placeholder="Basement (sqft)" required class="input">
+                        <input type="text" name="above_ground" placeholder="Above Ground (sqft)" required class="input">
+                        <input type="text" name="basement" placeholder="Basement (sqft)" required class="input">
                         <input type="text" name="Date added" placeholder="Date added" required class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="yr_renovated" placeholder="Year Renovated" class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input type="text" name="date_renovated" placeholder="Year Renovated" class="input" onfocus="(this.type='date')" onblur="(this.type='text')">
                         <input type="text" name="street" placeholder="Street" required maxlength="100" class="input">
                         <input type="text" name="city" placeholder="City" required maxlength="50" class="input">
                     </div>
@@ -207,16 +207,16 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="images" name="images" placeholder="e.g., img1.jpg,img2.jpg,img3.jpg" class="input">
+                        <input type="text" id="images" name="upload_image_name" placeholder="e.g., img1.jpg,img2.jpg,img3.jpg" class="input">
                         <p>Image URLs (comma separated)</p>
                     </div>
                     <div class="form-group">
                         <p>Upload Image</p>
-                        <input type="file" name="image_upload" accept="image/*" class="input" onchange="previewImage(event)">
+                        <input type="file" name="upload_image" accept="image/*" class="input" onchange="previewImage(event)">
                         <img id="image-preview" src="" alt="Image Preview">
                     </div>
                     <div class="btn-container">
-                        <button type="button" class="btn btn-primary" onclick=addProperty()>Add Property</button>
+                        <button type="button" class="btn btn-primary" onclick="addProperty()">Add Property</button>
                     </div>
                 </form>
             </div>
