@@ -11,7 +11,9 @@
 
    <!-- Custom CSS file link -->
    <link rel="stylesheet" href="css/style.css">
-
+   
+   <!-- Axios CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
    <style>
       body {
          margin: 0;
@@ -26,7 +28,7 @@
          display: flex;
          justify-content: space-between;
          padding: 5px 10px;
-         background: rgba(0, 0, 0, 0.5);
+         background: rgba(0, 0, 0, 0.884);
          position: fixed;
          width: 100%;
          top: 0;
@@ -77,8 +79,10 @@
       }
 
       .login-container {
+
          background-color: #fff;
          /* background: rgba(255, 255, 255, 0.9); */
+
          padding: 40px;
          border-radius: 10px;
          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -264,27 +268,29 @@
 
   <!-- Header Section -->
   <header class="header">
-    <a href="index.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
-    <div class="auth-buttons">
-      <button onclick="showPopup('signin')" class="btn">Sign In</button>
-      <button onclick="showPopup('signup')" class="btn">Sign Up</button>
-    </div>
-  </header>
+   <a href="index.html" class="logo"><i class="fas fa-house"></i> MyHome</a>
+   <div id="menu-btn" class="menu-btn">Menu</div>
+   <div class="auth-buttons">
+     <button onclick="showPopup('signin')" class="btn">Sign In</button>
+     <button onclick="showPopup('signup')" class="btn">Sign Up</button>
+   </div>
+ </header>
 
-  <!-- Login Container -->
-  <div class="login-container">
+ <!-- Login Container -->
+ <div class="login-container">
    <h2>Sign In</h2>
    <form onsubmit="validateSignIn(event)">
-      <input type="email" id="signin-email" placeholder="Enter email" required>
-      <input type="password" id="signin-password" placeholder="Enter password" required>
-      <button type="submit">Sign In</button>
-      <p class="error-message" id="signin-error">Invalid email or password</p>
+     <input type="email" id="signin-email" placeholder="Enter email" required>
+     <input type="password" id="signin-password" placeholder="Enter password" required>
+     <button type="submit">Sign In</button>
+     <p class="error-message" id="signin-error">Invalid email or password</p>
    </form>
    <button class="btn btn-google" onclick="googleSignIn()">Continue with Google</button>
    <div class="forgot-password">
-      <a href="forget_pass.html">Forgot your password?</a>
+     <a href="forgot_password.html">Forgot your password?</a>
    </div>
    <p><a href="#" onclick="showPopup('signup')">New user? Register here</a></p>
+
 </div>
 
 <!-- Sign In Popup -->
@@ -330,5 +336,7 @@
 
   <!-- Custom JS file link below -->
   <script src="js/script.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 </body>
 </html>

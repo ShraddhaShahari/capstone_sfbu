@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const forgotPasswordForm = document.getElementById('forgot-password-form');
+
     if (forgotPasswordForm) {
-        forgotPasswordForm.addEventListener('submit', async function (event) {
+        forgotPasswordForm.addEventListener('submit', async function(event) {
             event.preventDefault();
             const email = document.getElementById('email_ip').value;
 
@@ -15,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    // Log the response status and text
+                    const errorText = await response.text();
+                    console.error('Response status:', response.status);
+                    console.error('Response text:', errorText);
+                    throw new Error('Network response was not ok: ' + errorText);
                 }
 
                 const data = await response.text();
@@ -25,5 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Error: ' + error.message);
             }
         });
+    } else {
+        console.error('Element with ID "forgot-password-form" not found in the DOM.');
     }
 });

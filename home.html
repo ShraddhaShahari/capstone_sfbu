@@ -155,9 +155,10 @@ input[type="number"] {
                 <ul>
                     <li><a href="#">Contact Agent<i class="fas fa-angle-down"></i></a>
                         <ul>
-                            <li><a href="chatbot.html">Chatbot</a></li>
+                            <li><a href="javascript:void(0);" onclick="openChatbot();">Chatbot</a></li>
                         </ul>
-                    </li>
+            
+            
                     <li><a href="#">Predict Price<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li><a href="home.html">House Price Prediction</a></li>
@@ -245,11 +246,12 @@ input[type="number"] {
           <a href="contact.html" class="btn">Start now</a>
       </div>
       <div class="box">
-          <img src="images/chat.jpg" alt="">
-          <h3>24/7 Chat Support</h3>
-          <p>"Our chatbot is ready to help you anytime, day or night."</p>
-          <a href="chatbot.html" class="btn">Start now</a>
-      </div>
+        <img src="images/chat.jpg" alt="">
+        <h3>24/7 Chat Support</h3>
+        <p>"Our chatbot is ready to help you anytime, day or night."</p>
+        <a href="javascript:void(0);" onclick="openChatbot();" class="btn">Start now</a>
+    </div>
+    
   </div>
   </section>
 
@@ -290,6 +292,26 @@ input[type="number"] {
       </div>
   </section>
   <div class="credit">&copy; copyright @ 2024 by <span>housepricing@realestate.com</span> | all rights reserved!</div>
+  
+  <!-- Chatbot Button -->
+<div id="chatbot-button" class="chatbot-button">
+    <i class="fas fa-comment"></i> Chat with us!
+  </div>
+  
+  <!-- Chatbot Popup -->
+  <div id="chatbot-popup" class="chatbot-popup">
+    <div class="chatbot-header">
+      <span>Chatbot</span>
+      <button id="chatbot-close" class="chatbot-close">&times;</button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages"></div>
+    <div class="chatbot-input-container">
+      <input type="text" id="chatbot-input" placeholder="Type your message..." />
+      <button id="chatbot-send" class="chatbot-send">Send</button>
+    </div>
+  </div>
+  
+
 </footer>
 
 <!-- footer section ends -->
@@ -307,6 +329,7 @@ input[type="number"] {
         <a class="next">&#10095;</a>
     </div>
 </div>
+
 
 </body>
 </html>
