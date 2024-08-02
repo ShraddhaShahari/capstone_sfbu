@@ -1,0 +1,40 @@
+{
+  "questions": [
+    {
+      "question": "Hello",
+      "answer": "Hey there!"
+    },
+    {
+      "question": "How are you?",
+      "answer": "good! Thanks for asking!"
+    },
+    {
+      "question": "what is this website about",
+      "answer": "This website is dedicated to house price prediction in the United States. Here, you can purchase property, sell property, and predict property prices."
+    },
+    {
+      "question": "Where i can predict the house prices?",
+      "answer": "You can go to the 'Home' page where you will find the price prediction form. Fill in the details of the property for which you want to predict the price and click on 'Predict Price'. The system will calculate the price for you."
+    },
+    {
+      "question": "How i can contact the agent?",
+      "answer": "You can go to the 'Home' page where you will find the 'Contact Agent' button. From there, you can contact our agent."
+    },
+    {
+      "question": "How to give feedback on this website?",
+      "answer": "Go to feedback page and you can post your feedback!"
+    },
+    {
+      "question": "I want to sell property",
+      "answer": "You can go to 'Add Property' "
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "what is your name",
+      "answer": ""
+    }
+  ]
+}

@@ -377,6 +377,24 @@ function onPageLoad() {
         });
 }
 
+function onClickChatSend() {
+    console.log("chat button clicked");
+    var chat_user_input = document.getElementById("chatbot-input").value;
+
+    axios.post("http://127.0.0.1:5000/chat", {
+        user_input: chat_user_input
+    })
+    .then(function(response) {
+        return_response = response.data
+        console.log("Response from server:", return_response);
+        sendMessageResponse(return_response);
+        // TODO: append the response to chat window
+    })
+    .catch(function(error) {
+        console.error("Error in POST request:", error);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
@@ -484,13 +502,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function simulateBotResponse(message) {
         // Replace this with your bot's API endpoint
-        fetch('https://your-chatbot-api.com/query', {
+        fetch('http://127.0.0.1:5000/query', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: message })
         })
         .then(response => response.json())
         .then(data => {
+            console.log("data of chat response ", data); // Debugging line
             const botMessage = document.createElement('div');
             botMessage.className = 'chatbot-message bot-message';
             botMessage.textContent = data.reply;

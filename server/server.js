@@ -21,8 +21,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Specify the views directory
 
 
-const upload = multer({ dest: 'uploads' });
-
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
