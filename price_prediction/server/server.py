@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import util
+import util, chatbot
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -31,6 +31,17 @@ def predict_home_price():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+
+@app.route('/query', methods=['POST'])
+def chat_bot_function():
+    data = request.get_json()
+    message = data['message']
+    # response = chatbot.chatbot_interaction(message)
+    response = jsonify({
+        'reply': chatbot.chatbot_interaction(message)
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if __name__ == "__main__":
     print("Starting Python Flask Server For Home Price Prediction...")
