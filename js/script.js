@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         showImage(currentIndex);
         
+        // Use a separate interval for each slider
         setInterval(() => {
             currentIndex = (currentIndex + 1) % images.length;
             showImage(currentIndex);
@@ -192,18 +193,56 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Calculate price function
-function calculatePrice() {
-    var sqft_living = document.getElementsByName('sqft_living')[0].value;
-    var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
-    var price_per_sqft = document.getElementsByName('price_per_sqft')[0].value;
+// function calculatePrice() {
+//     var sqft_living = document.getElementsByName('sqft_living')[0].value;
+//     var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
+//     var price_per_sqft = document.getElementsByName('price_per_sqft')[0].value;
 
-    if (sqft_living && price_per_sqft) {
-        var price = sqft_living * price_per_sqft;
-        document.getElementById('calculated-price').innerText = 'Calculated Price: $' + price.toLocaleString();
-    } else {
-        document.getElementById('calculated-price').innerText = 'Please fill in all required fields';
-    }
+//     if (sqft_living && price_per_sqft) {
+//         var price = sqft_living * price_per_sqft;
+//         document.getElementById('calculated-price').innerText = 'Calculated Price: $' + price.toLocaleString();
+//     } else {
+//         document.getElementById('calculated-price').innerText = 'Please fill in all required fields';
+//     }
+// }
+function onClickedEstimatePrice() {
+    console.log("Estimate price button clicked");
+    var sqft_living = document.getElementById("ui_sqft_living").value;
+    var sqft_lot = document.getElementById("ui_sqft_lot").value;
+    var city = document.getElementById("ui_city").value;
+    var bedrooms = document.getElementById("ui_bedrooms").value;
+    console.log("Estimate price button clicked after", sqft_living, sqft_lot, bedrooms, city);
+    var t1 =   parseInt(sqft_living)
+    console.log("after", t1)
+
+
+    axios.post("http://127.0.0.1:5000/predict_home_price", {
+        sqft_living: parseInt(sqft_living),
+        sqft_lot: parseInt(sqft_lot),
+        bedrooms: parseInt(bedrooms),
+        city: city
+    })
+    .then(function(response) {
+        console.log("Response from server:", response.data);
+        // Assuming you have an element with id "ui_estimated_price" to show the result
+        var estPrice = document.getElementById("ui_estimated_price");
+        if (response.data && response.data.estimated_price !== undefined) {
+            estPrice.innerHTML = "<h2>Estimated Price: $" + response.data.estimated_price.toString() + "</h2>";
+        } else {
+            estPrice.innerHTML = "<h2>Error: Failed to estimate price</h2>";
+        }
+    })
+    .catch(function(error) {
+        console.error("Error in POST request:", error);
+        var estPrice = document.getElementById("ui_estimated_price");
+        estPrice.innerHTML = "<h2>Error: Failed to estimate price</h2>";
+    });
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    fetchPropertyListingsMap(); // Fetch property listings when the page loads
+});
 
 // Add min and max value enforcement for number inputs
 document.querySelectorAll('input[type="number"]').forEach(inputNumber => {
@@ -262,7 +301,12 @@ function addProperty() {
         console.log(response);
         form.reset();
         alert("Property has been added successfully!");
-      })
+
+         // Clear the image preview
+    const imgElement = document.getElementById('image-preview');
+    imgElement.src = '';
+    imgElement.style.display = 'none';
+})
       .catch(function (error) {
         console.log(error);
         alert("Unable to add the property!");

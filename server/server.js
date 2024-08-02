@@ -11,17 +11,14 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'uploads' });
 
-
-
 const app = express();
-const PORT = 3005;
+const PORT = 3005;
+
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Specify the views directory
 
-
-const upload = multer({ dest: 'uploads' });
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -252,6 +249,7 @@ app.post('/send-message', async (req, res) => {
 // Forgot Password functionality
 let users = [
   { email: 'hartej.0506@gmail.com', name: 'Hartej', password: 'Password@123' }
+
 ];
 
 app.post('/forgot-password', (req, res) => {
@@ -313,6 +311,33 @@ app.post('/reset-password', (req, res) => {
 app.get('/forgot_password', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'forgot_password.html'));
 });
+
+
+
+// // Endpoint to fetch properties by coordinates
+// app.get('/properties-by-coordinates', async (req, res) => {
+//     const { lat, lng } = req.query;
+//     console.log(`Received request for properties near: ${lat}, ${lng}`);
+
+//     // Example query: Adjust this query to match your database schema
+//     // Assuming you have latitude and longitude columns in your property table
+//     try {
+//         const result = await pool.query(`
+//             SELECT * FROM property
+//             WHERE ST_DWithin(
+//                 geography(ST_SetSRID(ST_Point(longitude, latitude), 4326)),
+//                 geography(ST_SetSRID(ST_Point($1, $2), 4326)),
+//                 5000  -- 5km radius
+//             )
+//         `, [lng, lat]);
+
+//         console.log('Query result:', result.rows);
+//         res.json({ properties: result.rows });
+//     } catch (error) {
+//         console.error('Error fetching properties by coordinates:', error);
+//         res.status(500).json({ error: 'Server error' });
+//     }
+// });
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
