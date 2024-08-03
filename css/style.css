@@ -691,6 +691,15 @@ section {
 }
 
 /* About Section */
+
+.about-container {
+    background: rgba(255, 255, 255, 0.8); /* Light shadow background */
+    padding: 2rem; /* Add padding to create space inside the background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for depth */
+    margin: 2rem auto; /* Center the container horizontally */
+    max-width: 1200px; /* Set a maximum width for better layout */
+}
 .about .row {
     display: flex;
     flex-wrap: wrap;
@@ -723,39 +732,46 @@ section {
     padding: 1rem 0;
     font-size: 1.7rem;
     color: var(--light-color);
+    font-weight: 600;
 }
 .about .agent-info {
     font-size: 1.8rem;
     margin: 0.5rem 0;
     text-align: left;
     list-style: none; /* Remove bullet points */
+    font-weight: 600;
 }
 
 .about .agent-info span,
 .about .agent-info a {
     display: inline;
     font-size: 1.5rem; /* Ensure consistent font size */
+    font-weight: 600;
 }
 
 .about .email-links {
     text-decoration: none;
     color: var(--main-color);
+    font-weight: 600;
 }
 
 .about .email-links:hover {
     text-decoration: underline;
+    font-weight: 600;
 }
 
 .about .address {
     font-size: 1.6rem;
     margin-top: 1rem;
     text-align: left;
+    font-weight: 600;
 }
 
 .about .address p {
     display: flex;
     align-items: center;
     font-size: 1.6rem;
+    font-weight: 600;
 }
 
 .about .address i {
@@ -922,41 +938,70 @@ section {
 
 
 /* Contact Section */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+                url('images/bg2.avif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.contact {
+    padding: 4rem 0;
+}
+
 .contact .row {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
+    justify-content: center;
+}
+
+
+.contact .row form {
+    flex: 1 1 30rem;
+    background-color: var(--white);
+    padding: 2rem;
+    border: 1px solid rgba(151, 150, 150, 0.229); /* Light grey border */
+    border-radius: 10px; 
+    box-shadow: 0 2px 10px rgba(131, 130, 130, 0.532); /* Optional: Add a slight shadow for depth */
 }
 
 .contact .row .image {
-    flex: 1 1 50rem;
+    flex: 1 1 30rem;
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent background for the image box */
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light grey border */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for depth */
+    border-radius: 10px; /* Optional: Rounded corners for the box */
 }
 
 .contact .row .image img {
     width: 100%;
+    display: block;
+    border-radius: 10px; /* Optional: Rounded corners for the image */
 }
 
+
 .contact .row form {
-    flex: 1 1 30rem;
-    background-color: var (--white);
-    box-shadow: var (--box-shadow);
-    padding: 2rem;
+    background-color: rgba(144, 143, 143, 0.9); /* Ensure form background stands out */
 }
 
 .contact .row form h3 {
     padding-bottom: 1rem;
     font-size: 2.5rem;
-    color: var (--black);
+    color: var(--black);
     text-align: center;
     text-transform: capitalize;
 }
 
 .contact .row form .box {
     width: 100%;
-    border: var (--border);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light grey border for input boxes */
     padding: 1.4rem;
-    color: var (--black);
+    color: var(--black);
     font-size: 1.8rem;
     margin: 1rem 0;
 }
@@ -965,6 +1010,25 @@ section {
     height: 15rem;
     resize: none;
 }
+
+.inline-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--main-color);
+    color: var(--white);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.inline-btn:hover {
+    background-color: var(--black);
+}
+
 
 /* FAQ Section */
 .faq .heading {
