@@ -6,13 +6,9 @@ const fs = require('fs');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const multer = require('multer');
-
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'uploads' });
-
-
-
 const app = express();
 const PORT = 3005;
 
@@ -20,8 +16,6 @@ const PORT = 3005;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Specify the views directory
 
-
-const upload = multer({ dest: 'uploads' });
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -251,7 +245,10 @@ app.post('/send-message', async (req, res) => {
 
 // Forgot Password functionality
 let users = [
-  { email: 'hartej.0506@gmail.com', name: 'Hartej', password: 'Password@123' }
+  { email: 'hartej.0506@gmail.com', name: 'Hartej', password: 'Password@123' },
+  { email: 'shraddhashahari7@gmail.com', name: 'Shraddha', password: 'Password@123' },
+  { email: 'rupalirkate2015@gmail.com', name: 'Rupali', password: 'Password@123' },
+  { email: 'rupaliskale21@gmail.com', name: 'Rupali1', password: 'Password@123' }
 ];
 
 app.post('/forgot-password', (req, res) => {

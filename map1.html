@@ -296,7 +296,7 @@
                                 ${imageElements}
                             </div>
                             
-                            <p class="location" onclick="showPropertyOnMap('${property.city}', ${property.id}, ${property.bedroom}, ${property.lot_area})">
+                            <p class="location" onclick="showPropertyOnMap('${property.city}', ${property.id}, ${property.bedroom}, ${property.lot_area}, ${property.price})">
                             <i class="fas fa-map-marker-alt"></i><span>${property.city}, ${property.street}</span>
                             </p>
 
@@ -351,7 +351,8 @@
                     <b>${property.city}</b><br>
                     <img src="images/homeimage1.jpg" alt="Property Image" style="width:100px;height:auto;"><br>
                     Bedrooms: ${property.bedroom}<br>
-                    Lot Area: ${property.lot_area}
+                    Lot Area: ${property.lot_area}<br>
+                    Price: ${property.price}
                 `);
                 infoWindow.open(map, marker);
             });
@@ -389,8 +390,7 @@
 
         //  function to show property on map after clicking on the particular house
 
-        function showPropertyOnMap(city, propertyId, bedroom, lot_area) {
-        // Use the Geocoding API to fetch the coordinates for the city
+        function showPropertyOnMap(city, propertyId, bedroom, lot_area, price) {
         const geocoder = new google.maps.Geocoder();
         geocoder.geocode({ address: city }, (results, status) => {
             if (status === 'OK' && results[0]) {
@@ -410,9 +410,10 @@
                 <div class="property-info">
                                 <img src="${imageUrl}" alt="Property Image"/><br>
                                 <strong>Property ID:</strong> ${propertyId}<br>
-                                <strong>City:</strong> ${city}<br>
+                                <strong><i class="fas fa-city"></i> City:</strong> ${city}<br>
                                 <strong><i class="fas fa-bed"></i> No. of bed:</strong> ${bedroom}<br>
-                                <strong><i class="fas fa-ruler-combined"></i> Total lot area:</strong> ${lot_area} sq ft
+                                <strong><i class="fas fa-ruler-combined"></i> Lot area:</strong> ${lot_area} sq ft<br>
+                                <strong><i class="fas fa-dollar-sign"></i> Price:</strong> $${price}<br>
                             </div>        
                 `);
                 infoWindow.open(map, marker);
@@ -435,7 +436,7 @@
                 return;
             }
         //Clear existing markers
-            //clearMarkers(); 
+            // clearMarkers(); 
 
             const service = new google.maps.places.PlacesService(map);
             const request = {
