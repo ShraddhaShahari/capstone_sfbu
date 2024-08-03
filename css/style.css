@@ -274,7 +274,7 @@ section {
 .transparent-btn {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.5); /* Slightly transparent background */
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
     border: 1px solid rgba(255, 255, 255, 0.7); /* Slightly transparent border */
     color: var(--black); /* Text color */
     border-radius: 5px; /* Rounded corners */
@@ -369,10 +369,11 @@ section {
 
 .services .box-container1 .box img {
     margin: 1rem 0;
-    height: 8rem;
+    height: 12rem;
+    width: 11rem;
 }
 
-.services .box-container1 .box h3 {
+.services .box-container1 .box h4 {
     font-size: 2rem;
     padding: 1rem 0;
     color: var(--black);
@@ -1571,6 +1572,7 @@ body {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .listings .box .flex p {

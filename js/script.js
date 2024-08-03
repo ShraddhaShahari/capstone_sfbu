@@ -131,9 +131,7 @@ function submitSignUp(event) {
     }, 2000);
 }
 
-function googleSignIn() {
-    // Google Sign-In implementation goes here
-}
+
 
 // Image slider functionality for listings page
 document.addEventListener('DOMContentLoaded', function() {
@@ -240,28 +238,31 @@ function onClickedEstimatePrice() {
 }
 
 
+    // Add min and max value enforcement for number inputs
+    document.querySelectorAll('input[type="number"]').forEach(inputNumber => {
+        inputNumber.addEventListener('input', () => {
+            let min = parseFloat(inputNumber.min);
+            let max = parseFloat(inputNumber.max);
+            let value = parseFloat(inputNumber.value);
+
+
 document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
 
-// Add min and max value enforcement for number inputs
-document.querySelectorAll('input[type="number"]').forEach(inputNumber => {
-    inputNumber.addEventListener('input', () => {
-        let min = parseFloat(inputNumber.min);
-        let max = parseFloat(inputNumber.max);
-        let value = parseFloat(inputNumber.value);
 
-        if (value < min) inputNumber.value = min;
-        if (value > max) inputNumber.value = max;
+            if (value < min) inputNumber.value = min;
+            if (value > max) inputNumber.value = max;
+        });
     });
-});
 
-function addProperty() {
-    const form = document.getElementById('add-property-form');
-    if (!form) {
-        console.error('Form not found!');
-        return;
-    }
+    function addProperty() {
+        
+        const form = document.getElementById('add-property-form');
+        if (!form) {
+            console.error('Form not found!');
+            return;
+        }
 
   // Check if the file input exists and get the file
 
@@ -291,7 +292,7 @@ function addProperty() {
 
 
     console.log('print:',formDataObject)
-
+    
     axios.post('http://localhost:3005/property', transformedObject, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -302,11 +303,13 @@ function addProperty() {
         form.reset();
         alert("Property has been added successfully!");
 
+        
          // Clear the image preview
-    const imgElement = document.getElementById('image-preview');
-    imgElement.src = '';
-    imgElement.style.display = 'none';
-})
+        const imgElement = document.getElementById('image-preview');
+        imgElement.src = '';
+        imgElement.style.display = 'none';
+    })
+
       .catch(function (error) {
         console.log(error);
         alert("Unable to add the property!");
@@ -443,40 +446,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
 
-// Forgot Password Script
-const forgotPasswordForm = document.getElementById('forgot-password-form');
-if (forgotPasswordForm) {
-    forgotPasswordForm.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const email = document.getElementById('email_ip').value;
-
-        try {
-            const response = await fetch('http://localhost:3005/forgot-password', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            if (!response.ok) {
-                // Log the response status and text
-                const errorText = await response.text();
-                console.error('Response status:', response.status);
-                console.error('Response text:', errorText);
-                throw new Error('Network response was not ok: ' + errorText);
-            }
-
-            const data = await response.text();
-            alert(data);
-        } catch (error) {
-            console.error('There was a problem with your fetch operation:', error);
-            alert('Error: ' + error.message);
-        }
-    });
-} else {
-    console.error('Element with ID "forgot-password-form" not found in the DOM.');
-}
 // Chatbot functionality
 document.addEventListener('DOMContentLoaded', () => {
     // Create the chatbot button
