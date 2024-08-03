@@ -9,8 +9,10 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'uploads' });
+
 const app = express();
-const PORT = 3005;
+const PORT = 3005;
+
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
@@ -245,10 +247,12 @@ app.post('/send-message', async (req, res) => {
 
 // Forgot Password functionality
 let users = [
+
   { email: 'hartej.0506@gmail.com', name: 'Hartej', password: 'Password@123' },
   { email: 'shraddhashahari7@gmail.com', name: 'Shraddha', password: 'Password@123' },
   { email: 'rupalirkate2015@gmail.com', name: 'Rupali', password: 'Password@123' },
   { email: 'rupaliskale21@gmail.com', name: 'Rupali1', password: 'Password@123' }
+
 ];
 
 app.post('/forgot-password', (req, res) => {
@@ -310,6 +314,9 @@ app.post('/reset-password', (req, res) => {
 app.get('/forgot_password', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'forgot_password.html'));
 });
+
+
+
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
