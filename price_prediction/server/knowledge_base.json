@@ -1,7 +1,27 @@
 {
   "questions": [
     {
+      "question": "Hi",
+      "answer": "Hello there!"
+    },
+    {
+      "question": "hi",
+      "answer": "Hello there!"
+    },
+    {
       "question": "Hello",
+      "answer": "Hey there!"
+    },
+    {
+      "question": "hello",
+      "answer": "Hey there!"
+    },
+    {
+      "question": "hey",
+      "answer": "Hey there!"
+    },
+    {
+      "question": "Hey",
       "answer": "Hey there!"
     },
     {
@@ -13,11 +33,11 @@
       "answer": "This website is dedicated to house price prediction in the United States. Here, you can purchase property, sell property, and predict property prices."
     },
     {
-      "question": "Where i can predict the house prices?",
+      "question": "Where can I predict the house prices?",
       "answer": "You can go to the 'Home' page where you will find the price prediction form. Fill in the details of the property for which you want to predict the price and click on 'Predict Price'. The system will calculate the price for you."
     },
     {
-      "question": "How i can contact the agent?",
+      "question": "How can I contact the agent?",
       "answer": "You can go to the 'Home' page where you will find the 'Contact Agent' button. From there, you can contact our agent."
     },
     {
@@ -26,15 +46,15 @@
     },
     {
       "question": "I want to sell property",
-      "answer": "You can go to 'Add Property' "
+      "answer": "You can go to 'Add Property' page. "
     },
     {
-      "question": "",
-      "answer": ""
+      "question": "How to check the particular property location?",
+      "answer": "You can access Map page to check the location of the property"
     },
     {
       "question": "what is your name",
-      "answer": ""
+      "answer": "I am a chatbot, my name is Catty!"
     }
   ]
 }

@@ -82,7 +82,7 @@
         .listings-container .box .flex {
             display: flex;
             justify-content: space-between;
-            width: 100%; /* Ensure flex items take full width */
+            width: 100%; 
         }
         .listings-container .box .flex p {
             margin: 0;
@@ -108,7 +108,7 @@
             justify-content: space-between;
         }
         .listings-container .box-container {
-            width: 48%; /* Adjust width to fit two boxes in a row */
+            width: 48%; 
         }
         .listings-container .row .box-container .box .location i {
         margin-right: 1rem;
@@ -213,12 +213,11 @@
         <div class="credit">&copy; 2024 by <span>housepricing@realestate.com</span> | All rights reserved!</div>
     </footer>
 
-    // Map related code starts here
+<!-- Map related code starts here -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         let map, infoWindow, markers = [];
         const blueIconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
-
 
         const imageSources = [
                     'images/homeimage1.jpg',
@@ -285,10 +284,7 @@
                         const box = document.createElement('div');
                         box.classList.add('box');
 
-                        
-
                         const randomImages = getRandomImages(1);
-
                         const imageElements = randomImages.map(src => `<img src="${src}" alt="Property Image ">`).join('');
 
                         box.innerHTML = `
@@ -299,19 +295,15 @@
                             <p class="location" onclick="showPropertyOnMap('${property.city}', ${property.id}, ${property.bedroom}, ${property.lot_area}, ${property.price})">
                             <i class="fas fa-map-marker-alt"></i><span>${property.city}, ${property.street}</span>
                             </p>
-
-
                             <div class="flex">   
                             <p><i class="fas fa-bed"></i><span>${property.bedroom}</span></p>
                             <p><i class="fas fa-maximize"></i><span>${property.lot_area}</span></p>
-                                
                             </div>
                             <button class="btn" onclick="viewProperty(${property.id})">View Property</button>
                         `;
 
                         boxContainer.appendChild(box);
                         row.appendChild(boxContainer);
-                        
                         addMarkerForProperty(property);
                     });
                 })
@@ -346,119 +338,82 @@
                 icon: blueIconUrl
             });
 
-            marker.addListener('click', () => {
-                infoWindow.setContent(`
-                    <b>${property.city}</b><br>
-                    <img src="images/homeimage1.jpg" alt="Property Image" style="width:100px;height:auto;"><br>
-                    Bedrooms: ${property.bedroom}<br>
-                    Lot Area: ${property.lot_area}<br>
-                    Price: ${property.price}
-                `);
-                infoWindow.open(map, marker);
-            });
-            markers.push(marker);
         }
         
-// Function to geocode an address from the search bar in the secondary navbar
-        function geocodeAddress() {
-            const address = document.getElementById('location-search').value;
-            if (!address) return;
+        //Function to create a marker on an property address from the search bar
+            function geocodeAddress() {
+                const address = document.getElementById('location-search').value;
+                if (!address) return;
 
-            axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-                params: {
-                    address: address,
-                    key: 'AIzaSyD1AY9z1LKbIdCvrME84kjJlVIkkM_vKX0'
-                }
+                axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                    params: {
+                        address: address,
+                        key: 'AIzaSyD1AY9z1LKbIdCvrME84kjJlVIkkM_vKX0'
+                    }
+                })
+
+                .then(response => {
+                const location = response.data.results[0].geometry.location;
+
+                const city = address;  
+                const propertyId = 36; 
+                const bedroom = 3; 
+                const lot_area = 6540; 
+                const price =  130000
+
+                
+                showPropertyOnMap(city, propertyId, bedroom, lot_area, price);
             })
-            .then(response => {
-        const location = response.data.results[0].geometry.location;
-        clearMarkers(); // Clear existing markers
-        const marker = new google.maps.Marker({
-            map: map,
-            position: location,
-            icon: blueIconUrl
-        });
-
-        // Example property details, adjust according to your requirements
-        function addMarkerForProperty(property){
-        const propertyId = 'property.id';
-        const city = 'property.city';
-
-        const bedroom = 'property.bedroom';
-        const lot_area ='property.lot_area';
-
-        const randomImages = getRandomImages(1);
-        const imageUrl = randomImages[0];
-
-        marker.addListener('click', () => {
-            infoWindow.setContent(`
-                <div class="property-info">
-                    <img src="${imageUrl}" alt="Property Image"/><br>
-                    <strong>Property ID:</strong> ${property.id}<br>
-                    <strong>City:</strong> ${property.city}<br>
-                    <strong><i class="fas fa-bed"></i> No. of bed:</strong> ${property.bedroom}<br>
-                    <strong><i class="fas fa-ruler-combined"></i> Total lot area:</strong> ${property.lot_area} sq ft
-                </div>        
-            `);
-            infoWindow.open(map, marker);
-        });
-    }
-        markers.push(marker);
-        map.setCenter(location); // Center the map on the new marker
-    })
-    .catch(error => console.error(error));
-}
-
-document.getElementById('search-button').addEventListener('click', geocodeAddress);
-        function clearMarkers() {
-            for (let i = 0; i < markers.length; i++) {
-                markers[i].setMap(null);
-            }
-            markers = [];
+                    
+            .catch(error => console.error(error));
         }
 
-        //  function to show property on map after clicking on the particular house
+                document.getElementById('search-button').addEventListener('click', geocodeAddress);
+                    function clearMarkers() {
+                        for (let i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
+                        }
+                        markers = [];
+                    }
 
+        //function to show property on map by creating marker, after clicking on the particular house
+            function showPropertyOnMap(city, propertyId, bedroom, lot_area, price) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: city }, (results, status) => {
+                if (status === 'OK' && results[0]) {
+                    clearMarkers(); // Clear existing markers
+                    const location = results[0].geometry.location;
+                    const marker = new google.maps.Marker({
+                        map: map,
+                        position: location,
+                        icon: blueIconUrl
+                    });
+                const randomImages = getRandomImages(1);
+                const imageUrl = randomImages[0];
 
-        function showPropertyOnMap(city, propertyId, bedroom, lot_area, price) {
-
-        const geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: city }, (results, status) => {
-            if (status === 'OK' && results[0]) {
-                clearMarkers(); // Clear existing markers
-                const location = results[0].geometry.location;
-                const marker = new google.maps.Marker({
-                    map: map,
-                    position: location,
-                    icon: blueIconUrl
+                marker.addListener('click', () => {
+                    infoWindow.setContent(`
+                    <div class="property-info">
+                                    <img src="${imageUrl}" alt="Property Image"/><br>
+                                    <strong>Property ID:</strong> ${propertyId}<br>
+                                    <strong><i class="fas fa-city"></i> City:</strong> ${city}<br>
+                                    <strong><i class="fas fa-bed"></i> No. of bed:</strong> ${bedroom}<br>
+                                    <strong><i class="fas fa-ruler-combined"></i> Lot area:</strong> ${lot_area} sq ft<br>
+                                    <strong><i class="fas fa-dollar-sign"></i> Price:</strong> $${price}<br>
+                                </div>        
+                    `);
+                    infoWindow.open(map, marker);
                 });
-        // Get a random image URL
-            const randomImages = getRandomImages(1);
-            const imageUrl = randomImages[0];
 
-            marker.addListener('click', () => {
-                infoWindow.setContent(`
-                <div class="property-info">
-                                <img src="${imageUrl}" alt="Property Image"/><br>
-                                <strong>Property ID:</strong> ${propertyId}<br>
-                                <strong><i class="fas fa-city"></i> City:</strong> ${city}<br>
-                                <strong><i class="fas fa-bed"></i> No. of bed:</strong> ${bedroom}<br>
-                                <strong><i class="fas fa-ruler-combined"></i> Lot area:</strong> ${lot_area} sq ft<br>
-                                <strong><i class="fas fa-dollar-sign"></i> Price:</strong> $${price}<br>
-                            </div>        
-                `);
-                infoWindow.open(map, marker);
+                    markers.push(marker);
+                    map.setCenter(location); 
+                } else {
+                    console.error('Geocode was not successful for the following reason:', status);
+                }
             });
+        }
 
-                markers.push(marker);
-                map.setCenter(location); // Center the map on the new marker
-            } else {
-                console.error('Geocode was not successful for the following reason:', status);
-            }
-        });
-    }
-
-        // function to show property on map after clicking on the particular house
+        //function to show nearby places to particular property on map after clicking on the particular house
         function searchNearbyPlaces() {
             const selectedPlace = document.getElementById('places').value;
 
@@ -466,7 +421,6 @@ document.getElementById('search-button').addEventListener('click', geocodeAddres
                 alert('Please select a place category.');
                 return;
             }
-        //Clear existing markers
             // clearMarkers(); 
 
             const service = new google.maps.places.PlacesService(map);
@@ -480,12 +434,48 @@ document.getElementById('search-button').addEventListener('click', geocodeAddres
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     for (let i = 0; i < results.length; i++) {
                         const place = results[i];
+                 
+                        let customIcon;
+                        if (place.types.includes('school')) {
+                            customIcon = {
+                                url: '/images/school.png',  
+                                scaledSize: new google.maps.Size(32, 32)
+                            };
+                        } else if (place.types.includes('restaurant')) {
+                            customIcon = {
+                                url: '/images/restaurant.png',  
+                                scaledSize: new google.maps.Size(32, 32)
+                            };
+                        } else if (place.types.includes('park')) {
+                            customIcon = {
+                                url: '/images/park.png',  
+                                scaledSize: new google.maps.Size(32, 32)
+                            };
+                        } else if (place.types.includes('hospital')) {
+                            customIcon = {
+                                url: '/images/hospital.png',  
+                                scaledSize: new google.maps.Size(32, 32)
+                            };
+                        } 
+
+                        // Create a marker with the custom icon
                         const marker = new google.maps.Marker({
                             map: map,
-                            position: place.geometry.location
+                            position: place.geometry.location,
+                            icon: customIcon,
+                            title: place.name
                         });
-                        marker.addListener('click', () => {
-                            infoWindow.setContent(place.name);
+
+                    // Add click listener to each marker
+                    marker.addListener('click', () => {
+                    const infoWindowContent = `
+                        <div>
+                            <strong>${place.name}</strong><br>
+                            ${place.vicinity}<br>
+                            Rating: ${place.rating || 'N/A'}
+                        </div>
+                    `;
+                            infoWindow.setContent(infoWindowContent);
                             infoWindow.open(map, marker);
                         });
                         markers.push(marker);

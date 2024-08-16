@@ -13,12 +13,12 @@ def save_knowledge_base(file_path: str, data: dict):
         json.dump(data, file, indent=2)
 
 
-def find_best_match(user_question: str, questions: list[str]) -> str or None:
+def find_best_match(user_question: str, questions: list[str]) -> str:
     matches: list = get_close_matches(user_question, questions, n=1, cutoff=0.6)
     return matches[0] if matches else None
 
 
-def get_answer_for_question(question: str, knowledge_base: dict) -> str or None:
+def get_answer_for_question(question: str, knowledge_base: dict) -> str:
     for q in knowledge_base["questions"]:
         if q["question"] == question:
             return q["answer"]
@@ -34,7 +34,7 @@ def chat_bot():
         if user_input.lower() == 'quit':
             break
 
-        best_match: str or None = find_best_match(user_input, [q['question'] for q in knowledge_base["questions"]])
+        best_match: str = find_best_match(user_input, [q['question'] for q in knowledge_base["questions"]])
 
         if best_match:
             answer: str = get_answer_for_question(best_match, knowledge_base)
@@ -51,7 +51,7 @@ def chat_bot():
 
 def chatbot_interaction(user_input):
     knowledge_base: dict = load_knowledge_base('knowledge_base.json')
-    best_match: str or None = find_best_match(user_input, [q['question'] for q in knowledge_base["questions"]])
+    best_match: str = find_best_match(user_input, [q['question'] for q in knowledge_base["questions"]])
     if best_match:
         answer: str = get_answer_for_question(best_match, knowledge_base)
         output = (f'Bot: {answer}')

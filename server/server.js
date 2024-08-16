@@ -106,7 +106,7 @@ app.get('/properties', async (req, res) => {
     }
   }
   createPropertyTable();
-  const result = await pool.query('SELECT * FROM property');
+  const result = await pool.query('SELECT * FROM property ORDER BY date_added DESC');
   res.json({
     res: result.rows,
   });

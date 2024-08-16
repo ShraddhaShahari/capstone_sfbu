@@ -26,10 +26,9 @@ window.onload = function () {
     google.accounts.id.renderButton(
         document.querySelector('.g_id_signin'),
         {
-            theme: 'outline', //'outline', 'filled_black', 'filled_blue'
-            size: 'large',        // or 'medium', 'small'
-            text: 'continue_with', // or 'signin_with', 'signup_with'
-            shape: 'standard'         // or 'rectangular'
+            theme: 'outline', 
+            size: 'large',       
+            shape: 'standard'       
         }
     );
     google.accounts.id.prompt();
