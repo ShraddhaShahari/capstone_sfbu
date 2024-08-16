@@ -189,6 +189,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Calculate price function
+// function calculatePrice() {
+//     var sqft_living = document.getElementsByName('sqft_living')[0].value;
+//     var sqft_lot = document.getElementsByName('sqft_lot')[0].value;
+//     var price_per_sqft = document.getElementsByName('price_per_sqft')[0].value;
+
+//     if (sqft_living && price_per_sqft) {
+//         var price = sqft_living * price_per_sqft;
+//         document.getElementById('calculated-price').innerText = 'Calculated Price: $' + price.toLocaleString();
+//     } else {
+//         document.getElementById('calculated-price').innerText = 'Please fill in all required fields';
+//     }
+// }
 function onClickedEstimatePrice() {
     console.log("Estimate price button clicked");
     var sqft_living = document.getElementById("ui_sqft_living").value;
@@ -432,111 +445,8 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchPropertyListingsMap(); // Fetch property listings when the page loads
 });
 
-// Chatbot functionality
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Create the chatbot button
-//     const chatbotButton = document.createElement('div');
-//     chatbotButton.id = 'chatbot-button';
-//     chatbotButton.className = 'chatbot-button';
-//     chatbotButton.innerHTML = '<i class="fas fa-comment"></i> Chat with us!';
-//     document.body.appendChild(chatbotButton);
 
-//     // Create the chatbot popup
-//     const chatbotPopup = document.createElement('div');
-//     chatbotPopup.id = 'chatbot-popup';
-//     chatbotPopup.className = 'chatbot-popup';
-//     chatbotPopup.innerHTML = `
-//         <div class="chatbot-header">
-//             <span>Chatbot</span>
-//             <button id="chatbot-close" class="chatbot-close">&times;</button>
-//         </div>
-//         <div id="chatbot-messages" class="chatbot-messages"></div>
-//         <div class="chatbot-input">
-//             <input type="text" id="chatbot-input" placeholder="Type your message..." />
-//             <button id="chatbot-send" class="chatbot-send">Send</button>
-//         </div>
-//     `;
-//     document.body.appendChild(chatbotPopup);
-
-//     // Show popup on button click
-//     chatbotButton.addEventListener('click', () => {
-//         chatbotPopup.style.display = 'flex';
-//     });
-
-//     // Close popup on close button click
-//     const chatbotCloseButton = document.getElementById('chatbot-close');
-//     chatbotCloseButton.addEventListener('click', () => {
-//         console.log("Close button clicked"); // Debugging line
-//         chatbotPopup.style.display = 'none';
-//     });
-
-//     // Handle sending messages
-//     document.getElementById('chatbot-send').addEventListener('click', () => {
-//         sendMessage();
-//     });
-
-//     document.getElementById('chatbot-input').addEventListener('keypress', (event) => {
-//         if (event.key === 'Enter') {
-//             sendMessage();
-//         }
-//     });
-
-//     function sendMessage() {
-//         const input = document.getElementById('chatbot-input');
-//         const message = input.value.trim();
-
-//         if (message) {
-//             const userMessage = document.createElement('div');
-//             userMessage.className = 'chatbot-message user-message';
-//             userMessage.textContent = message;
-//             document.getElementById('chatbot-messages').appendChild(userMessage);
-
-//             // Clear input field
-//             input.value = '';
-
-//             // Simulate bot response
-//             simulateBotResponse(message);
-//         }
-//     }
-
-//     function simulateBotResponse(message) {
-//         // Replace this with your bot's API endpoint
-//         fetch('http://127.0.0.1:5000/query', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ message: message })
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log("data of chat response ", data); // Debugging line
-//             const botMessage = document.createElement('div');
-//             botMessage.className = 'chatbot-message bot-message';
-//             botMessage.textContent = data.reply;
-//             document.getElementById('chatbot-messages').appendChild(botMessage);
-//         })
-//         .catch(error => console.error('Error:', error));
-//     }
-// });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Function to open the chatbot popup
-//     function openChatbot() {
-//         const chatbotPopup = document.getElementById('chatbot-popup');
-//         if (chatbotPopup) {
-//             chatbotPopup.style.display = 'flex';
-//         }
-//     }
-
-//     // Assign the function to the global window object
-//     window.openChatbot = openChatbot;
-
-//     // Add event listeners if necessary
-//     document.getElementById('chatbot-button')?.addEventListener('click', openChatbot);
-//     document.getElementById('chatbot-close')?.addEventListener('click', () => {
-//         document.getElementById('chatbot-popup').style.display = 'none';
-//     });
-// });
-
+// Chatbot Functionality
 
 document.addEventListener('DOMContentLoaded', () => {
     // Create the chatbot button
@@ -640,3 +550,4 @@ window.addProperty = addProperty;
 window.viewProperty = viewProperty;
 window.fetchPropertyListingsMap = fetchPropertyListingsMap;
 window.onload = onPageLoad;
+window.onClickedEstimatePrice = onClickedEstimatePrice;
